@@ -12,6 +12,20 @@ class ZodiacServiceProvider extends ServiceProvider {
     protected $defer = true;
 
     /**
+     * Bootstrap the application events.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // load translation files
+        $this->loadTranslationsFrom(
+            __DIR__.'/../../lang',
+            'zodiacs'
+        );
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void

@@ -145,7 +145,7 @@ class Calculator
      * @param  mixed $date
      * @return string
      */
-    public function getTranslation($date)
+    public function makeLocalized($date)
     {
         return $this->translator->get("zodiacs.{$this->make($date)}");
     }

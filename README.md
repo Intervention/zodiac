@@ -39,3 +39,9 @@ $zodiac = Zodiac::make(new DateTime('1977-03-15')); // pesces
 // Zodiac Calculator uses the illuminate/translator packages to output localized names
 $zodiac = Zodiac::makeLocalized('1977-03-15'); // Fische
 ```
+
+## License
+
+Intervention Zodiac is licensed under the [MIT License](http://opensource.org/licenses/MIT).
+
+Copyright 2016 [Oliver Vogel](http://olivervogel.com)

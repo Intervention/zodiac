@@ -1,27 +1,15 @@
-<?php
-
-namespace Intervention\Zodiac;
+<?php namespace Intervention\Zodiac;
 
 use Illuminate\Support\ServiceProvider;
 
-class ZodiacServiceProvider extends ServiceProvider
-{
+class ZodiacServiceProvider extends ServiceProvider {
+
     /**
      * Indicates if loading of the provider is deferred.
      *
      * @var bool
      */
     protected $defer = true;
-
-    /**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->package('intervention/zodiac');
-    }
 
     /**
      * Register the service provider.
@@ -32,7 +20,7 @@ class ZodiacServiceProvider extends ServiceProvider
     {
         $this->app['zodiac'] = $this->app->share(function($app) {
             return new Calculator($app['translator']);
-        });
+        });        
     }
 
     /**

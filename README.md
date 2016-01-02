@@ -13,13 +13,13 @@ The calculator class is built to work with the Laravel Framework. The integratio
 Open your Laravel config file `config/app.php` and add service provider in the `$providers` array:
     
     'providers' => [
-        'Intervention\Zodiac\ZodiacServiceProvider'
+        Intervention\Zodiac\ZodiacServiceProvider::class
     ],
 
 Add the facade of this package to the `$aliases` array.
 
     'aliases' => [
-        'Zodiac' => 'Intervention\Zodiac\Facades\Zodiac'
+        'Zodiac' => Intervention\Zodiac\Facades\Zodiac::class
     ],
 
 ## Usage

@@ -31,80 +31,80 @@ class Calculator
 
         [
             'name' => 'aries',
-            'start' => ['m' => '3', 'd' => '21'],
-            'end' => ['m' => '4', 'd' => '20']
+            'start' => ['month' => '3', 'day' => '21'],
+            'end' => ['month' => '4', 'day' => '20']
         ],
 
         [
             'name' => 'taurus',
-            'start' => ['m' => '4', 'd' => '21'],
-            'end' => ['m' => '5', 'd' => '21']
+            'start' => ['month' => '4', 'day' => '21'],
+            'end' => ['month' => '5', 'day' => '21']
         ],
 
         [
             'name' => 'gemini',
-            'start' => ['m' => '5', 'd' => '22'],
-            'end' => ['m' => '6', 'd' => '21']
+            'start' => ['month' => '5', 'day' => '22'],
+            'end' => ['month' => '6', 'day' => '21']
         ],
 
         [
             'name' => 'cancer',
-            'start' => ['m' => '6', 'd' => '22'],
-            'end' => ['m' => '7', 'd' => '22']
+            'start' => ['month' => '6', 'day' => '22'],
+            'end' => ['month' => '7', 'day' => '22']
         ],
 
         [
             'name' => 'leo',
-            'start' => ['m' => '7', 'd' => '23'],
-            'end' => ['m' => '8', 'd' => '23']
+            'start' => ['month' => '7', 'day' => '23'],
+            'end' => ['month' => '8', 'day' => '23']
         ],
 
         [
             'name' => 'virgo',
-            'start' => ['m' => '8', 'd' => '24'],
-            'end' => ['m' => '9', 'd' => '23']
+            'start' => ['month' => '8', 'day' => '24'],
+            'end' => ['month' => '9', 'day' => '23']
         ],
 
         [
             'name' => 'libra',
-            'start' => ['m' => '9', 'd' => '24'],
-            'end' => ['m' => '10', 'd' => '23']
+            'start' => ['month' => '9', 'day' => '24'],
+            'end' => ['month' => '10', 'day' => '23']
         ],
 
         [
             'name' => 'scorpio',
-            'start' => ['m' => '10', 'd' => '24'],
-            'end' => ['m' => '11', 'd' => '22']
+            'start' => ['month' => '10', 'day' => '24'],
+            'end' => ['month' => '11', 'day' => '22']
         ],
 
         [
             'name' => 'sagittarius',
-            'start' => ['m' => '11', 'd' => '23'],
-            'end' => ['m' => '12', 'd' => '21']
+            'start' => ['month' => '11', 'day' => '23'],
+            'end' => ['month' => '12', 'day' => '21']
         ],
 
         [
             'name' => 'capricorn',
-            'start' => ['m' => '12', 'd' => '22'],
-            'end' => ['m' => '12', 'd' => '31']
+            'start' => ['month' => '12', 'day' => '22'],
+            'end' => ['month' => '12', 'day' => '31']
         ],
 
         [
             'name' => 'capricorn',
-            'start' => ['m' => '1', 'd' => '1'],
-            'end' => ['m' => '1', 'd' => '20']
+            'start' => ['month' => '1', 'day' => '1'],
+            'end' => ['month' => '1', 'day' => '20']
         ],
 
         [
             'name' => 'aquarius',
-            'start' => ['m' => '1', 'd' => '21'],
-            'end' => ['m' => '2', 'd' => '19']
+            'start' => ['month' => '1', 'day' => '21'],
+            'end' => ['month' => '2', 'day' => '19']
         ],
 
         [
             'name' => 'pisces',
-            'start' => ['m' => '2', 'd' => '20'],
-            'end' => ['m' => '3', 'd' => '20']
+            'start' => ['month' => '2', 'day' => '20'],
+            'end' => ['month' => '3', 'day' => '20']
         ]
     ];
 
@@ -155,8 +155,8 @@ class Calculator
 
         foreach ($this->zodiacs as $zodiac) {
 
-            $start = $this->getStartByDate($zodiac['start']['m'], $zodiac['start']['d']);
-            $end = $this->getEndByDate($zodiac['end']['m'], $zodiac['end']['d']);
+            $start = $this->getStartByDate($zodiac['start']['month'], $zodiac['start']['day']);
+            $end = $this->getEndByDate($zodiac['end']['month'], $zodiac['end']['day']);
 
             if ($this->date->between($start, $end)) {
                 return $zodiac['name'];
@@ -172,7 +172,17 @@ class Calculator
      */
     public function makeLocalized($date)
     {
-        return $this->translator->get("zodiacs.{$this->make($date)}");
+        $key = $this->make($date);
+
+        if ($this->translator->has("zodiacs.{$key}")) {
+            // return error message from validation translation file
+            $key = "zodiacs.{$key}";
+        } else {
+            // return packages default message
+            $key = "zodiacs::zodiacs.{$key}";
+        }
+
+        return $this->translator->get($key);
     }
 
     /**
@@ -185,7 +195,7 @@ class Calculator
     {
         $zodiac = $this->getZodiacByName($name);
 
-        return $this->getStartByDate($zodiac['start']['m'], $zodiac['start']['d']);
+        return $this->getStartByDate($zodiac['start']['month'], $zodiac['start']['day']);
     }
 
     /**
@@ -198,7 +208,7 @@ class Calculator
     {
         $zodiac = $this->getZodiacByName($name);
 
-        return $this->getEndByDate($zodiac['end']['m'], $zodiac['end']['d']);
+        return $this->getEndByDate($zodiac['end']['month'], $zodiac['end']['day']);
     }
 
     /**

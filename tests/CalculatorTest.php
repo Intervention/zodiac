@@ -59,7 +59,8 @@ class CalculatorTest extends PHPUnit_Framework_TestCase
     public function testMakeLocalized()
     {
         $translator = Mockery::mock('Illuminate\Translation\Translator');
-        $translator->shouldReceive('get')->once()->with('zodiacs.gemini')->andReturn('mock');
+        $translator->shouldReceive('has')->once()->with('zodiacs.gemini')->andReturn(false);
+        $translator->shouldReceive('get')->once()->with('zodiacs::zodiacs.gemini')->andReturn('mock');
         $calculator = new ZodiacCalculator($translator);
 
         $this->assertEquals('mock', $calculator->makeLocalized('1977-06-17'));

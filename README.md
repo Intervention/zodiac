@@ -21,4 +21,21 @@ Add the facade of this package to the `$aliases` array.
     'aliases' => [
         'Zodiac' => 'Intervention\Zodiac\Facades\Zodiac'
     ],
-  
+
+## Usage
+
+### Code Example
+
+```php
+// get zodiac from a date
+$zodiac = Zodiac::make('1980-09-15'); // virgo
+
+// make method takes mixed formats
+$zodiac = Zodiac::make('first day of June 2008'); // gemini
+
+// even DateTime objects
+$zodiac = Zodiac::make(new DateTime('1977-03-15')); // pesces
+
+// Zodiac Calculator uses the illuminate/translator packages to output localized names
+$zodiac = Zodiac::makeLocalized('1977-03-15'); // Fische
+```

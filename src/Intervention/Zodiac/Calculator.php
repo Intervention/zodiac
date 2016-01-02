@@ -119,6 +119,27 @@ class Calculator
     }
 
     /**
+     * Reads mixed date into Carbon object
+     *
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        switch (true) {
+            case is_string($date):
+                $this->date = Carbon::parse($date);
+                break;
+
+            case is_a($date, 'DateTime'):
+                $this->date = Carbon::instance($date);
+                break;
+            
+            default:
+                throw new Expection\NotReadableException("Unable to read date ({$date})");
+        }
+    }
+
+    /**
      * Key zodiac name for given date
      *
      * @param  mixed $date
@@ -126,7 +147,7 @@ class Calculator
      */
     public function make($date)
     {
-        $this->date = Carbon::parse($date);
+        $this->setDate($date);
 
         foreach ($this->zodiacs as $zodiac) {
 

@@ -139,7 +139,7 @@ class Calculator
                 break;
             
             default:
-                throw new Expection\NotReadableException("Unable to read date ({$date})");
+                throw new Exception\NotReadableException("Unable to read date ({$date})");
         }
     }
 

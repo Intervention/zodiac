@@ -130,6 +130,10 @@ class Calculator
                 $this->date = Carbon::parse($date);
                 break;
 
+            case is_int($date):
+                $this->date = Carbon::createFromTimestamp($date);
+                break;
+
             case is_a($date, 'DateTime'):
                 $this->date = Carbon::instance($date);
                 break;

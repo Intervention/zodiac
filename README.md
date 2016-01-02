@@ -44,4 +44,4 @@ $zodiac = Zodiac::makeLocalized('1977-03-15'); // Fische
 
 Intervention Zodiac is licensed under the [MIT License](http://opensource.org/licenses/MIT).
 
-Copyright 2016 [Oliver Vogel](http://olivervogel.com)
+Copyright 2016 [Oliver Vogel](http://olivervogel.com/)

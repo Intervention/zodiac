@@ -26,18 +26,30 @@ Add the facade of this package to the `$aliases` array.
 
 ### Code Example
 
+#### Zodiac Calculator Class
+
 ```php
 // get zodiac from a date
-$zodiac = Zodiac::make('1980-09-15'); // virgo
+$zodiac = (string) Zodiac::make('1980-09-15'); // virgo
 
 // make method takes mixed formats
-$zodiac = Zodiac::make('first day of June 2008'); // gemini
+$zodiac = (string) Zodiac::make('first day of June 2008'); // gemini
 
 // even DateTime objects
-$zodiac = Zodiac::make(new DateTime('1977-03-15')); // pesces
+$zodiac = (string) Zodiac::make(new DateTime('1977-03-15')); // pesces
+```
 
-// Zodiac Calculator uses the illuminate/translator packages to output localized names
-$zodiac = Zodiac::makeLocalized('1977-03-15'); // Fische
+#### Zodiac Class
+
+```php
+// make zodiac from a date
+$zodiac = Zodiac::make('1980-09-15');
+
+echo $zodiac->name(); // virgo
+
+echo $zodiac->html(); // &#9805;
+
+echo $zodiac->localized(); // Jungfrau
 ```
 
 ## License

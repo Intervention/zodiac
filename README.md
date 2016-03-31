@@ -50,6 +50,11 @@ echo $zodiac->name(); // virgo
 echo $zodiac->html(); // &#9805;
 
 echo $zodiac->localized(); // Jungfrau
+
+if ($zodiac instanceof Intervention\Zodiac\Zodiacs\Virgo) {
+    # my zodiac sign is virgo ...
+}
+
 ```
 
 ## License

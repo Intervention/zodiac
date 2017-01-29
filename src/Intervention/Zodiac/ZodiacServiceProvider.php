@@ -29,9 +29,9 @@ class ZodiacServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app['zodiac'] = $this->app->share(function($app) {
-            return new Calculator($app['translator']);
-        });        
+        $this->app->singleton('zodiac', function ($app) {
+           return new Calculator($app['translator']); 
+        });
     }
 
     /**

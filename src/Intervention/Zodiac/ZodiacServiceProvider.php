@@ -1,4 +1,6 @@
-<?php namespace Intervention\Zodiac;
+<?php
+
+namespace Intervention\Zodiac;
 
 use Illuminate\Support\ServiceProvider;
 

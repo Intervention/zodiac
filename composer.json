@@ -24,5 +24,15 @@
             "Intervention\\Zodiac\\": "src/Intervention/Zodiac"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Intervention\\Zodiac\\ZodiacServiceProvider"
+            ],
+            "aliases": {
+                "Zodiac": "Intervention\\Zodiac\\Facades\\Zodiac"
+            }
+        }
+    },
     "minimum-stability": "stable"
 }

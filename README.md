@@ -57,6 +57,23 @@ if ($zodiac instanceof Intervention\Zodiac\Zodiacs\Virgo) {
 
 ```
 
+#### Eloquent Model Trait
+
+By including `Intervention\Zodiac\EloquentZodiacTrait` your [Eloquent Model](https://laravel.com/docs/eloquent) gets a new `zodiac` attribute, which is created based on the `birthday` attribute of the current model and returns a zodiac object.
+
+```php
+// include trait
+class User extends Model
+{
+    use \Intervention\Zodiac\EloquentZodiacTrait;
+}
+
+// retrieve zodiac attribute
+$user = App\User::create(['birthday' => '1980-03-15']);
+$zodiac = $user->zodiac // Intervention\Zodiac\Zodiacs\Pisces
+```
+
+
 ## License
 
 Intervention Zodiac is licensed under the [MIT License](http://opensource.org/licenses/MIT).

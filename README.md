@@ -28,6 +28,8 @@ Add the facade of this package to the `$aliases` array.
 
 #### Zodiac Calculator Class
 
+You can use the Calculator class to create zodiac objects from any type of date.
+
 ```php
 // get zodiac from a date
 $zodiac = (string) Zodiac::make('1980-09-15'); // virgo
@@ -40,6 +42,8 @@ $zodiac = (string) Zodiac::make(new DateTime('1977-03-15')); // pesces
 ```
 
 #### Zodiac Class
+
+The Zodiac Calculator class always returns zodiac objects, which come with the following handy methods.
 
 ```php
 // make zodiac from a date

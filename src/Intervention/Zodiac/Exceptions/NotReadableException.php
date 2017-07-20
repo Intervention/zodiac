@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Zodiac\Exception;
+namespace Intervention\Zodiac\Exceptions;
 
 class NotReadableException extends \RuntimeException
 {

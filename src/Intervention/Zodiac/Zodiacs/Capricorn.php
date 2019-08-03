@@ -38,7 +38,7 @@ class Capricorn extends AbstractZodiac
     /**
      * Determine if given date matches Capricorn
      *
-     * Since Capricorn extends over two different 
+     * Since Capricorn extends over two different
      * years we need some special logic
      *
      * @param  Carbon $date

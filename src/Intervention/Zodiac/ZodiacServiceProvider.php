@@ -4,8 +4,8 @@ namespace Intervention\Zodiac;
 
 use Illuminate\Support\ServiceProvider;
 
-class ZodiacServiceProvider extends ServiceProvider {
-
+class ZodiacServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +32,7 @@ class ZodiacServiceProvider extends ServiceProvider {
     public function register()
     {
         $this->app->singleton('zodiac', function ($app) {
-           return new Calculator($app['translator']); 
+            return new Calculator($app['translator']);
         });
     }
 
@@ -43,6 +43,6 @@ class ZodiacServiceProvider extends ServiceProvider {
      */
     public function provides()
     {
-        return array('zodiac');
+        return ['zodiac'];
     }
 }

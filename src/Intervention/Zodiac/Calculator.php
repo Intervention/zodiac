@@ -10,14 +10,14 @@ class Calculator
     /**
      * Date
      *
-     * @var Carbon\Carbon
+     * @var Carbon
      */
     public $date;
 
     /**
      * Translator
      *
-     * @var Illuminate\Translation\Translator
+     * @var Translator
      */
     public $translator;
 

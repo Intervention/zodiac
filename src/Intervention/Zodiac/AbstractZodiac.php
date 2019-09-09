@@ -73,10 +73,10 @@ abstract class AbstractZodiac
             $date->year,
             $this->end['month'],
             $this->end['day'],
-            0,
-            0,
-            0
-        )->addDay();
+            23,
+            59,
+            59
+        );
 
         return $date->between($start, $end);
     }

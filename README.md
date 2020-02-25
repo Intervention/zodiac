@@ -31,16 +31,16 @@ Add the facade of this package to the `$aliases` array.
 You can use the Calculator class to create zodiac objects from any type of date.
 
 ```php
-use Intervention\Zodiac\Calculator as Zodiac;
+use Intervention\Zodiac\Calculator as ZodiacCalculator;
 
 // get zodiac from a date
-$zodiac = (string) Zodiac::make('1980-09-15'); // virgo
+$zodiac = (string) ZodiacCalculator::make('1980-09-15'); // virgo
 
 // make method takes mixed formats
-$zodiac = (string) Zodiac::make('first day of June 2008'); // gemini
+$zodiac = (string) ZodiacCalculator::make('first day of June 2008'); // gemini
 
 // even DateTime objects
-$zodiac = (string) Zodiac::make(new DateTime('1977-03-15')); // pesces
+$zodiac = (string) ZodiacCalculator::make(new DateTime('1977-03-15')); // pesces
 ```
 
 #### Zodiac Class
@@ -48,10 +48,12 @@ $zodiac = (string) Zodiac::make(new DateTime('1977-03-15')); // pesces
 The Zodiac Calculator class always returns zodiac objects, which come with the following handy methods.
 
 ```php
-use Intervention\Zodiac\Calculator as Zodiac;
+<<<<<<< HEAD
+use Intervention\Zodiac\Calculator as ZodiacCalculator;
+use Intervention\Zodiac\Zodiacs\Virgo;
 
 // make zodiac from a date
-$zodiac = Zodiac::make('1980-09-15');
+$zodiac = ZodiacCalculator::make('1980-09-15');
 
 echo $zodiac->name(); // virgo
 
@@ -59,7 +61,7 @@ echo $zodiac->html(); // &#9805;
 
 echo $zodiac->localized(); // Jungfrau
 
-if ($zodiac instanceof Intervention\Zodiac\Zodiacs\Virgo) {
+if ($zodiac instanceof Virgo) {
     # my zodiac sign is virgo ...
 }
 

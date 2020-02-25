@@ -38,7 +38,7 @@ abstract class AbstractZodiac
     /**
      * Translator
      *
-     * @var Illuminate\Translation\Translator
+     * @var Translator
      */
     public $translator;
 

@@ -2,9 +2,9 @@
 
 namespace Intervention\Zodiac\Test;
 
+use DateTime;
 use Illuminate\Translation\Translator;
 use Intervention\Zodiac\Calculator as ZodiacCalculator;
-use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Zodiacs\Aquarius;
 use Intervention\Zodiac\Zodiacs\Aries;
 use Intervention\Zodiac\Zodiacs\Cancer;
@@ -18,7 +18,6 @@ use Intervention\Zodiac\Zodiacs\Scorpio;
 use Intervention\Zodiac\Zodiacs\Taurus;
 use Intervention\Zodiac\Zodiacs\Virgo;
 use PHPUnit\Framework\TestCase;
-use DateTime;
 
 class CalculatorTest extends TestCase
 {
@@ -26,7 +25,7 @@ class CalculatorTest extends TestCase
     {
         $translator = $this->createMock(Translator::class);
         $calculator = new ZodiacCalculator($translator);
-        $this->assertInstanceOf(Calculator::class, $calculator);
+        $this->assertInstanceOf(ZodiacCalculator::class, $calculator);
         $this->assertInstanceOf(Translator::class, $calculator->translator);
     }
 
@@ -61,6 +60,7 @@ class CalculatorTest extends TestCase
         $this->assertInstanceOf(Gemini::class, $calculator->make(new DateTime('1977-05-27')));
         $this->assertInstanceOf(Cancer::class, $calculator->make(new DateTime('1977-06-27')));
         $this->assertInstanceOf(Leo::class, $calculator->make(new DateTime('1977-07-27')));
+        $this->assertInstanceOf(Gemini::class, $calculator->make(new DateTime('1977-06-21')));
         $this->assertInstanceOf(Virgo::class, $calculator->make(new DateTime('1977-08-27')));
         $this->assertInstanceOf(Libra::class, $calculator->make(new DateTime('1977-09-27')));
         $this->assertInstanceOf(Scorpio::class, $calculator->make(new DateTime('1977-10-27')));

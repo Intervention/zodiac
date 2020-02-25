@@ -42,9 +42,9 @@ class Capricorn extends AbstractZodiac
      * years we need some special logic
      *
      * @param  Carbon $date
-     * @return boolean
+     * @return bool
      */
-    public function match(Carbon $date)
+    public function match(Carbon $date): bool
     {
         $start1 = Carbon::create($date->year, $this->start['month'], $this->start['day'], 0, 0, 0);
         $end1 = Carbon::create($date->year, 12, 31, 23, 59, 59);

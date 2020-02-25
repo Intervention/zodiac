@@ -58,7 +58,7 @@ abstract class AbstractZodiac
      * @param  Carbon $date
      * @return bool
      */
-    public function match(Carbon $date)
+    public function match(Carbon $date): bool
     {
         $start = Carbon::create(
             $date->year,
@@ -86,9 +86,9 @@ abstract class AbstractZodiac
      *
      * @return string
      */
-    public function localized()
+    public function localized(): ?string
     {
-        if (! is_a($this->translator, 'Illuminate\Translation\Translator')) {
+        if (! is_a($this->translator, Translator::class)) {
             return "zodiacs.{$this->name}";
         }
 
@@ -106,7 +106,7 @@ abstract class AbstractZodiac
      *
      * @return string
      */
-    public function name()
+    public function name(): ?string
     {
         return $this->name;
     }
@@ -116,7 +116,7 @@ abstract class AbstractZodiac
      *
      * @return string
      */
-    public function html()
+    public function html(): ?string
     {
         return $this->html;
     }
@@ -126,7 +126,7 @@ abstract class AbstractZodiac
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): ?string
     {
         return $this->name;
     }

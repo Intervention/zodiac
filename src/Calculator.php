@@ -35,8 +35,9 @@ class Calculator
      * Reads mixed date into Carbon object
      *
      * @param mixed $date
+     * @return Calculator
      */
-    public function setDate($date)
+    public function setDate($date): Calculator
     {
         switch (true) {
             case is_string($date):
@@ -64,9 +65,9 @@ class Calculator
      * Key zodiac name for given date
      *
      * @param  mixed $date
-     * @return string
+     * @return AbstractZodiac
      */
-    public function make($date)
+    public function make($date): AbstractZodiac
     {
         $this->setDate($date);
 
@@ -83,21 +84,21 @@ class Calculator
      *
      * @return array
      */
-    private function getZodiacClassnames()
+    private function getZodiacClassnames(): array
     {
         return [
-            "Intervention\Zodiac\Zodiacs\Aquarius",
-            "Intervention\Zodiac\Zodiacs\Aries",
-            "Intervention\Zodiac\Zodiacs\Cancer",
-            "Intervention\Zodiac\Zodiacs\Capricorn",
-            "Intervention\Zodiac\Zodiacs\Gemini",
-            "Intervention\Zodiac\Zodiacs\Leo",
-            "Intervention\Zodiac\Zodiacs\Libra",
-            "Intervention\Zodiac\Zodiacs\Pisces",
-            "Intervention\Zodiac\Zodiacs\Sagittarius",
-            "Intervention\Zodiac\Zodiacs\Scorpio",
-            "Intervention\Zodiac\Zodiacs\Taurus",
-            "Intervention\Zodiac\Zodiacs\Virgo",
+            Zodiacs\Aquarius::class,
+            Zodiacs\Aries::class,
+            Zodiacs\Cancer::class,
+            Zodiacs\Capricorn::class,
+            Zodiacs\Gemini::class,
+            Zodiacs\Leo::class,
+            Zodiacs\Libra::class,
+            Zodiacs\Pisces::class,
+            Zodiacs\Sagittarius::class,
+            Zodiacs\Scorpio::class,
+            Zodiacs\Taurus::class,
+            Zodiacs\Virgo::class,
         ];
     }
 }

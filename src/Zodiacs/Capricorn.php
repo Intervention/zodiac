@@ -47,7 +47,7 @@ class Capricorn extends AbstractZodiac
     public function match(Carbon $date)
     {
         $start1 = Carbon::create($date->year, $this->start['month'], $this->start['day'], 0, 0, 0);
-        $end1 = Carbon::create($date->year, 12, 31, 0, 0, 0)->addDay();
+        $end1 = Carbon::create($date->year, 12, 31, 23, 59, 59);
 
         $start2 = Carbon::create($date->year, 1, 1, 0, 0, 0);
         $end2 = Carbon::create($date->year, $this->end['month'], $this->end['day'], 0, 0, 0)->addDay();

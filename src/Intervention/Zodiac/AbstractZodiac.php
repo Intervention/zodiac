@@ -47,7 +47,7 @@ abstract class AbstractZodiac
      *
      * @param Translator $translator
      */
-    function __construct(Translator $translator = null)
+    public function __construct(Translator $translator = null)
     {
         $this->translator = $translator;
     }
@@ -88,7 +88,7 @@ abstract class AbstractZodiac
      */
     public function localized()
     {
-        if ( ! is_a($this->translator, 'Illuminate\Translation\Translator')) {
+        if (! is_a($this->translator, 'Illuminate\Translation\Translator')) {
             return "zodiacs.{$this->name}";
         }
 

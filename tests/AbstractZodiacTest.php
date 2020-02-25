@@ -53,5 +53,4 @@ class AbstractZodiacTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('mock', strval($zodiac));
     }
-
 }

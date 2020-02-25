@@ -26,7 +26,7 @@ class Calculator
      *
      * @param Translator $translator
      */
-    function __construct(Translator $translator = null)
+    public function __construct(Translator $translator = null)
     {
         $this->translator = $translator;
     }

@@ -31,6 +31,8 @@ Add the facade of this package to the `$aliases` array.
 You can use the Calculator class to create zodiac objects from any type of date.
 
 ```php
+use Intervention\Zodiac\Calculator as Zodiac;
+
 // get zodiac from a date
 $zodiac = (string) Zodiac::make('1980-09-15'); // virgo
 
@@ -46,6 +48,8 @@ $zodiac = (string) Zodiac::make(new DateTime('1977-03-15')); // pesces
 The Zodiac Calculator class always returns zodiac objects, which come with the following handy methods.
 
 ```php
+use Intervention\Zodiac\Calculator as Zodiac;
+
 // make zodiac from a date
 $zodiac = Zodiac::make('1980-09-15');
 
@@ -82,4 +86,4 @@ $zodiac = $user->zodiac // Intervention\Zodiac\Zodiacs\Pisces
 
 Intervention Zodiac is licensed under the [MIT License](http://opensource.org/licenses/MIT).
 
-Copyright 2016 [Oliver Vogel](http://olivervogel.com/)
+Copyright 2016 [Oliver Vogel](https://olivervogel.com/)

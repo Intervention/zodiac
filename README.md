@@ -48,7 +48,6 @@ $zodiac = (string) ZodiacCalculator::make(new DateTime('1977-03-15')); // pesces
 The Zodiac Calculator class always returns zodiac objects, which come with the following handy methods.
 
 ```php
-<<<<<<< HEAD
 use Intervention\Zodiac\Calculator as ZodiacCalculator;
 use Intervention\Zodiac\Zodiacs\Virgo;
 

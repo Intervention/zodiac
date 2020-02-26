@@ -4,6 +4,7 @@ namespace Intervention\Zodiac;
 
 use Illuminate\Translation\Translator;
 use Carbon\Carbon;
+use Exception;
 
 class Calculator
 {
@@ -39,23 +40,12 @@ class Calculator
      */
     public function setDate($date): Calculator
     {
-        switch (true) {
-            case is_string($date):
-                $this->date = Carbon::parse($date);
-                break;
-
-            case is_int($date):
-                $this->date = Carbon::createFromTimestamp($date);
-                break;
-
-            case is_a($date, 'DateTime'):
-                $this->date = Carbon::instance($date);
-                break;
-            
-            default:
-                throw new Exceptions\NotReadableException(
-                    "Unable to read date ({$date})"
-                );
+        try {
+            $this->date = DateParser::parse($date);
+        } catch (Exception $e) {
+            throw new Exceptions\NotReadableException(
+                "Unable to parse date ({$date})"
+            );
         }
 
         return $this;
@@ -77,6 +67,10 @@ class Calculator
                 return $zodiac;
             }
         }
+
+        throw new Exceptions\NotReadableException(
+            'Unable to create zodiac from value ('.$date.')'
+        );
     }
 
     /**

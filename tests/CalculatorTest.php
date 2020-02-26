@@ -5,6 +5,7 @@ namespace Intervention\Zodiac\Test;
 use DateTime;
 use Illuminate\Translation\Translator;
 use Intervention\Zodiac\Calculator as ZodiacCalculator;
+use Intervention\Zodiac\Exceptions\NotReadableException;
 use Intervention\Zodiac\Zodiacs\Aquarius;
 use Intervention\Zodiac\Zodiacs\Aries;
 use Intervention\Zodiac\Zodiacs\Cancer;
@@ -48,6 +49,14 @@ class CalculatorTest extends TestCase
         $this->assertInstanceOf(Capricorn::class, $calculator->make('1977-01-15'));
         $this->assertInstanceOf(Aquarius::class, $calculator->make('1977-01-26'));
         $this->assertInstanceOf(Pisces::class, $calculator->make('1977-02-27'));
+    }
+
+    public function testMakeInvalidString()
+    {
+        $this->expectException(NotReadableException::class);
+        $translator = $this->createMock(Translator::class);
+        $calculator = new ZodiacCalculator($translator);
+        $calculator->make('foobar');
     }
 
     public function testMakeFromObject()

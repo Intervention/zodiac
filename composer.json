@@ -29,11 +29,6 @@
             "Intervention\\Zodiac\\Test\\": "tests/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Intervention\\Zodiac\\Test\\": "tests"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [

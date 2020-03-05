@@ -81,4 +81,20 @@ class CalculatorTest extends TestCase
         $this->assertInstanceOf(Aquarius::class, $calculator->make(new DateTime('1977-01-26')));
         $this->assertInstanceOf(Pisces::class, $calculator->make(new DateTime('1977-02-27')));
     }
+
+    public function testGetZodiacEmpty()
+    {
+        $this->expectException(NotReadableException::class);
+        $translator = $this->createMock(Translator::class);
+        $calculator = new ZodiacCalculator($translator);
+        $result = $calculator->getZodiac();
+    }
+
+    public function testGetZodiac()
+    {
+        $translator = $this->createMock(Translator::class);
+        $calculator = new ZodiacCalculator($translator);
+        $calculator->setDate('1977-01-15');
+        $this->assertInstanceOf(Capricorn::class, $calculator->getZodiac());
+    }
 }

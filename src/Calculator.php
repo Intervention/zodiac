@@ -52,14 +52,28 @@ class Calculator
     }
 
     /**
-     * Key zodiac name for given date
+     * Get zodiac for given date
      *
      * @param  mixed $date
      * @return AbstractZodiac
      */
     public function make($date): AbstractZodiac
     {
-        $this->setDate($date);
+        return $this->setDate($date)->getZodiac();
+    }
+
+    /**
+     * Find zodiac by current date
+     *
+     * @return AbstractZodiac
+     */
+    public function getZodiac(): AbstractZodiac
+    {
+        if (false === $this->hasDate()) {
+            throw new Exceptions\NotReadableException(
+                'Unable to create zodiac from empty date (call setDate() first)'
+            );
+        }
 
         foreach ($this->getZodiacClassnames() as $classname) {
             $zodiac = new $classname($this->translator);
@@ -69,8 +83,18 @@ class Calculator
         }
 
         throw new Exceptions\NotReadableException(
-            'Unable to create zodiac from value ('.$date.')'
+            'Unable to create zodiac from value ('.$this->date.')'
         );
+    }
+
+    /**
+     * Determine if current instance has date set
+     *
+     * @return boolean
+     */
+    private function hasDate(): bool
+    {
+        return $this->date instanceof Carbon;
     }
 
     /**

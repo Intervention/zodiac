@@ -1,5 +1,9 @@
 # Intervention Zodiac Calculator
 
+[![Latest Version](https://img.shields.io/packagist/v/intervention/zodiac.svg)](https://packagist.org/packages/intervention/zodiac)
+[![Build Status](https://travis-ci.org/Intervention/zodiac.png?branch=master)](https://travis-ci.org/Intervention/zodiac)
+[![Monthly Downloads](https://img.shields.io/packagist/dm/intervention/zodiac.svg)](https://packagist.org/packages/intervention/zodiac/stats)
+
 ## Installation
 
 You can install this package with Composer.

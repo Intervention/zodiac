@@ -83,7 +83,7 @@ class Calculator
         }
 
         throw new Exceptions\NotReadableException(
-            'Unable to create zodiac from value ('.$this->date.')'
+            'Unable to create zodiac from value (' . $this->date . ')'
         );
     }
 

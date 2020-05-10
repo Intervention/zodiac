@@ -24,7 +24,7 @@ class DateParserTest extends TestCase
 
     public function testParseDateTime()
     {
-        $carbon = DateParser::parse(new DateTime);
+        $carbon = DateParser::parse(new DateTime());
         $this->assertInstanceOf(Carbon::class, $carbon);
     }
 }

@@ -1,7 +1,7 @@
 # Intervention Zodiac Calculator
 
 [![Latest Version](https://img.shields.io/packagist/v/intervention/zodiac.svg)](https://packagist.org/packages/intervention/zodiac)
-![Build Status](https://github.com/Intervention/laravel-gelf-logger/workflows/build/badge.svg)
+![build](https://github.com/Intervention/zodiac/workflows/build/badge.svg)
 [![Monthly Downloads](https://img.shields.io/packagist/dm/intervention/zodiac.svg)](https://packagist.org/packages/intervention/zodiac/stats)
 
 ## Installation

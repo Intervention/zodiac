@@ -106,7 +106,7 @@ abstract class AbstractZodiac
      *
      * @return string
      */
-    public function name(): ?string
+    public function name(): string
     {
         return $this->name;
     }
@@ -116,7 +116,7 @@ abstract class AbstractZodiac
      *
      * @return string
      */
-    public function html(): ?string
+    public function html(): string
     {
         return $this->html;
     }
@@ -126,7 +126,7 @@ abstract class AbstractZodiac
      *
      * @return string
      */
-    public function __toString(): ?string
+    public function __toString(): string
     {
         return $this->name;
     }

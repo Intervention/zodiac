@@ -1,7 +1,7 @@
 {
     "name": "intervention/zodiac",
     "description": "Zodiac sign calculator",
-    "keywords": ["zodiac", "birthday"],
+    "keywords": ["zodiac", "sun sign", "star sign", "horoscope", "astrology", "birthday"],
     "license": "MIT",
     "authors": [
         {

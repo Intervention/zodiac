@@ -25,7 +25,7 @@ class DateParser
 
             case is_a($value, 'DateTime'):
                 return self::parseFromDateTime($value);
-            
+
             default:
                 throw new Exceptions\NotReadableException(
                     "Unable to parse date ({$value})"

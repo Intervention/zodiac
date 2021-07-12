@@ -47,7 +47,7 @@ $zodiac = (string) ZodiacCalculator::make('first day of June 2008'); // gemini
 $zodiac = (string) ZodiacCalculator::make(new DateTime('1977-03-15')); // pisces
 
 // get zodiac from a Carbon
-$zodiac = (string) ZodiacCalculator::make(now())
+$zodiac = (string) ZodiacCalculator::make(now());
 ```
 
 #### Zodiac Class
@@ -83,7 +83,7 @@ class User extends Model
     // include trait
     use \Intervention\Zodiac\EloquentZodiacTrait;
     
-    // If you want overwrite attribute. By default `birthday`
+    // Optional: If you want overwrite attribute. By default `birthday`
     protected $zodiacAttribute = 'custom-attribute';
 }
 

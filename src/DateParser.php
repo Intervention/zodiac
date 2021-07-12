@@ -4,7 +4,6 @@ namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
 use DateTime;
-use Exception;
 
 class DateParser
 {
@@ -12,7 +11,7 @@ class DateParser
      * Parse given date and return Carbon object
      *
      * @param  mixed $value
-     * @return \Carbon\Carbon
+     * @return Carbon
      */
     public static function parse($value): Carbon
     {
@@ -37,7 +36,7 @@ class DateParser
      * Parse given string to Carbon
      *
      * @param  string $value
-     * @return \Carbon\Carbon
+     * @return Carbon
      */
     private static function parseFromString(string $value): Carbon
     {
@@ -48,7 +47,7 @@ class DateParser
      * Parse given integer to Carbon
      *
      * @param  int    $value
-     * @return \Carbon\Carbon
+     * @return Carbon
      */
     private static function parseFromInt(int $value): Carbon
     {
@@ -59,7 +58,7 @@ class DateParser
      * Parse given DateTime object to Carbon
      *
      * @param  DateTime $value
-     * @return \Carbon\Carbon
+     * @return Carbon
      */
     private static function parseFromDateTime(DateTime $value): Carbon
     {

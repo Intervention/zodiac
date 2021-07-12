@@ -44,7 +44,10 @@ $zodiac = (string) ZodiacCalculator::make('1980-09-15'); // virgo
 $zodiac = (string) ZodiacCalculator::make('first day of June 2008'); // gemini
 
 // even DateTime objects
-$zodiac = (string) ZodiacCalculator::make(new DateTime('1977-03-15')); // pesces
+$zodiac = (string) ZodiacCalculator::make(new DateTime('1977-03-15')); // pisces
+
+// get zodiac from a Carbon
+$zodiac = (string) ZodiacCalculator::make(now());
 ```
 
 #### Zodiac Class
@@ -75,15 +78,18 @@ if ($zodiac instanceof Virgo) {
 By including `Intervention\Zodiac\EloquentZodiacTrait` your [Eloquent Model](https://laravel.com/docs/eloquent) gets a new `zodiac` attribute, which is created based on the `birthday` attribute of the current model and returns a zodiac object.
 
 ```php
-// include trait
 class User extends Model
 {
+    // include trait
     use \Intervention\Zodiac\EloquentZodiacTrait;
+    
+    // Optional: If you want overwrite attribute. By default `birthday`
+    protected $zodiacAttribute = 'custom-attribute';
 }
 
 // retrieve zodiac attribute
 $user = App\User::create(['birthday' => '1980-03-15']);
-$zodiac = $user->zodiac // Intervention\Zodiac\Zodiacs\Pisces
+$zodiac = $user->zodiac; // Intervention\Zodiac\Zodiacs\Pisces
 ```
 
 

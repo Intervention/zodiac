@@ -6,9 +6,11 @@ use Zodiac;
 
 trait EloquentZodiacTrait
 {
-    public function getZodiacAttribute()
+    protected $zodiacAttribute = 'birthday';
+
+    public function getZodiacAttribute(): ?AbstractZodiac
     {
-        $birthday = data_get($this->attributes, 'birthday');
+        $birthday = data_get($this->attributes, $this->zodiacAttribute);
 
         try {
             return Zodiac::make($birthday);

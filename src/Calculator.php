@@ -18,14 +18,14 @@ class Calculator
     /**
      * Translator
      *
-     * @var Translator
+     * @var Translator|null
      */
     public $translator;
 
     /**
      * Construct object
      *
-     * @param Translator $translator
+     * @param Translator|null $translator
      */
     public function __construct(Translator $translator = null)
     {

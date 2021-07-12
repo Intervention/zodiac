@@ -38,14 +38,14 @@ abstract class AbstractZodiac
     /**
      * Translator
      *
-     * @var Translator
+     * @var Translator|null
      */
     public $translator;
 
     /**
      * Construct object
      *
-     * @param Translator $translator
+     * @param Translator|null $translator
      */
     public function __construct(Translator $translator = null)
     {
@@ -63,10 +63,7 @@ abstract class AbstractZodiac
         $start = Carbon::create(
             $date->year,
             $this->start['month'],
-            $this->start['day'],
-            0,
-            0,
-            0
+            $this->start['day']
         );
 
         $end = Carbon::create(

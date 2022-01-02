@@ -2,99 +2,52 @@
 
 namespace Intervention\Zodiac;
 
-use Illuminate\Translation\Translator;
 use Carbon\Carbon;
-use Exception;
+use Carbon\Exceptions\InvalidFormatException;
 
 class Calculator
 {
-    /**
-     * Date
-     *
-     * @var Carbon
-     */
-    public $date;
-
-    /**
-     * Translator
-     *
-     * @var Translator|null
-     */
-    public $translator;
-
-    /**
-     * Construct object
-     *
-     * @param Translator|null $translator
-     */
-    public function __construct(Translator $translator = null)
-    {
-        $this->translator = $translator;
-    }
-
-    /**
-     * Reads mixed date into Carbon object
-     *
-     * @param mixed $date
-     * @return Calculator
-     */
-    public function setDate($date): Calculator
-    {
-        try {
-            $this->date = DateParser::parse($date);
-        } catch (Exception $e) {
-            throw new Exceptions\NotReadableException(
-                "Unable to parse date ({$date})"
-            );
-        }
-
-        return $this;
-    }
-
     /**
      * Get zodiac for given date
      *
      * @param  mixed $date
      * @return AbstractZodiac
      */
-    public function make($date): AbstractZodiac
+    public static function make($date): AbstractZodiac
     {
-        return $this->setDate($date)->getZodiac();
+        return (new self())->getZodiac($date);
     }
 
     /**
      * Find zodiac by current date
      *
+     * @param  mixed $date
      * @return AbstractZodiac
      */
-    public function getZodiac(): AbstractZodiac
+    public function getZodiac($date): AbstractZodiac
     {
-        if (false === $this->hasDate()) {
-            throw new Exceptions\NotReadableException(
-                'Unable to create zodiac from empty date (call setDate() first)'
-            );
-        }
-
+        $date = $this->normalizeDate($date);
         foreach ($this->getZodiacClassnames() as $classname) {
-            $zodiac = new $classname($this->translator);
-            if ($zodiac->match($this->date)) {
+            $zodiac = new $classname();
+            if ($zodiac->match($date)) {
                 return $zodiac;
             }
         }
 
         throw new Exceptions\NotReadableException(
-            'Unable to create zodiac from value (' . $this->date . ')'
+            'Unable to create zodiac from value (' . $date . ')'
         );
     }
 
-    /**
-     * Determine if current instance has date set
-     *
-     * @return boolean
-     */
-    private function hasDate(): bool
+    protected function normalizeDate($date): Carbon
     {
-        return $this->date instanceof Carbon;
+        try {
+            return Carbon::parse($date);
+        } catch (InvalidFormatException $e) {
+            throw new Exceptions\NotReadableException(
+                'Unable to create zodiac from value (' . $date . ')'
+            );
+        }
     }
 
     /**

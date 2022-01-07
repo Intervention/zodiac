@@ -32,7 +32,7 @@ class ZodiacServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('zodiac', function ($app) {
-            return new Calculator($app['translator']);
+            return (new Calculator())->setTranslator($app['translator']);
         });
     }
 

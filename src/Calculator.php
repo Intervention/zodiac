@@ -7,6 +7,8 @@ use Carbon\Exceptions\InvalidFormatException;
 
 class Calculator
 {
+    use Traits\CanTranslate;
+
     /**
      * Get zodiac for given date
      *
@@ -19,7 +21,7 @@ class Calculator
     }
 
     /**
-     * Find zodiac by current date
+     * Get zodiac for given date
      *
      * @param  mixed $date
      * @return AbstractZodiac

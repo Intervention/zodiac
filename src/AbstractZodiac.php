@@ -7,6 +7,8 @@ use Illuminate\Translation\Translator;
 
 abstract class AbstractZodiac
 {
+    use Traits\CanTranslate;
+
     /**
      * Name of zodiac sign
      *
@@ -34,23 +36,6 @@ abstract class AbstractZodiac
      * @var array
      */
     public $end;
-
-    /**
-     * Translator
-     *
-     * @var Translator|null
-     */
-    public $translator;
-
-    /**
-     * Construct object
-     *
-     * @param Translator|null $translator
-     */
-    public function __construct(Translator $translator = null)
-    {
-        $this->translator = $translator;
-    }
 
     /**
      * Determine if given date matches the current zodiac sign
@@ -83,19 +68,17 @@ abstract class AbstractZodiac
      *
      * @return string
      */
-    public function localized(): ?string
+    public function localized(?string $locale = null): ?string
     {
-        if (! is_a($this->translator, Translator::class)) {
-            return "zodiacs.{$this->name}";
-        }
+        $translator = $this->getTranslator($locale);
+        $key = "zodiacs.{$this->name}";
 
-        if ($this->translator->has("zodiacs.{$this->name}")) {
-            // return error message from validation translation file
-            return $this->translator->get("zodiacs.{$this->name}");
+        if ($translator->has($key)) {
+            return $translator->get($key);
         }
 
         // return packages default message
-        return $this->translator->get("zodiacs::zodiacs.{$this->name}");
+        return $translator->get("zodiacs::{$key}");
     }
 
     /**

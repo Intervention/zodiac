@@ -4,6 +4,7 @@ namespace Intervention\Zodiac\Laravel;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Intervention\Zodiac\Calculator;
 
 class ZodiacServiceProvider extends ServiceProvider
 {

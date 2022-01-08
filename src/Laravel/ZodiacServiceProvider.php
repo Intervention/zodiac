@@ -1,8 +1,9 @@
 <?php
 
-namespace Intervention\Zodiac;
+namespace Intervention\Zodiac\Laravel;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class ZodiacServiceProvider extends ServiceProvider
 {
@@ -22,6 +23,7 @@ class ZodiacServiceProvider extends ServiceProvider
     {
         // load translation files
         $this->loadTranslationsFrom(__DIR__ . '/lang', 'zodiacs');
+        );
     }
 
     /**

@@ -32,10 +32,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Intervention\\Zodiac\\ZodiacServiceProvider"
+                "Intervention\\Zodiac\\Laravel\\ZodiacServiceProvider"
             ],
             "aliases": {
-                "Zodiac": "Intervention\\Zodiac\\Facades\\Zodiac"
+                "Zodiac": "Intervention\\Zodiac\\Laravel\\ZodiacFacade"
             }
         }
     },

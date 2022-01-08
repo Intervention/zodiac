@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Zodiac\Facades;
+namespace Intervention\Zodiac\Laravel;
 
 use Illuminate\Support\Facades\Facade;
 
-class Zodiac extends Facade
+class ZodiacFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {

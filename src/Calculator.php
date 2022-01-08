@@ -32,7 +32,7 @@ class Calculator
         foreach ($this->getZodiacClassnames() as $classname) {
             $zodiac = new $classname();
             if ($zodiac->match($date)) {
-                return $zodiac;
+                return $zodiac->setTranslator($this->getTranslator());
             }
         }
 

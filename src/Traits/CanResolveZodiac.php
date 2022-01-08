@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Zodiac;
+namespace Intervention\Zodiac\Traits;
 
 use Zodiac;
 
-trait EloquentZodiacTrait
+trait CanResolveZodiac
 {
     protected $zodiacAttribute = 'birthday';
 

@@ -23,7 +23,7 @@ class ZodiacServiceProvider extends ServiceProvider
     public function boot()
     {
         // load translation files
-        $this->loadTranslationsFrom(__DIR__ . '/lang', 'zodiacs');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'zodiacs');
     }
 
     /**

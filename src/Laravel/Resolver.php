@@ -2,7 +2,7 @@
 
 namespace Intervention\Zodiac\Laravel;
 
-use Illuminate\Contracts\Foundation\Application
+use Illuminate\Contracts\Foundation\Application;
 use Intervention\Zodiac\AbstractZodiac;
 use Intervention\Zodiac\Calculator;
 

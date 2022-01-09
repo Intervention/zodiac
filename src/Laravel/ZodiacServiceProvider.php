@@ -22,6 +22,7 @@ class ZodiacServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        dd('hmm');
         // load translation files
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'zodiacs');
     }
@@ -34,7 +35,7 @@ class ZodiacServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('zodiac', function ($app) {
-            return (new Calculator())->setTranslator($app['translator']);
+            return new Resolver($app);
         });
     }
 

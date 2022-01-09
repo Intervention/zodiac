@@ -24,11 +24,17 @@ trait CanTranslate
 
     public function getTranslator(?string $locale = null): Translator
     {
+        $locale = empty($locale) ? 'en' : $locale;
+
         if (is_a($this->translator, Translator::class)) {
-            return $this->translator;
+            $translator = clone $this->translator;
+            if ($translator->getLocale() !== $locale) {
+                $translator->setLocale($locale);
+            }
+            return $translator;
         }
 
-        $loader = new FileLoader(new Filesystem(), './src/lang');
+        $loader = new FileLoader(new Filesystem(), __DIR__ . '/../lang');
         $translator = new Translator($loader, $locale);
 
         return $translator;

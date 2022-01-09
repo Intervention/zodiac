@@ -1,8 +1,9 @@
 <?php
 
-namespace Intervention\Zodiac\Traits;
+namespace Intervention\Zodiac\Laravel\Traits;
 
-use Zodiac;
+use Intervention\Zodiac\Calculator as ZodiacCalculator;
+use Intervention\Zodiac\Exceptions\NotReadableException;
 
 trait CanResolveZodiac
 {
@@ -13,8 +14,8 @@ trait CanResolveZodiac
         $birthday = data_get($this->attributes, $this->zodiacAttribute);
 
         try {
-            return Zodiac::make($birthday);
-        } catch (Exceptions\NotReadableException $e) {
+            return ZodiacCalculator::make($birthday);
+        } catch (NotReadableException $e) {
             return null;
         }
     }

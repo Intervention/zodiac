@@ -17,10 +17,10 @@ class Resolver
 
     public function make($date): AbstractZodiac
     {
-        return $this->getTranslatableCalculator($app)->getZodiac($date);
+        return $this->getTranslatableCalculator()->getZodiac($date);
     }
 
-    private function getTranslatableCalculator($app): Calculator
+    private function getTranslatableCalculator(): Calculator
     {
         return (new Calculator())->setTranslator($this->app['translator']);
     }

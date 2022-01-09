@@ -22,6 +22,6 @@ class Resolver
 
     private function getTranslatableCalculator($app): Calculator
     {
-        return (new Calculator())->setTranslator($this->app['translator'])
+        return (new Calculator())->setTranslator($this->app['translator']);
     }
 }

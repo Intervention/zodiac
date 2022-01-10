@@ -15,7 +15,7 @@ trait CanTranslate
      */
     protected $translator;
 
-    public function setTranslator($translator): self
+    public function setTranslator(Translator $translator): self
     {
         $this->translator = $translator;
 
@@ -25,17 +25,20 @@ trait CanTranslate
     public function getTranslator(?string $locale = null): Translator
     {
         if (is_a($this->translator, Translator::class)) {
-            $translator = clone $this->translator;
-            if (is_string($locale) && $translator->getLocale() !== $locale) {
+            if (is_string($locale) && $this->translator->getLocale() !== $locale) {
+                // switch translator to given locale
+                $translator = clone $this->translator;
                 $translator->setLocale($locale);
+
+                return $translator;
             }
-            return $translator;
+
+            return $this->translator;
         }
 
         $locale = empty($locale) ? 'en' : $locale;
         $loader = new FileLoader(new Filesystem(), __DIR__ . '/../lang');
-        $translator = new Translator($loader, $locale);
 
-        return $translator;
+        return new Translator($loader, $locale);
     }
 }

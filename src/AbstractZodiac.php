@@ -3,7 +3,6 @@
 namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
-use Illuminate\Translation\Translator;
 
 abstract class AbstractZodiac
 {

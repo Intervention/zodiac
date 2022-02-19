@@ -3,7 +3,6 @@
 namespace Intervention\Zodiac\Test;
 
 use DateTime;
-use Intervention\Zodiac\AbstractZodiac;
 use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Exceptions\NotReadableException;
 use Intervention\Zodiac\Zodiacs\Aquarius;

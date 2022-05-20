@@ -1,6 +1,7 @@
 {
     "name": "intervention/zodiac",
     "description": "Zodiac sign calculator",
+    "homepage": "https://zodiac.intervention.io",
     "keywords": ["zodiac", "sun sign", "star sign", "horoscope", "astrology", "birthday"],
     "license": "MIT",
     "authors": [

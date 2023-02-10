@@ -9,7 +9,7 @@ return [
     'virgo' => 'Virgem',
     'libra' => 'Libra',
     'scorpio' => 'Escorpião',
-    'sagittarius' => 'Sargitário',
+    'sagittarius' => 'Sagitário',
     'capricorn' => 'Capricórnio',
     'aquarius' => 'Aquário',
     'pisces' => 'Peixes'

@@ -20,6 +20,12 @@ Although the library is **framework agnostic** it comes with a service provider 
 
 Read the full [documentation](https://zodiac.intervention.io) for this library.
 
+## Development & Testing
+
+With this package comes a Docker image to build a test suite container. To build this container you have to have Docker installed on your system. You can run all tests with this command.
+
+    $ docker-compose run --rm --build tests
+
 ## License
 
 Intervention Zodiac is licensed under the [MIT License](http://opensource.org/licenses/MIT).

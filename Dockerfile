@@ -1,27 +1,12 @@
-# ##############################################
-# stage: composer
-# ##############################################
-FROM composer:2 as composer
+FROM php:8.1-cli
 
-# install composer dependencies
-COPY composer.json composer.json
-COPY composer.lock composer.lock
-RUN composer install \
-    --ignore-platform-reqs \
-    --no-interaction \
-    --no-plugins \
-    --no-scripts \
-    --prefer-dist
+RUN apt update \
+        && apt install -y \
+            libicu-dev \
+        && docker-php-ext-install \
+            intl \
+        && apt-get clean
 
-# ##############################################
-# stage: testing
-# ##############################################
-FROM php:8-cli
-
-# copy application
-COPY . /app
-COPY --from=composer /app/vendor/ /app/vendor/
-
-# run tests
-WORKDIR /app
-CMD ./vendor/bin/phpunit -vvv
+# install composer
+#
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

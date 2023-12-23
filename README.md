@@ -1,7 +1,7 @@
 # Intervention Zodiac
 
 [![Latest Version](https://img.shields.io/packagist/v/intervention/zodiac.svg)](https://packagist.org/packages/intervention/zodiac)
-![Tests](https://github.com/Intervention/zodiac/actions/workflows/build/badge.svg)
+[![Tests](https://github.com/Intervention/zodiac/actions/workflows/build.yml/badge.svg)](https://github.com/Intervention/zodiac/actions/workflows/build.yml)
 [![Monthly Downloads](https://img.shields.io/packagist/dm/intervention/zodiac.svg)](https://packagist.org/packages/intervention/zodiac/stats)
 
 Intervention Zodiac is a calculator for zodiac signs to resolve the respective

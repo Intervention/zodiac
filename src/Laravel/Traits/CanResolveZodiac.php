@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Zodiac\Laravel\Traits;
 
 use Intervention\Zodiac\AbstractZodiac;
-use Intervention\Zodiac\Calculator as ZodiacCalculator;
 use Intervention\Zodiac\Exceptions\NotReadableException;
 use Intervention\Zodiac\Laravel\ZodiacFacade;
 
@@ -17,7 +18,7 @@ trait CanResolveZodiac
 
         try {
             return ZodiacFacade::make($birthday);
-        } catch (NotReadableException $e) {
+        } catch (NotReadableException) {
             return null;
         }
     }

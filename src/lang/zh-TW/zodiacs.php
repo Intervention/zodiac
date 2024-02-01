@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'aries' => '牡羊座',
     'taurus' => '金牛座',

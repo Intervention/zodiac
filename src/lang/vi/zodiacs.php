@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'aries' => 'Bạch Dương',
     'taurus' => 'Kim Ngưu',

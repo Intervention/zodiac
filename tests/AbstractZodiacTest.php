@@ -1,6 +1,8 @@
 <?php
 
-namespace Intervention\Zodiac\Test;
+declare(strict_types=1);
+
+namespace Intervention\Zodiac\Tests;
 
 use Carbon\Carbon;
 use Intervention\Zodiac\AbstractZodiac;

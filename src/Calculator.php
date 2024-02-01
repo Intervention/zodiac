@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
@@ -12,7 +14,7 @@ class Calculator
     /**
      * Get zodiac for given date
      *
-     * @param  mixed $date
+     * @param mixed $date
      * @return AbstractZodiac
      */
     public static function make($date): AbstractZodiac
@@ -23,7 +25,7 @@ class Calculator
     /**
      * Get zodiac for given date
      *
-     * @param  mixed $date
+     * @param mixed $date
      * @return AbstractZodiac
      */
     public function getZodiac($date): AbstractZodiac
@@ -45,7 +47,7 @@ class Calculator
     {
         try {
             return Carbon::parse($date);
-        } catch (InvalidFormatException $e) {
+        } catch (InvalidFormatException) {
             throw new Exceptions\NotReadableException(
                 'Unable to create zodiac from value (' . $date . ')'
             );

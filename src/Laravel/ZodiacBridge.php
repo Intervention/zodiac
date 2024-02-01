@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Zodiac\Laravel;
 
 use Illuminate\Contracts\Foundation\Application;
@@ -23,7 +25,7 @@ class ZodiacBridge
     /**
      * Make zodiac from input date
      *
-     * @param  mixed $date
+     * @param mixed $date
      * @return AbstractZodiac
      */
     public function make($date): AbstractZodiac

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
@@ -39,7 +41,7 @@ abstract class AbstractZodiac
     /**
      * Determine if given date matches the current zodiac sign
      *
-     * @param  Carbon $date
+     * @param Carbon $date
      * @return bool
      */
     public function match(Carbon $date): bool

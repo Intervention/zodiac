@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Zodiac\Zodiacs;
 
 use Carbon\Carbon;
@@ -41,7 +43,7 @@ class Capricorn extends AbstractZodiac
      * Since Capricorn extends over two different
      * years we need some special logic
      *
-     * @param  Carbon $date
+     * @param Carbon $date
      * @return bool
      */
     public function match(Carbon $date): bool

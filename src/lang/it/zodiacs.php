@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'aries' => 'Ariete',
     'taurus' => 'Toro',

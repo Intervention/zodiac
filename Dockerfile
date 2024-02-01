@@ -3,6 +3,11 @@ FROM php:8.1-cli
 RUN apt update \
         && apt install -y \
             libicu-dev \
+            git \
+            zip \
+        && pecl install xdebug \
+        && docker-php-ext-enable \
+            xdebug \
         && docker-php-ext-install \
             intl \
         && apt-get clean

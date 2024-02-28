@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class AbstractZodiacTest extends TestCase
 {
-    public function testMatch()
+    public function testMatch(): void
     {
         $zodiac = $this->getMockForAbstractClass(AbstractZodiac::class);
         $zodiac->start = ['month' => '6', 'day' => '1'];
@@ -22,7 +22,7 @@ class AbstractZodiacTest extends TestCase
         $this->assertFalse($zodiac->match(Carbon::create(null, 6, 11)));
     }
 
-    public function testLocalized()
+    public function testLocalized(): void
     {
         $zodiac = $this->getMockForAbstractClass(AbstractZodiac::class);
         $zodiac->name = 'gemini';
@@ -30,7 +30,7 @@ class AbstractZodiacTest extends TestCase
         $this->assertEquals('Gemini', $zodiac->localized());
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $zodiac = $this->getMockForAbstractClass(AbstractZodiac::class);
         $zodiac->name = 'mock';

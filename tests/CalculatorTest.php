@@ -29,7 +29,7 @@ class CalculatorTest extends TestCase
         $this->assertInstanceOf(Sagittarius::class, $result);
     }
 
-    public function testGetZodiacFromString()
+    public function testGetZodiacFromString(): void
     {
         $calculator = new Calculator();
 
@@ -49,14 +49,14 @@ class CalculatorTest extends TestCase
         $this->assertInstanceOf(Pisces::class, $calculator->getZodiac('1977-02-27'));
     }
 
-    public function testMakeInvalidString()
+    public function testMakeInvalidString(): void
     {
         $this->expectException(NotReadableException::class);
         $calculator = new Calculator();
         $calculator->getZodiac('foobar');
     }
 
-    public function testMakeFromObject()
+    public function testMakeFromObject(): void
     {
         $calculator = new Calculator();
 

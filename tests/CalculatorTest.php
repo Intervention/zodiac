@@ -21,7 +21,7 @@ use Intervention\Zodiac\Zodiacs\Taurus;
 use Intervention\Zodiac\Zodiacs\Virgo;
 use PHPUnit\Framework\TestCase;
 
-class CalculatorTest extends TestCase
+final class CalculatorTest extends TestCase
 {
     public function testMake(): void
     {

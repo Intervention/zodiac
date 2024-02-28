@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Intervention\Zodiac\AbstractZodiac;
 use PHPUnit\Framework\TestCase;
 
-class AbstractZodiacTest extends TestCase
+final class AbstractZodiacTest extends TestCase
 {
     public function testMatch(): void
     {

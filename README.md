@@ -39,8 +39,12 @@ Run the static analyzer on the code base.
 docker-compose run --rm --build analysis
 ```
 
+## Authors
+
+This library is developed and maintained by [Oliver Vogel](https://intervention.io)
+
+Thanks to the community of [contributors](https://github.com/Intervention/zodiac/graphs/contributors) who have helped to improve this project.
+
 ## License
 
-Intervention Zodiac is licensed under the [MIT License](http://opensource.org/licenses/MIT).
-
-Copyright 2016 [Oliver Vogel](https://intervention.io/)
+Intervention Zodiac is licensed under the [MIT License](LICENSE).

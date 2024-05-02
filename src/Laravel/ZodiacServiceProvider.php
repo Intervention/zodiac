@@ -41,7 +41,7 @@ class ZodiacServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      *
-     * @return array
+     * @return array<string>
      */
     public function provides()
     {

@@ -10,29 +10,21 @@ class Aquarius extends AbstractZodiac
 {
     /**
      * Name of zodiac sign
-     *
-     * @var string
      */
-    public $name = 'aquarius';
+    public string $name = 'aquarius';
 
     /**
      * HTML code of zodiac sign
-     *
-     * @var string
      */
-    public $html = '&#9810;';
+    public string $html = '&#9810;';
 
     /**
      * Start day of zodiac sign
-     *
-     * @var array
      */
-    public $start = ['month' => '1', 'day' => '21'];
+    public array $start = ['month' => 1, 'day' => 21];
 
     /**
      * End day of zodiac sign
-     *
-     * @var array
      */
-    public $end = ['month' => '2', 'day' => '19'];
+    public array $end = ['month' => 2, 'day' => 19];
 }

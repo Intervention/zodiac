@@ -10,29 +10,21 @@ class Scorpio extends AbstractZodiac
 {
     /**
      * Name of zodiac sign
-     *
-     * @var string
      */
-    public $name = 'scorpio';
+    public string $name = 'scorpio';
 
     /**
      * HTML code of zodiac sign
-     *
-     * @var string
      */
-    public $html = '&#9807;';
+    public string $html = '&#9807;';
 
     /**
      * Start day of zodiac sign
-     *
-     * @var array
      */
-    public $start = ['month' => '10', 'day' => '24'];
+    public array $start = ['month' => 10, 'day' => 24];
 
     /**
      * End day of zodiac sign
-     *
-     * @var array
      */
-    public $end = ['month' => '11', 'day' => '22'];
+    public array $end = ['month' => 11, 'day' => 22];
 }

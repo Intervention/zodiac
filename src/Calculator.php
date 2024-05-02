@@ -6,6 +6,8 @@ namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
+use Intervention\Zodiac\Exceptions\NotReadableException;
+use InvalidArgumentException;
 
 class Calculator
 {
@@ -15,6 +17,8 @@ class Calculator
      * Get zodiac for given date
      *
      * @param mixed $date
+     * @throws InvalidArgumentException
+     * @throws NotReadableException
      * @return AbstractZodiac
      */
     public static function make($date): AbstractZodiac
@@ -26,6 +30,8 @@ class Calculator
      * Get zodiac for given date
      *
      * @param mixed $date
+     * @throws InvalidArgumentException
+     * @throws NotReadableException
      * @return AbstractZodiac
      */
     public function getZodiac($date): AbstractZodiac
@@ -38,17 +44,25 @@ class Calculator
             }
         }
 
-        throw new Exceptions\NotReadableException(
+        throw new NotReadableException(
             'Unable to create zodiac from value (' . $date . ')'
         );
     }
 
-    protected function normalizeDate($date): Carbon
+    /**
+     * Normalze given date to Carbon object
+     *
+     * @param mixed $date
+     * @throws InvalidArgumentException
+     * @throws NotReadableException
+     * @return Carbon
+     */
+    protected function normalizeDate(mixed $date): Carbon
     {
         try {
             return Carbon::parse($date);
         } catch (InvalidFormatException) {
-            throw new Exceptions\NotReadableException(
+            throw new NotReadableException(
                 'Unable to create zodiac from value (' . $date . ')'
             );
         }
@@ -57,7 +71,7 @@ class Calculator
     /**
      * Returns array of all zodiac classnames
      *
-     * @return array
+     * @return array<string>
      */
     private function getZodiacClassnames(): array
     {

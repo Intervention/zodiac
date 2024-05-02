@@ -7,6 +7,8 @@ namespace Intervention\Zodiac\Laravel;
 use Illuminate\Contracts\Foundation\Application;
 use Intervention\Zodiac\AbstractZodiac;
 use Intervention\Zodiac\Calculator;
+use Intervention\Zodiac\Exceptions\NotReadableException;
+use InvalidArgumentException;
 
 class ZodiacBridge
 {
@@ -26,6 +28,8 @@ class ZodiacBridge
      * Make zodiac from input date
      *
      * @param mixed $date
+     * @throws NotReadableException
+     * @throws InvalidArgumentException
      * @return AbstractZodiac
      */
     public function make($date): AbstractZodiac
@@ -36,6 +40,7 @@ class ZodiacBridge
     /**
      * Return calculator with Laravel Translator
      *
+     * @throws InvalidArgumentException
      * @return Calculator
      */
     private function getTranslatableCalculator(): Calculator

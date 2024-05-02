@@ -7,6 +7,9 @@ namespace Intervention\Zodiac\Traits;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
+use Intervention\Zodiac\AbstractZodiac;
+use Intervention\Zodiac\Calculator;
+use InvalidArgumentException;
 
 trait CanTranslate
 {
@@ -17,13 +20,26 @@ trait CanTranslate
      */
     protected $translator;
 
-    public function setTranslator(Translator $translator): self
+    /**
+     * Set translator
+     *
+     * @param Translator $translator
+     * @return Calculator|AbstractZodiac
+     */
+    public function setTranslator(Translator $translator): Calculator|AbstractZodiac
     {
         $this->translator = $translator;
 
         return $this;
     }
 
+    /**
+     * Create translator
+     *
+     * @param null|string $locale
+     * @throws InvalidArgumentException
+     * @return Translator
+     */
     public function getTranslator(?string $locale = null): Translator
     {
         if (is_a($this->translator, Translator::class)) {

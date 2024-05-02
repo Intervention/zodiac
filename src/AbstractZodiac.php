@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
+use Carbon\Exceptions\InvalidFormatException;
+use InvalidArgumentException;
 
 abstract class AbstractZodiac
 {
@@ -15,33 +17,34 @@ abstract class AbstractZodiac
      *
      * @var string
      */
-    public $name;
+    public string $name;
 
     /**
      * HTML code of zodiac sign
      *
      * @var string
      */
-    public $html;
+    public string $html;
 
     /**
      * Start of zodiac sign
      *
-     * @var array
+     * @var array{month: int, day: int}
      */
-    public $start;
+    public array $start;
 
     /**
      * End of zodiac sign
      *
-     * @var array
+     * @var array{month: int, day: int}
      */
-    public $end;
+    public array $end;
 
     /**
      * Determine if given date matches the current zodiac sign
      *
      * @param Carbon $date
+     * @throws InvalidFormatException
      * @return bool
      */
     public function match(Carbon $date): bool
@@ -67,6 +70,7 @@ abstract class AbstractZodiac
     /**
      * Get localized name of zodiac sign
      *
+     * @throws InvalidArgumentException
      * @return string
      */
     public function localized(?string $locale = null): ?string

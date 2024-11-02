@@ -12,7 +12,7 @@ final class AbstractZodiacTest extends TestCase
 {
     public function testMatch(): void
     {
-        $zodiac = $this->getMockForAbstractClass(AbstractZodiac::class);
+        $zodiac = $this->zodiac();
         $zodiac->start = ['month' => '6', 'day' => '1'];
         $zodiac->end = ['month' => '6', 'day' => '10'];
 
@@ -24,7 +24,7 @@ final class AbstractZodiacTest extends TestCase
 
     public function testLocalized(): void
     {
-        $zodiac = $this->getMockForAbstractClass(AbstractZodiac::class);
+        $zodiac = $this->zodiac();
         $zodiac->name = 'gemini';
 
         $this->assertEquals('Gemini', $zodiac->localized());
@@ -32,9 +32,17 @@ final class AbstractZodiacTest extends TestCase
 
     public function testToString(): void
     {
-        $zodiac = $this->getMockForAbstractClass(AbstractZodiac::class);
+        $zodiac = $this->zodiac();
         $zodiac->name = 'mock';
 
         $this->assertEquals('mock', strval($zodiac));
+    }
+
+    private function zodiac(): AbstractZodiac
+    {
+        return new class () extends AbstractZodiac
+        {
+            //
+        };
     }
 }

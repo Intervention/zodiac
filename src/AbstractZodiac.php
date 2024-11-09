@@ -13,32 +13,26 @@ abstract class AbstractZodiac
     use Traits\CanTranslate;
 
     /**
-     * Name of zodiac sign
+     * Create new zodiac instance
      *
-     * @var string
+     * @param int $startDay
+     * @param int $startMonth
+     * @param int $endDay
+     * @param int $endMonth
+     * @param string $name
+     * @param string $html
+     * @return void
      */
-    protected string $name;
-
-    /**
-     * HTML code of zodiac sign
-     *
-     * @var string
-     */
-    protected string $html;
-
-    /**
-     * Start of zodiac sign
-     *
-     * @var array{month: int, day: int}
-     */
-    protected array $start;
-
-    /**
-     * End of zodiac sign
-     *
-     * @var array{month: int, day: int}
-     */
-    protected array $end;
+    public function __construct(
+        protected int $startDay,
+        protected int $startMonth,
+        protected int $endDay,
+        protected int $endMonth,
+        protected string $name,
+        protected string $html
+    ) {
+        //
+    }
 
     /**
      * Determine if given date matches the current zodiac sign
@@ -51,14 +45,14 @@ abstract class AbstractZodiac
     {
         $start = Carbon::create(
             $date->year,
-            $this->start['month'],
-            $this->start['day']
+            $this->startMonth,
+            $this->startDay
         );
 
         $end = Carbon::create(
             $date->year,
-            $this->end['month'],
-            $this->end['day'],
+            $this->endMonth,
+            $this->endDay,
             23,
             59,
             59

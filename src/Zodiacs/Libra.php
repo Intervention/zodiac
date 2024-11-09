@@ -8,23 +8,14 @@ use Intervention\Zodiac\AbstractZodiac;
 
 class Libra extends AbstractZodiac
 {
-    /**
-     * Name of zodiac sign
-     */
-    protected string $name = 'libra';
-
-    /**
-     * HTML code of zodiac sign
-     */
-    protected string $html = '&#9806;';
-
-    /**
-     * Start day of zodiac sign
-     */
-    protected array $start = ['month' => 9, 'day' => 24];
-
-    /**
-     * End day of zodiac sign
-     */
-    protected array $end = ['month' => 10, 'day' => 23];
+    public function __construct(
+        protected int $startDay = 24,
+        protected int $startMonth = 9,
+        protected int $endDay = 23,
+        protected int $endMonth = 10,
+        protected string $name = 'libra',
+        protected string $html = '&#9806;'
+    ) {
+        //
+    }
 }

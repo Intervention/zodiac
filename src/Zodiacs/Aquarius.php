@@ -8,23 +8,14 @@ use Intervention\Zodiac\AbstractZodiac;
 
 class Aquarius extends AbstractZodiac
 {
-    /**
-     * Name of zodiac sign
-     */
-    protected string $name = 'aquarius';
-
-    /**
-     * HTML code of zodiac sign
-     */
-    protected string $html = '&#9810;';
-
-    /**
-     * Start day of zodiac sign
-     */
-    protected array $start = ['month' => 1, 'day' => 21];
-
-    /**
-     * End day of zodiac sign
-     */
-    protected array $end = ['month' => 2, 'day' => 19];
+    public function __construct(
+        protected int $startDay = 21,
+        protected int $startMonth = 1,
+        protected int $endDay = 19,
+        protected int $endMonth = 2,
+        protected string $name = 'aquarius',
+        protected string $html = '&#9810;'
+    ) {
+        //
+    }
 }

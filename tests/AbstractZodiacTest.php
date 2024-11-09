@@ -37,14 +37,30 @@ final class AbstractZodiacTest extends TestCase
         int $endMonth = 2,
         int $endDay = 2,
         string $name = 'test',
+        string $html = 'test',
     ): AbstractZodiac {
-        return new class ($startMonth, $startDay, $endMonth, $endDay, $name) extends AbstractZodiac
-        {
-            public function __construct(int $startMonth, int $startDay, int $endMonth, int $endDay, string $name)
-            {
-                $this->start = ['month' => $startMonth, 'day' => $startDay];
-                $this->end = ['month' => $endMonth, 'day' => $endDay];
+        return new class (
+            $startDay,
+            $startMonth,
+            $endDay,
+            $endMonth,
+            $name,
+            $html,
+        ) extends AbstractZodiac {
+            public function __construct(
+                $startDay,
+                $startMonth,
+                $endDay,
+                $endMonth,
+                $name,
+                $html
+            ) {
+                $this->startDay = $startDay;
+                $this->startMonth = $startMonth;
+                $this->endDay = $endDay;
+                $this->endMonth = $endMonth;
                 $this->name = $name;
+                $this->html = $html;
             }
         };
     }

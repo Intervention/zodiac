@@ -8,23 +8,14 @@ use Intervention\Zodiac\AbstractZodiac;
 
 class Cancer extends AbstractZodiac
 {
-    /**
-     * Name of zodiac sign
-     */
-    protected string $name = 'cancer';
-
-    /**
-     * HTML code of zodiac sign
-     */
-    protected string $html = '&#9803;';
-
-    /**
-     * Start day of zodiac sign
-     */
-    protected array $start = ['month' => 6, 'day' => 22];
-
-    /**
-     * End day of zodiac sign
-     */
-    protected array $end = ['month' => 7, 'day' => 22];
+    public function __construct(
+        protected int $startDay = 22,
+        protected int $startMonth = 6,
+        protected int $endDay = 22,
+        protected int $endMonth = 7,
+        protected string $name = 'cancer',
+        protected string $html = '&#9803;'
+    ) {
+        //
+    }
 }

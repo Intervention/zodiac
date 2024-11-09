@@ -10,25 +10,16 @@ use Intervention\Zodiac\AbstractZodiac;
 
 class Capricorn extends AbstractZodiac
 {
-    /**
-     * Name of zodiac sign
-     */
-    protected string $name = 'capricorn';
-
-    /**
-     * HTML code of zodiac sign
-     */
-    protected string $html = '&#9809;';
-
-    /**
-     * Start day of zodiac sign
-     */
-    protected array $start = ['month' => 12, 'day' => 22];
-
-    /**
-     * End day of zodiac sign
-     */
-    protected array $end = ['month' => 1, 'day' => 20];
+    public function __construct(
+        protected int $startDay = 22,
+        protected int $startMonth = 12,
+        protected int $endDay = 20,
+        protected int $endMonth = 1,
+        protected string $name = 'capricorn',
+        protected string $html = '&#9809;'
+    ) {
+        //
+    }
 
     /**
      * Determine if given date matches Capricorn
@@ -41,11 +32,11 @@ class Capricorn extends AbstractZodiac
      */
     public function match(Carbon $date): bool
     {
-        $start1 = Carbon::create($date->year, $this->start['month'], $this->start['day'], 0, 0, 0);
+        $start1 = Carbon::create($date->year, $this->startMonth, $this->startDay, 0, 0, 0);
         $end1 = Carbon::create($date->year, 12, 31, 23, 59, 59);
 
         $start2 = Carbon::create($date->year, 1, 1, 0, 0, 0);
-        $end2 = Carbon::create($date->year, $this->end['month'], $this->end['day'], 0, 0, 0)->addDay();
+        $end2 = Carbon::create($date->year, $this->endMonth, $this->endDay, 0, 0, 0)->addDay();
 
         return ($date->between($start1, $end1) || $date->between($start2, $end2));
     }

@@ -59,6 +59,12 @@ class Calculator
      */
     protected function normalizeDate(mixed $date): Carbon
     {
+        if (is_null($date)) {
+            throw new NotReadableException(
+                'Unable to create zodiac from NULL.'
+            );
+        }
+
         try {
             return Carbon::parse($date);
         } catch (InvalidFormatException) {

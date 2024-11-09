@@ -17,28 +17,28 @@ abstract class AbstractZodiac
      *
      * @var string
      */
-    public string $name;
+    protected string $name;
 
     /**
      * HTML code of zodiac sign
      *
      * @var string
      */
-    public string $html;
+    protected string $html;
 
     /**
      * Start of zodiac sign
      *
      * @var array{month: int, day: int}
      */
-    public array $start;
+    protected array $start;
 
     /**
      * End of zodiac sign
      *
      * @var array{month: int, day: int}
      */
-    public array $end;
+    protected array $end;
 
     /**
      * Determine if given date matches the current zodiac sign

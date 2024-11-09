@@ -11,22 +11,22 @@ class Aries extends AbstractZodiac
     /**
      * Name of zodiac sign
      */
-    public string $name = 'aries';
+    protected string $name = 'aries';
 
     /**
      * HTML code of zodiac sign
      *
      * @var string
      */
-    public string $html = '&#9800;';
+    protected string $html = '&#9800;';
 
     /**
      * Start day of zodiac sign
      */
-    public array $start = ['month' => 3, 'day' => 21];
+    protected array $start = ['month' => 3, 'day' => 21];
 
     /**
      * End day of zodiac sign
      */
-    public array $end = ['month' => 4, 'day' => 20];
+    protected array $end = ['month' => 4, 'day' => 20];
 }

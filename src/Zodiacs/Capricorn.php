@@ -13,22 +13,22 @@ class Capricorn extends AbstractZodiac
     /**
      * Name of zodiac sign
      */
-    public string $name = 'capricorn';
+    protected string $name = 'capricorn';
 
     /**
      * HTML code of zodiac sign
      */
-    public string $html = '&#9809;';
+    protected string $html = '&#9809;';
 
     /**
      * Start day of zodiac sign
      */
-    public array $start = ['month' => 12, 'day' => 22];
+    protected array $start = ['month' => 12, 'day' => 22];
 
     /**
      * End day of zodiac sign
      */
-    public array $end = ['month' => 1, 'day' => 20];
+    protected array $end = ['month' => 1, 'day' => 20];
 
     /**
      * Determine if given date matches Capricorn

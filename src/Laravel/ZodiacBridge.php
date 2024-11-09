@@ -34,7 +34,7 @@ class ZodiacBridge
      */
     public function make($date): AbstractZodiac
     {
-        return $this->getTranslatableCalculator()->zodiac($date);
+        return $this->translatableCalculator()->zodiac($date);
     }
 
     /**
@@ -43,7 +43,7 @@ class ZodiacBridge
      * @throws InvalidArgumentException
      * @return Calculator
      */
-    private function getTranslatableCalculator(): Calculator
+    private function translatableCalculator(): Calculator
     {
         return (new Calculator())->setTranslator($this->app['translator']);
     }

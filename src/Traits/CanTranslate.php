@@ -40,7 +40,7 @@ trait CanTranslate
      * @throws InvalidArgumentException
      * @return Translator
      */
-    public function getTranslator(?string $locale = null): Translator
+    public function translator(?string $locale = null): Translator
     {
         if (is_a($this->translator, Translator::class)) {
             if (is_string($locale) && $this->translator->getLocale() !== $locale) {

@@ -69,7 +69,7 @@ abstract class AbstractZodiac
      */
     public function localized(?string $locale = null): ?string
     {
-        $translator = $this->getTranslator($locale);
+        $translator = $this->translator($locale);
         $key = "zodiacs.{$this->name}";
 
         if ($translator->has($key)) {

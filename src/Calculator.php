@@ -37,7 +37,7 @@ class Calculator
     public function zodiac(mixed $date): AbstractZodiac
     {
         $date = $this->normalizeDate($date);
-        foreach ($this->getZodiacClassnames() as $classname) {
+        foreach ($this->zodiacClassnames() as $classname) {
             $zodiac = new $classname();
             if ($zodiac->match($date)) {
                 return $zodiac->setTranslator($this->getTranslator());
@@ -79,7 +79,7 @@ class Calculator
      *
      * @return array<string>
      */
-    private function getZodiacClassnames(): array
+    private function zodiacClassnames(): array
     {
         return [
             Zodiacs\Aquarius::class,

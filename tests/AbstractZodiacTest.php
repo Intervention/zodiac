@@ -12,10 +12,7 @@ final class AbstractZodiacTest extends TestCase
 {
     public function testMatch(): void
     {
-        $zodiac = $this->zodiac();
-        $zodiac->start = ['month' => '6', 'day' => '1'];
-        $zodiac->end = ['month' => '6', 'day' => '10'];
-
+        $zodiac = $this->zodiac(6, 1, 6, 10);
         $this->assertTrue($zodiac->match(Carbon::create(null, 6, 1)));
         $this->assertTrue($zodiac->match(Carbon::create(null, 6, 10)));
         $this->assertTrue($zodiac->match(Carbon::create(null, 6, 5)));
@@ -24,25 +21,31 @@ final class AbstractZodiacTest extends TestCase
 
     public function testLocalized(): void
     {
-        $zodiac = $this->zodiac();
-        $zodiac->name = 'gemini';
-
+        $zodiac = $this->zodiac(name: 'gemini');
         $this->assertEquals('Gemini', $zodiac->localized());
     }
 
     public function testToString(): void
     {
-        $zodiac = $this->zodiac();
-        $zodiac->name = 'mock';
-
-        $this->assertEquals('mock', strval($zodiac));
+        $zodiac = $this->zodiac(name: 'test');
+        $this->assertEquals('test', strval($zodiac));
     }
 
-    private function zodiac(): AbstractZodiac
-    {
-        return new class () extends AbstractZodiac
+    private function zodiac(
+        int $startMonth = 1,
+        int $startDay = 1,
+        int $endMonth = 2,
+        int $endDay = 2,
+        string $name = 'test',
+    ): AbstractZodiac {
+        return new class ($startMonth, $startDay, $endMonth, $endDay, $name) extends AbstractZodiac
         {
-            //
+            public function __construct(int $startMonth, int $startDay, int $endMonth, int $endDay, string $name)
+            {
+                $this->start = ['month' => $startMonth, 'day' => $startDay];
+                $this->end = ['month' => $endMonth, 'day' => $endDay];
+                $this->name = $name;
+            }
         };
     }
 }

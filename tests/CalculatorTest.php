@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Intervention\Zodiac\Tests;
 
 use DateTime;
+use Generator;
 use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Exceptions\NotReadableException;
 use Intervention\Zodiac\Zodiacs\Aquarius;
@@ -19,62 +20,71 @@ use Intervention\Zodiac\Zodiacs\Sagittarius;
 use Intervention\Zodiac\Zodiacs\Scorpio;
 use Intervention\Zodiac\Zodiacs\Taurus;
 use Intervention\Zodiac\Zodiacs\Virgo;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class CalculatorTest extends TestCase
 {
-    public function testMake(): void
+    #[DataProvider('validZodiacDataProvider')]
+    public function testValidCalculatorInputs(string|DateTime $input, string $resultClassname): void
     {
-        $result = Calculator::make('1979-12-12');
-        $this->assertInstanceOf(Sagittarius::class, $result);
+        $this->assertInstanceOf($resultClassname, (new Calculator())->getZodiac($input));
+        $this->assertInstanceOf($resultClassname, Calculator::make($input));
     }
 
-    public function testGetZodiacFromString(): void
+    public static function validZodiacDataProvider(): Generator
     {
-        $calculator = new Calculator();
-
-        $this->assertInstanceOf(Aries::class, $calculator->getZodiac('1977-03-27'));
-        $this->assertInstanceOf(Taurus::class, $calculator->getZodiac('1977-04-27'));
-        $this->assertInstanceOf(Gemini::class, $calculator->getZodiac('1977-05-27'));
-        $this->assertInstanceOf(Cancer::class, $calculator->getZodiac('1977-06-27'));
-        $this->assertInstanceOf(Leo::class, $calculator->getZodiac('1977-07-27'));
-        $this->assertInstanceOf(Virgo::class, $calculator->getZodiac('1977-08-27'));
-        $this->assertInstanceOf(Libra::class, $calculator->getZodiac('1977-09-27'));
-        $this->assertInstanceOf(Scorpio::class, $calculator->getZodiac('1977-10-27'));
-        $this->assertInstanceOf(Sagittarius::class, $calculator->getZodiac('1977-11-27'));
-        $this->assertInstanceOf(Capricorn::class, $calculator->getZodiac('1977-12-27'));
-        $this->assertInstanceOf(Capricorn::class, $calculator->getZodiac('1977-12-31 23:59:59'));
-        $this->assertInstanceOf(Capricorn::class, $calculator->getZodiac('1977-01-15'));
-        $this->assertInstanceOf(Aquarius::class, $calculator->getZodiac('1977-01-26'));
-        $this->assertInstanceOf(Pisces::class, $calculator->getZodiac('1977-02-27'));
+        yield ['1977-03-27', Aries::class];
+        yield ['1977-04-27', Taurus::class];
+        yield ['1977-05-27', Gemini::class];
+        yield ['1977-06-27', Cancer::class];
+        yield ['1977-07-27', Leo::class];
+        yield ['1977-08-27', Virgo::class];
+        yield ['1977-09-27', Libra::class];
+        yield ['1977-10-27', Scorpio::class];
+        yield ['1977-11-27', Sagittarius::class];
+        yield ['1977-12-27', Capricorn::class];
+        yield ['1977-12-31 23:59:59', Capricorn::class];
+        yield ['1977-01-15', Capricorn::class];
+        yield ['1977-01-26', Aquarius::class];
+        yield ['1977-02-27', Pisces::class];
+        yield [new DateTime('1977-03-27'), Aries::class];
+        yield [new DateTime('1977-04-27'), Taurus::class];
+        yield [new DateTime('1977-05-27'), Gemini::class];
+        yield [new DateTime('1977-06-27'), Cancer::class];
+        yield [new DateTime('1977-07-27'), Leo::class];
+        yield [new DateTime('1977-06-21'), Gemini::class];
+        yield [new DateTime('1977-08-27'), Virgo::class];
+        yield [new DateTime('1977-09-27'), Libra::class];
+        yield [new DateTime('1977-10-27'), Scorpio::class];
+        yield [new DateTime('1977-11-27'), Sagittarius::class];
+        yield [new DateTime('1977-12-27'), Capricorn::class];
+        yield [new DateTime('1977-12-31'), Capricorn::class];
+        yield [new DateTime('1977-01-01'), Capricorn::class];
+        yield [new DateTime('1977-01-15'), Capricorn::class];
+        yield [new DateTime('1977-01-26'), Aquarius::class];
+        yield [new DateTime('1977-02-27'), Pisces::class];
     }
 
-    public function testMakeInvalidString(): void
+    #[DataProvider('invalidZodiacDataProvider')]
+    public function testGetInvalidZodiac(mixed $input): void
     {
         $this->expectException(NotReadableException::class);
         $calculator = new Calculator();
-        $calculator->getZodiac('foobar');
+        $calculator->getZodiac($input);
     }
 
-    public function testMakeFromObject(): void
+    public static function invalidZodiacDataProvider(): Generator
     {
-        $calculator = new Calculator();
-
-        $this->assertInstanceOf(Aries::class, $calculator->getZodiac(new DateTime('1977-03-27')));
-        $this->assertInstanceOf(Taurus::class, $calculator->getZodiac(new DateTime('1977-04-27')));
-        $this->assertInstanceOf(Gemini::class, $calculator->getZodiac(new DateTime('1977-05-27')));
-        $this->assertInstanceOf(Cancer::class, $calculator->getZodiac(new DateTime('1977-06-27')));
-        $this->assertInstanceOf(Leo::class, $calculator->getZodiac(new DateTime('1977-07-27')));
-        $this->assertInstanceOf(Gemini::class, $calculator->getZodiac(new DateTime('1977-06-21')));
-        $this->assertInstanceOf(Virgo::class, $calculator->getZodiac(new DateTime('1977-08-27')));
-        $this->assertInstanceOf(Libra::class, $calculator->getZodiac(new DateTime('1977-09-27')));
-        $this->assertInstanceOf(Scorpio::class, $calculator->getZodiac(new DateTime('1977-10-27')));
-        $this->assertInstanceOf(Sagittarius::class, $calculator->getZodiac(new DateTime('1977-11-27')));
-        $this->assertInstanceOf(Capricorn::class, $calculator->getZodiac(new DateTime('1977-12-27')));
-        $this->assertInstanceOf(Capricorn::class, $calculator->getZodiac(new DateTime('1977-12-31')));
-        $this->assertInstanceOf(Capricorn::class, $calculator->getZodiac(new DateTime('1977-01-01')));
-        $this->assertInstanceOf(Capricorn::class, $calculator->getZodiac(new DateTime('1977-01-15')));
-        $this->assertInstanceOf(Aquarius::class, $calculator->getZodiac(new DateTime('1977-01-26')));
-        $this->assertInstanceOf(Pisces::class, $calculator->getZodiac(new DateTime('1977-02-27')));
+        yield [
+            null,
+            true,
+            false,
+            'foobar',
+            '',
+            0,
+            1,
+            2,
+        ];
     }
 }

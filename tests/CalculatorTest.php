@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Tests;
 
+use Carbon\Carbon;
 use DateTime;
 use Generator;
 use Intervention\Zodiac\Calculator;
@@ -64,6 +65,22 @@ final class CalculatorTest extends TestCase
         yield [new DateTime('1977-01-15'), Capricorn::class];
         yield [new DateTime('1977-01-26'), Aquarius::class];
         yield [new DateTime('1977-02-27'), Pisces::class];
+        yield [Carbon::parse('1977-03-27'), Aries::class];
+        yield [Carbon::parse('1977-04-27'), Taurus::class];
+        yield [Carbon::parse('1977-05-27'), Gemini::class];
+        yield [Carbon::parse('1977-06-27'), Cancer::class];
+        yield [Carbon::parse('1977-07-27'), Leo::class];
+        yield [Carbon::parse('1977-06-21'), Gemini::class];
+        yield [Carbon::parse('1977-08-27'), Virgo::class];
+        yield [Carbon::parse('1977-09-27'), Libra::class];
+        yield [Carbon::parse('1977-10-27'), Scorpio::class];
+        yield [Carbon::parse('1977-11-27'), Sagittarius::class];
+        yield [Carbon::parse('1977-12-27'), Capricorn::class];
+        yield [Carbon::parse('1977-12-31'), Capricorn::class];
+        yield [Carbon::parse('1977-01-01'), Capricorn::class];
+        yield [Carbon::parse('1977-01-15'), Capricorn::class];
+        yield [Carbon::parse('1977-01-26'), Aquarius::class];
+        yield [Carbon::parse('1977-02-27'), Pisces::class];
     }
 
     #[DataProvider('invalidZodiacDataProvider')]

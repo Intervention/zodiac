@@ -34,7 +34,7 @@ class ZodiacBridge
      */
     public function make($date): AbstractZodiac
     {
-        return $this->getTranslatableCalculator()->getZodiac($date);
+        return $this->getTranslatableCalculator()->zodiac($date);
     }
 
     /**

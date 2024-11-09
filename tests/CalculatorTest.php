@@ -29,7 +29,7 @@ final class CalculatorTest extends TestCase
     #[DataProvider('validZodiacDataProvider')]
     public function testValidCalculatorInputs(string|DateTime $input, string $resultClassname): void
     {
-        $this->assertInstanceOf($resultClassname, (new Calculator())->getZodiac($input));
+        $this->assertInstanceOf($resultClassname, (new Calculator())->zodiac($input));
         $this->assertInstanceOf($resultClassname, Calculator::make($input));
     }
 
@@ -88,7 +88,7 @@ final class CalculatorTest extends TestCase
     {
         $this->expectException(NotReadableException::class);
         $calculator = new Calculator();
-        $calculator->getZodiac($input);
+        $calculator->zodiac($input);
     }
 
     public static function invalidZodiacDataProvider(): Generator

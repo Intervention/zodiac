@@ -23,7 +23,7 @@ class Calculator
      */
     public static function make(mixed $date): AbstractZodiac
     {
-        return (new self())->getZodiac($date);
+        return (new self())->zodiac($date);
     }
 
     /**
@@ -34,7 +34,7 @@ class Calculator
      * @throws NotReadableException
      * @return AbstractZodiac
      */
-    public function getZodiac(mixed $date): AbstractZodiac
+    public function zodiac(mixed $date): AbstractZodiac
     {
         $date = $this->normalizeDate($date);
         foreach ($this->getZodiacClassnames() as $classname) {

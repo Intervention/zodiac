@@ -24,6 +24,42 @@ automatically and registers the calculator into your installation.
 
 Read the full [documentation](https://zodiac.intervention.io) for this library.
 
+## Code Examples
+
+```php
+use Intervention\Zodiac\Calculator;
+use DateTime;
+use Carbon\Carbon;
+
+// get zodiac object from a date
+$zodiac = Calculator::make('1980-09-15');
+
+// method takes mixed formats
+$zodiac = Calculator::make('first day of June 2008');
+
+// create from DateTime object
+$zodiac = Calculator::make(new DateTime('1977-03-15'));
+
+// get zodiac from a Carbon object
+$zodiac = Calculator::make(Carbon::yesterday());
+
+// get zodiac from unix timestamp
+$zodiac = Calculator::make(228268800);
+```
+
+```php
+use Intervention\Zodiac\Calculator;
+use DateTime;
+use Carbon\Carbon;
+
+// calculate zodiac sing
+$zodiac = Calculator::make('1977-06-17');
+
+$name = $zodiac->name(); // 'gemini'
+$html = $zodiac->html(); // '♊︎'
+$localized = $zodiac->localized('fr'); // Gémeaux
+```
+
 ## Development & Testing
 
 With this package comes a Docker image to build a test suite container. To build this container you have to have Docker installed on your system.

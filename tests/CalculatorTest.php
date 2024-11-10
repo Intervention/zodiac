@@ -30,7 +30,10 @@ final class CalculatorTest extends TestCase
     #[DataProvider('validZodiacDataProvider')]
     public function testValidCalculatorInputs(int|string|DateTimeInterface $input, string $resultClassname): void
     {
-        $this->assertInstanceOf($resultClassname, (new Calculator())->zodiac($input));
+        $calculator = new Calculator();
+        $this->assertInstanceOf($resultClassname, $calculator->zodiac($input));
+        $this->assertInstanceOf($resultClassname, $calculator->make($input));
+        $this->assertInstanceOf($resultClassname, Calculator::zodiac($input));
         $this->assertInstanceOf($resultClassname, Calculator::make($input));
     }
 

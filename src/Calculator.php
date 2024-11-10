@@ -11,7 +11,6 @@ use Intervention\Zodiac\Exceptions\NotReadableException;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
 use InvalidArgumentException;
-use ReflectionException;
 
 class Calculator implements CalculatorInterface
 {
@@ -35,30 +34,19 @@ class Calculator implements CalculatorInterface
     /**
      * {@inheritdoc}
      *
-     * @see ZodiacInterface::make()
-     * @throws NotReadableException
-     * @throws ReflectionException
-     */
-    public static function make(int|string|DateTimeInterface $date): ZodiacInterface
-    {
-        return (new self())->zodiac($date);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
      * @throws NotReadableException
      * @see ZodiacInterface::zodiac()
      */
-    public function zodiac(int|string|DateTimeInterface $date): ZodiacInterface
+    public static function zodiac(int|string|DateTimeInterface $date): ZodiacInterface
     {
-        $date = $this->normalizeDate($date);
+        $calculator = new self();
+        $date = $calculator->normalizeDate($date);
 
-        foreach ($this::ZODIAC_CLASSNAMES as $classname) {
+        foreach ($calculator::ZODIAC_CLASSNAMES as $classname) {
             try {
                 $zodiac = new $classname();
                 if ($date->isZodiac($zodiac)) {
-                    return $zodiac->setTranslator($this->translator());
+                    return $zodiac->setTranslator($calculator->translator());
                 }
             } catch (InvalidFormatException | InvalidArgumentException) {
                 // try next zodiac
@@ -68,6 +56,17 @@ class Calculator implements CalculatorInterface
         throw new NotReadableException(
             'Unable to create zodiac from value (' . $date . ')'
         );
+    }
+
+    /**
+     * Alias of zodiac()
+     *
+     * @see self::zodiac()
+     * @throws NotReadableException
+     */
+    public static function make(int|string|DateTimeInterface $date): ZodiacInterface
+    {
+        return (new self())->zodiac($date);
     }
 
     /**

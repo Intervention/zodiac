@@ -32,19 +32,19 @@ use DateTime;
 use Carbon\Carbon;
 
 // get zodiac object from a date
-$zodiac = Calculator::make('1980-09-15');
+$zodiac = Calculator::zodiac('1980-09-15');
 
 // method takes mixed formats
-$zodiac = Calculator::make('first day of June 2008');
+$zodiac = Calculator::zodiac('first day of June 2008');
 
 // create from DateTime object
-$zodiac = Calculator::make(new DateTime('1977-03-15'));
+$zodiac = Calculator::zodiac(new DateTime('1977-03-15'));
 
 // get zodiac from a Carbon object
-$zodiac = Calculator::make(Carbon::yesterday());
+$zodiac = Calculator::zodiac(Carbon::yesterday());
 
 // get zodiac from unix timestamp
-$zodiac = Calculator::make(228268800);
+$zodiac = Calculator::zodiac(228268800);
 ```
 
 ```php
@@ -53,7 +53,7 @@ use DateTime;
 use Carbon\Carbon;
 
 // calculate zodiac sing
-$zodiac = Calculator::make('1977-06-17');
+$zodiac = Calculator::zodiac('1977-06-17');
 
 $name = $zodiac->name(); // 'gemini'
 $html = $zodiac->html(); // '♊︎'

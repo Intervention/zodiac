@@ -19,7 +19,7 @@ class ZodiacBridge
     }
 
     /**
-     * Make zodiac from input date
+     * Create zodiac from input date
      *
      * @param mixed $date
      * @throws NotReadableException

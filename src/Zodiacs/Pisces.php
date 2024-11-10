@@ -8,14 +8,10 @@ use Intervention\Zodiac\AbstractZodiac;
 
 class Pisces extends AbstractZodiac
 {
-    public function __construct(
-        protected int $startDay = 20,
-        protected int $startMonth = 2,
-        protected int $endDay = 20,
-        protected int $endMonth = 3,
-        protected string $name = 'pisces',
-        protected string $html = '&#9811;'
-    ) {
-        //
-    }
+    protected int $startDay = 20;
+    protected int $startMonth = 2;
+    protected int $endDay = 20;
+    protected int $endMonth = 3;
+    protected string $name = 'pisces';
+    protected string $html = '&#9811;';
 }

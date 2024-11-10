@@ -5,23 +5,16 @@ declare(strict_types=1);
 namespace Intervention\Zodiac\Laravel;
 
 use Illuminate\Contracts\Foundation\Application;
-use Intervention\Zodiac\AbstractZodiac;
 use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Exceptions\NotReadableException;
+use Intervention\Zodiac\Interfaces\ZodiacInterface;
 use InvalidArgumentException;
 
 class ZodiacBridge
 {
-    /**
-     * Laravel Application
-     *
-     * @var Application
-     */
-    protected $app;
-
-    public function __construct(Application $app)
+    public function __construct(protected Application $app)
     {
-        $this->app = $app;
+        //
     }
 
     /**
@@ -30,21 +23,12 @@ class ZodiacBridge
      * @param mixed $date
      * @throws NotReadableException
      * @throws InvalidArgumentException
-     * @return AbstractZodiac
+     * @return ZodiacInterface
      */
-    public function make($date): AbstractZodiac
+    public function make(mixed $date): ZodiacInterface
     {
-        return $this->translatableCalculator()->zodiac($date);
-    }
-
-    /**
-     * Return calculator with Laravel Translator
-     *
-     * @throws InvalidArgumentException
-     * @return Calculator
-     */
-    private function translatableCalculator(): Calculator
-    {
-        return (new Calculator())->setTranslator($this->app['translator']);
+        return (new Calculator())
+            ->setTranslator($this->app['translator'])
+            ->zodiac($date);
     }
 }

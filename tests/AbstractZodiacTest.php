@@ -4,21 +4,11 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Tests;
 
-use Carbon\Carbon;
 use Intervention\Zodiac\AbstractZodiac;
 use PHPUnit\Framework\TestCase;
 
 final class AbstractZodiacTest extends TestCase
 {
-    public function testMatch(): void
-    {
-        $zodiac = $this->zodiac(6, 1, 6, 10);
-        $this->assertTrue($zodiac->match(Carbon::create(null, 6, 1)));
-        $this->assertTrue($zodiac->match(Carbon::create(null, 6, 10)));
-        $this->assertTrue($zodiac->match(Carbon::create(null, 6, 5)));
-        $this->assertFalse($zodiac->match(Carbon::create(null, 6, 11)));
-    }
-
     public function testLocalized(): void
     {
         $zodiac = $this->zodiac(name: 'gemini');

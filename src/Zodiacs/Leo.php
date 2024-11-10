@@ -8,14 +8,10 @@ use Intervention\Zodiac\AbstractZodiac;
 
 class Leo extends AbstractZodiac
 {
-    public function __construct(
-        protected int $startDay = 23,
-        protected int $startMonth = 7,
-        protected int $endDay = 23,
-        protected int $endMonth = 8,
-        protected string $name = 'leo',
-        protected string $html = '&#9804;'
-    ) {
-        //
-    }
+    protected int $startDay = 23;
+    protected int $startMonth = 7;
+    protected int $endDay = 23;
+    protected int $endMonth = 8;
+    protected string $name = 'leo';
+    protected string $html = '&#9804;';
 }

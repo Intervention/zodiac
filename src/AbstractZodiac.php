@@ -5,67 +5,52 @@ declare(strict_types=1);
 namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
-use Carbon\Exceptions\InvalidFormatException;
-use InvalidArgumentException;
+use Intervention\Zodiac\Interfaces\ZodiacInterface;
 
-abstract class AbstractZodiac
+abstract class AbstractZodiac implements ZodiacInterface
 {
     use Traits\CanTranslate;
 
-    /**
-     * Create new zodiac instance
-     *
-     * @param int $startDay
-     * @param int $startMonth
-     * @param int $endDay
-     * @param int $endMonth
-     * @param string $name
-     * @param string $html
-     * @return void
-     */
-    public function __construct(
-        protected int $startDay,
-        protected int $startMonth,
-        protected int $endDay,
-        protected int $endMonth,
-        protected string $name,
-        protected string $html
-    ) {
-        //
-    }
+    protected int $startDay;
+    protected int $startMonth;
+    protected int $endDay;
+    protected int $endMonth;
+    protected string $name;
+    protected string $html;
 
     /**
-     * Determine if given date matches the current zodiac sign
+     * {@inheritdoc}
      *
-     * @param Carbon $date
-     * @throws InvalidFormatException
-     * @return bool
+     * @see ZodiacInterface::start()
      */
-    public function match(Carbon $date): bool
+    public function start(): Carbon
     {
-        $start = Carbon::create(
-            $date->year,
-            $this->startMonth,
-            $this->startDay
+        return Carbon::create(
+            month: $this->startMonth,
+            day: $this->startDay
         );
-
-        $end = Carbon::create(
-            $date->year,
-            $this->endMonth,
-            $this->endDay,
-            23,
-            59,
-            59
-        );
-
-        return $date->between($start, $end);
     }
 
     /**
-     * Get localized name of zodiac sign
+     * {@inheritdoc}
      *
-     * @throws InvalidArgumentException
-     * @return string
+     * @see ZodiacInterface::end()
+     */
+    public function end(): Carbon
+    {
+        return Carbon::create(
+            month: $this->endMonth,
+            day: $this->endDay,
+            hour: 23,
+            minute: 59,
+            second: 59
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see ZodiacInterface::localized()
      */
     public function localized(?string $locale = null): ?string
     {
@@ -81,9 +66,9 @@ abstract class AbstractZodiac
     }
 
     /**
-     * Get name of zodiac
+     * {@inheritdoc}
      *
-     * @return string
+     * @see ZodiacInterface::name()
      */
     public function name(): string
     {
@@ -91,9 +76,9 @@ abstract class AbstractZodiac
     }
 
     /**
-     * Get HTML code of zodiac
+     * {@inheritdoc}
      *
-     * @return string
+     * @see ZodiacInterface::html()
      */
     public function html(): string
     {
@@ -101,9 +86,9 @@ abstract class AbstractZodiac
     }
 
     /**
-     * Cast object to string
+     * {@inheritdoc}
      *
-     * @return string
+     * @see ZodiacInterface::__toString()
      */
     public function __toString(): string
     {

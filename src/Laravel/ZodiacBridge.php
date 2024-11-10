@@ -9,6 +9,7 @@ use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Exceptions\NotReadableException;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
 use InvalidArgumentException;
+use ReflectionException;
 
 class ZodiacBridge
 {
@@ -23,6 +24,7 @@ class ZodiacBridge
      * @param mixed $date
      * @throws NotReadableException
      * @throws InvalidArgumentException
+     * @throws ReflectionException
      * @return ZodiacInterface
      */
     public function make(mixed $date): ZodiacInterface

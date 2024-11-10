@@ -10,8 +10,6 @@ interface CalculatorInterface
      * Get zodiac for given date
      *
      * @param mixed $date
-     * @throws InvalidArgumentException
-     * @throws NotReadableException
      * @return ZodiacInterface
      */
     public static function make(mixed $date): ZodiacInterface;
@@ -20,8 +18,6 @@ interface CalculatorInterface
      * Get zodiac for given date
      *
      * @param mixed $date
-     * @throws InvalidArgumentException
-     * @throws NotReadableException
      * @return ZodiacInterface
      */
     public function zodiac(mixed $date): ZodiacInterface;

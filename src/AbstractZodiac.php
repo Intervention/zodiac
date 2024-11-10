@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
+use Carbon\Exceptions\InvalidFormatException;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
+use InvalidArgumentException;
 
 abstract class AbstractZodiac implements ZodiacInterface
 {
@@ -22,6 +24,7 @@ abstract class AbstractZodiac implements ZodiacInterface
      * {@inheritdoc}
      *
      * @see ZodiacInterface::start()
+     * @throws InvalidFormatException
      */
     public function start(): Carbon
     {
@@ -35,6 +38,7 @@ abstract class AbstractZodiac implements ZodiacInterface
      * {@inheritdoc}
      *
      * @see ZodiacInterface::end()
+     * @throws InvalidFormatException
      */
     public function end(): Carbon
     {
@@ -51,6 +55,7 @@ abstract class AbstractZodiac implements ZodiacInterface
      * {@inheritdoc}
      *
      * @see ZodiacInterface::localized()
+     * @throws InvalidArgumentException
      */
     public function localized(?string $locale = null): ?string
     {

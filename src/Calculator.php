@@ -47,6 +47,9 @@ class Calculator implements CalculatorInterface
      * {@inheritdoc}
      *
      * @see ZodiacInterface::make()
+     * @throws NotReadableException
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
     public static function make(mixed $date): ZodiacInterface
     {
@@ -57,6 +60,8 @@ class Calculator implements CalculatorInterface
      * {@inheritdoc}
      *
      * @see ZodiacInterface::zodiac()
+     * @throws NotReadableException
+     * @throws InvalidArgumentException
      */
     public function zodiac(mixed $date): ZodiacInterface
     {

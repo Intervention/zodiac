@@ -53,9 +53,9 @@ interface ZodiacInterface
      * Completely made up :) Don't plan your life around it.
      *
      * @param ZodiacInterface $zodiac
-     * @return int
+     * @return float
      */
-    public function compatibility(self $zodiac): int;
+    public function compatibility(self $zodiac): float;
 
     /**
      * Cast current object to string

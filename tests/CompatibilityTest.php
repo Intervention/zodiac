@@ -26,8 +26,8 @@ final class CompatibilityTest extends TestCase
     public function testCalculate(string $a, string $b): void
     {
         $result = call_user_func(new Compatibility(), new $a(), new $b());
-        $this->assertIsInt($result);
-        $this->assertTrue(in_array($result, range(0, 10)));
+        $this->assertIsFloat($result);
+        $this->assertTrue($result >= 0 && $result <= 1);
     }
 
     public static function factorDataProvider(): array

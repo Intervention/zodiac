@@ -94,14 +94,8 @@ final class CalculatorTest extends TestCase
     public static function invalidZodiacDataProvider(): Generator
     {
         yield [
-            null,
-            true,
-            false,
             'foobar',
             '',
-            0,
-            1,
-            2,
         ];
     }
 }

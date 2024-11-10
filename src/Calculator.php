@@ -6,9 +6,9 @@ namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
+use DateTimeInterface;
 use Intervention\Zodiac\Exceptions\NotReadableException;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
-use Intervention\Zodiac\CarbonExtension;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
 use InvalidArgumentException;
 use ReflectionException;
@@ -33,25 +33,13 @@ class Calculator implements CalculatorInterface
     ];
 
     /**
-     * Create new instance
-     *
-     * @return void
-     * @throws ReflectionException
-     */
-    public function __construct()
-    {
-        Carbon::mixin(new CarbonExtension());
-    }
-
-    /**
      * {@inheritdoc}
      *
      * @see ZodiacInterface::make()
      * @throws NotReadableException
-     * @throws InvalidArgumentException
      * @throws ReflectionException
      */
-    public static function make(mixed $date): ZodiacInterface
+    public static function make(string|DateTimeInterface $date): ZodiacInterface
     {
         return (new self())->zodiac($date);
     }
@@ -59,17 +47,21 @@ class Calculator implements CalculatorInterface
     /**
      * {@inheritdoc}
      *
-     * @see ZodiacInterface::zodiac()
      * @throws NotReadableException
-     * @throws InvalidArgumentException
+     * @see ZodiacInterface::zodiac()
      */
-    public function zodiac(mixed $date): ZodiacInterface
+    public function zodiac(string|DateTimeInterface $date): ZodiacInterface
     {
         $date = $this->normalizeDate($date);
+
         foreach ($this::ZODIAC_CLASSNAMES as $classname) {
-            $zodiac = new $classname();
-            if ($date->isInterventionZodiac($zodiac)) {
-                return $zodiac->setTranslator($this->translator());
+            try {
+                $zodiac = new $classname();
+                if ($date->isZodiac($zodiac)) {
+                    return $zodiac->setTranslator($this->translator());
+                }
+            } catch (InvalidFormatException | InvalidArgumentException) {
+                // try next zodiac
             }
         }
 
@@ -81,25 +73,18 @@ class Calculator implements CalculatorInterface
     /**
      * Normalze given date to Carbon object
      *
-     * @param mixed $date
-     * @throws InvalidArgumentException
+     * @param string|DateTimeInterface $date
      * @throws NotReadableException
-     * @return Carbon
+     * @return ZodiacComparableDate
      */
-    private function normalizeDate(mixed $date): Carbon
+    private function normalizeDate(string|DateTimeInterface $date): ZodiacComparableDate
     {
-        if (is_null($date)) {
-            throw new NotReadableException(
-                'Unable to create zodiac from NULL.'
-            );
+        try {
+            $date = Carbon::parse($date);
+        } catch (InvalidFormatException | InvalidArgumentException) {
+            throw new NotReadableException('Unable to create zodiac from value.');
         }
 
-        try {
-            return Carbon::parse($date);
-        } catch (InvalidFormatException) {
-            throw new NotReadableException(
-                'Unable to create zodiac from value (' . $date . ')'
-            );
-        }
+        return new ZodiacComparableDate($date);
     }
 }

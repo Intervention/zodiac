@@ -39,7 +39,7 @@ class Calculator implements CalculatorInterface
      * @throws NotReadableException
      * @throws ReflectionException
      */
-    public static function make(string|DateTimeInterface $date): ZodiacInterface
+    public static function make(int|string|DateTimeInterface $date): ZodiacInterface
     {
         return (new self())->zodiac($date);
     }
@@ -50,7 +50,7 @@ class Calculator implements CalculatorInterface
      * @throws NotReadableException
      * @see ZodiacInterface::zodiac()
      */
-    public function zodiac(string|DateTimeInterface $date): ZodiacInterface
+    public function zodiac(int|string|DateTimeInterface $date): ZodiacInterface
     {
         $date = $this->normalizeDate($date);
 
@@ -77,10 +77,13 @@ class Calculator implements CalculatorInterface
      * @throws NotReadableException
      * @return ZodiacComparableDate
      */
-    private function normalizeDate(string|DateTimeInterface $date): ZodiacComparableDate
+    private function normalizeDate(int|string|DateTimeInterface $date): ZodiacComparableDate
     {
         try {
-            $date = Carbon::parse($date);
+            $date = match (true) {
+                is_numeric($date) => Carbon::createFromTimestamp($date),
+                default => Carbon::parse($date),
+            };
         } catch (InvalidFormatException | InvalidArgumentException) {
             throw new NotReadableException('Unable to create zodiac from value.');
         }

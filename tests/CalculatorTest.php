@@ -6,6 +6,7 @@ namespace Intervention\Zodiac\Tests;
 
 use Carbon\Carbon;
 use DateTime;
+use DateTimeInterface;
 use Generator;
 use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Exceptions\NotReadableException;
@@ -27,7 +28,7 @@ use PHPUnit\Framework\TestCase;
 final class CalculatorTest extends TestCase
 {
     #[DataProvider('validZodiacDataProvider')]
-    public function testValidCalculatorInputs(string|DateTime $input, string $resultClassname): void
+    public function testValidCalculatorInputs(int|string|DateTimeInterface $input, string $resultClassname): void
     {
         $this->assertInstanceOf($resultClassname, (new Calculator())->zodiac($input));
         $this->assertInstanceOf($resultClassname, Calculator::make($input));
@@ -49,6 +50,7 @@ final class CalculatorTest extends TestCase
         yield ['1977-01-15', Capricorn::class];
         yield ['1977-01-26', Aquarius::class];
         yield ['1977-02-27', Pisces::class];
+
         yield [new DateTime('1977-03-27'), Aries::class];
         yield [new DateTime('1977-04-27'), Taurus::class];
         yield [new DateTime('1977-05-27'), Gemini::class];
@@ -65,6 +67,7 @@ final class CalculatorTest extends TestCase
         yield [new DateTime('1977-01-15'), Capricorn::class];
         yield [new DateTime('1977-01-26'), Aquarius::class];
         yield [new DateTime('1977-02-27'), Pisces::class];
+
         yield [Carbon::parse('1977-03-27'), Aries::class];
         yield [Carbon::parse('1977-04-27'), Taurus::class];
         yield [Carbon::parse('1977-05-27'), Gemini::class];
@@ -81,6 +84,40 @@ final class CalculatorTest extends TestCase
         yield [Carbon::parse('1977-01-15'), Capricorn::class];
         yield [Carbon::parse('1977-01-26'), Aquarius::class];
         yield [Carbon::parse('1977-02-27'), Pisces::class];
+
+        yield ['228268800', Aries::class];
+        yield ['230947200', Taurus::class];
+        yield ['233539200', Gemini::class];
+        yield ['236217600', Cancer::class];
+        yield ['238809600', Leo::class];
+        yield ['235699200', Gemini::class];
+        yield ['241488000', Virgo::class];
+        yield ['244166400', Libra::class];
+        yield ['246758400', Scorpio::class];
+        yield ['249436800', Sagittarius::class];
+        yield ['252028800', Capricorn::class];
+        yield ['252374400', Capricorn::class];
+        yield ['220924800', Capricorn::class];
+        yield ['222134400', Capricorn::class];
+        yield ['223084800', Aquarius::class];
+        yield ['225849600', Pisces::class];
+
+        yield [228268800, Aries::class];
+        yield [230947200, Taurus::class];
+        yield [233539200, Gemini::class];
+        yield [236217600, Cancer::class];
+        yield [238809600, Leo::class];
+        yield [235699200, Gemini::class];
+        yield [241488000, Virgo::class];
+        yield [244166400, Libra::class];
+        yield [246758400, Scorpio::class];
+        yield [249436800, Sagittarius::class];
+        yield [252028800, Capricorn::class];
+        yield [252374400, Capricorn::class];
+        yield [220924800, Capricorn::class];
+        yield [222134400, Capricorn::class];
+        yield [223084800, Aquarius::class];
+        yield [225849600, Pisces::class];
     }
 
     #[DataProvider('invalidZodiacDataProvider')]

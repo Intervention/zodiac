@@ -47,6 +47,17 @@ interface ZodiacInterface
     public function localized(?string $locale = null): ?string;
 
     /**
+     * Calculate zodiac sign compatibility with any other sign in love & life
+     * where 0 means no match and a maximum of 10 is a total match.
+     *
+     * Completely made up :) Don't plan your life around it.
+     *
+     * @param ZodiacInterface $zodiac
+     * @return int
+     */
+    public function compatibility(self $zodiac): int;
+
+    /**
      * Cast current object to string
      *
      * @return string

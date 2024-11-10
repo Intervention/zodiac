@@ -93,6 +93,16 @@ abstract class AbstractZodiac implements ZodiacInterface
     /**
      * {@inheritdoc}
      *
+     * @see ZodiacInterface::compatibility()
+     */
+    public function compatibility(ZodiacInterface $zodiac): int
+    {
+        return call_user_func(new Compatibility(), $this, $zodiac);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
      * @see ZodiacInterface::__toString()
      */
     public function __toString(): string

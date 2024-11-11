@@ -6,10 +6,11 @@ namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
+use Intervention\Zodiac\Interfaces\TranslatableInterface;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
 use InvalidArgumentException;
 
-abstract class AbstractZodiac implements ZodiacInterface
+abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
 {
     use Traits\CanTranslate;
 

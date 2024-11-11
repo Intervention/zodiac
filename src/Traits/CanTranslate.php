@@ -21,10 +21,9 @@ trait CanTranslate
     protected $translator;
 
     /**
-     * Set translator
+     * {@inheritdoc}
      *
-     * @param Translator $translator
-     * @return CalculatorInterface|ZodiacInterface
+     * @see TranslatableInterface::setTranslator()
      */
     public function setTranslator(Translator $translator): CalculatorInterface|ZodiacInterface
     {
@@ -34,11 +33,10 @@ trait CanTranslate
     }
 
     /**
-     * Create translator
+     * {@inheritdoc}
      *
-     * @param null|string $locale
+     * @see TranslatableInterface::translator()
      * @throws InvalidArgumentException
-     * @return Translator
      */
     public function translator(?string $locale = null): Translator
     {

@@ -10,9 +10,10 @@ use DateTimeInterface;
 use Intervention\Zodiac\Exceptions\NotReadableException;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
+use Intervention\Zodiac\Interfaces\TranslatableInterface;
 use InvalidArgumentException;
 
-class Calculator implements CalculatorInterface
+class Calculator implements CalculatorInterface, TranslatableInterface
 {
     use Traits\CanTranslate;
 

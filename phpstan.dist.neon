@@ -7,3 +7,6 @@ parameters:
             missingCheckedExceptionInThrows: true
         uncheckedExceptionClasses:
             - Error
+    ignoreErrors:
+        -
+            identifier: trait.unused

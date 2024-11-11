@@ -46,8 +46,14 @@ class Calculator implements CalculatorInterface, TranslatableInterface
         foreach ($calculator::ZODIAC_CLASSNAMES as $classname) {
             try {
                 $zodiac = new $classname();
-                if ($date->isZodiac($zodiac)) {
-                    return $zodiac->setTranslator($calculator->translator());
+                if (
+                    ($zodiac instanceof ZodiacInterface) &&
+                    ($zodiac instanceof TranslatableInterface) &&
+                    $date->isZodiac($zodiac)
+                ) {
+                    $zodiac->setTranslator($calculator->translator());
+
+                    return $zodiac;
                 }
             } catch (InvalidFormatException | InvalidArgumentException) {
                 // try next zodiac

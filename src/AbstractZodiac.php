@@ -36,7 +36,7 @@ abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
             day: $this->startDay
         );
 
-        if ($date === false) {
+        if ($date == false) {
             throw new RuntimeException('Unable to create end date of zodiac sign.');
         }
 
@@ -60,7 +60,7 @@ abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
             second: 59
         );
 
-        if ($date === false) {
+        if ($date == false) {
             throw new RuntimeException('Unable to create end date of zodiac sign.');
         }
 

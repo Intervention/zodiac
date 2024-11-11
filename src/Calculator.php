@@ -70,6 +70,16 @@ class Calculator implements CalculatorInterface
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @see CalculatorInterface::compare()
+     */
+    public static function compare(ZodiacInterface $zodiac1, ZodiacInterface $zodiac2): float
+    {
+        return $zodiac1->compatibility($zodiac2);
+    }
+
+    /**
      * Normalze given date to Carbon object
      *
      * @param string|DateTimeInterface $date

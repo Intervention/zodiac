@@ -138,4 +138,16 @@ final class CalculatorTest extends TestCase
             '',
         ];
     }
+
+    public function testCompare(): void
+    {
+        $calculator = new Calculator();
+        $result = $calculator->compare(new Aries(), new Leo());
+        $this->assertIsFloat($result);
+        $this->assertTrue($result >= 0 && $result <= 1);
+
+        $result = Calculator::compare(new Aries(), new Leo());
+        $this->assertIsFloat($result);
+        $this->assertTrue($result >= 0 && $result <= 1);
+    }
 }

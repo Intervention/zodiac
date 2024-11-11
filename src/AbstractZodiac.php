@@ -6,6 +6,7 @@ namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
+use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\TranslatableInterface;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
 use InvalidArgumentException;
@@ -26,13 +27,20 @@ abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
      *
      * @see ZodiacInterface::start()
      * @throws InvalidFormatException
+     * @throws RuntimeException
      */
     public function start(): Carbon
     {
-        return Carbon::create(
+        $date = Carbon::create(
             month: $this->startMonth,
             day: $this->startDay
         );
+
+        if ($date === false) {
+            throw new RuntimeException('Unable to create end date of zodiac sign.');
+        }
+
+        return $date;
     }
 
     /**
@@ -40,16 +48,23 @@ abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
      *
      * @see ZodiacInterface::end()
      * @throws InvalidFormatException
+     * @throws RuntimeException
      */
     public function end(): Carbon
     {
-        return Carbon::create(
+        $date = Carbon::create(
             month: $this->endMonth,
             day: $this->endDay,
             hour: 23,
             minute: 59,
             second: 59
         );
+
+        if ($date === false) {
+            throw new RuntimeException('Unable to create end date of zodiac sign.');
+        }
+
+        return $date;
     }
 
     /**
@@ -57,18 +72,25 @@ abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
      *
      * @see ZodiacInterface::localized()
      * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
     public function localized(?string $locale = null): ?string
     {
         $translator = $this->translator($locale);
         $key = "zodiacs.{$this->name}";
 
-        if ($translator->has($key)) {
-            return $translator->get($key);
+        $translated = match ($translator->has($key)) {
+            true => $translator->get($key),
+            false => $translator->get("zodiacs::{$key}"),
+        };
+
+        if (is_array($translated)) {
+            throw new RuntimeException(
+                'Unable to get translated name from array, should be string.'
+            );
         }
 
-        // return packages default message
-        return $translator->get("zodiacs::{$key}");
+        return $translated;
     }
 
     /**

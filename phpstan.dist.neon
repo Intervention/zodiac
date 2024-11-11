@@ -1,12 +1,7 @@
 parameters:
-    level: 6
+    level: 10
     paths:
         - src
-    exceptions:
-        check:
-            missingCheckedExceptionInThrows: true
-        uncheckedExceptionClasses:
-            - Error
     ignoreErrors:
         -
             identifier: trait.unused

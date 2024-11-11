@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
 use DateTimeInterface;
 use Intervention\Zodiac\Exceptions\NotReadableException;
+use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
 use Intervention\Zodiac\Interfaces\TranslatableInterface;
@@ -17,7 +18,10 @@ class Calculator implements CalculatorInterface, TranslatableInterface
 {
     use Traits\CanTranslate;
 
-    protected const ZODIAC_CLASSNAMES = [
+    /**
+     * @var array<string>
+     */
+    protected array $zodiac_classnames = [
         Zodiacs\Aquarius::class,
         Zodiacs\Aries::class,
         Zodiacs\Cancer::class,
@@ -35,15 +39,16 @@ class Calculator implements CalculatorInterface, TranslatableInterface
     /**
      * {@inheritdoc}
      *
-     * @throws NotReadableException
      * @see ZodiacInterface::zodiac()
+     * @throws NotReadableException
+     * @throws RuntimeException
      */
     public static function zodiac(int|string|DateTimeInterface $date): ZodiacInterface
     {
         $calculator = new self();
         $date = $calculator->normalizeDate($date);
 
-        foreach ($calculator::ZODIAC_CLASSNAMES as $classname) {
+        foreach ($calculator->zodiac_classnames as $classname) {
             try {
                 $zodiac = new $classname();
                 if (
@@ -70,6 +75,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      *
      * @see self::zodiac()
      * @throws NotReadableException
+     * @throws RuntimeException
      */
     public static function make(int|string|DateTimeInterface $date): ZodiacInterface
     {

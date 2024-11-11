@@ -6,6 +6,7 @@ namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
+use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
 use Intervention\Zodiac\Zodiacs\Capricorn;
 
@@ -27,6 +28,7 @@ class ZodiacComparableDate
      *
      * @param ZodiacInterface $zodiac
      * @throws InvalidFormatException
+     * @throws RuntimeException
      * @return bool
      */
     public function isZodiac(ZodiacInterface $zodiac): bool

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Laravel;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 class ZodiacServiceProvider extends ServiceProvider
@@ -33,7 +34,7 @@ class ZodiacServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('zodiac', function ($app) {
+        $this->app->singleton('zodiac', function (Application $app) {
             return new ZodiacBridge($app);
         });
     }

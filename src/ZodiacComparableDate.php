@@ -23,7 +23,7 @@ class ZodiacComparableDate
     }
 
     /**
-     * Determine if the current instance matches given zodiac sign
+     * Determine if the current date matches given zodiac sign
      *
      * @param ZodiacInterface $zodiac
      * @throws InvalidFormatException

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Tests;
 
+use Generator;
 use Intervention\Zodiac\Compatibility;
 use Intervention\Zodiac\Zodiacs\Aquarius;
 use Intervention\Zodiac\Zodiacs\Aries;
@@ -30,10 +31,8 @@ final class CompatibilityTest extends TestCase
         $this->assertTrue($result >= 0 && $result <= 1);
     }
 
-    public static function factorDataProvider(): array
+    public static function factorDataProvider(): Generator
     {
-        $data = [];
-
         $zodiacs = [
             Aquarius::class,
             Aries::class,
@@ -51,10 +50,8 @@ final class CompatibilityTest extends TestCase
 
         foreach ($zodiacs as $a) {
             foreach ($zodiacs as $b) {
-                $data[] = [$a, $b];
+                yield [$a, $b];
             }
         }
-
-        return $data;
     }
 }

@@ -58,7 +58,7 @@ $zodiac = Calculator::zodiac('1977-06-17');
 $name = $zodiac->name(); // 'gemini'
 $html = $zodiac->html(); // '♊︎'
 $localized = $zodiac->localized('fr'); // Gémeaux
-$compatibility = $zodiac->compatibility($zodiac); // 6
+$compatibility = $zodiac->compatibility($zodiac); // .6
 ```
 
 ## Development & Testing

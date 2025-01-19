@@ -34,9 +34,7 @@ class ZodiacServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('zodiac', function (Application $app) {
-            return new ZodiacBridge($app);
-        });
+        $this->app->singleton('zodiac', fn(Application $app): ZodiacBridge => new ZodiacBridge($app));
     }
 
     /**

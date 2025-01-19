@@ -9,8 +9,9 @@ use Carbon\Exceptions\InvalidFormatException;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
 use Intervention\Zodiac\Zodiacs\Capricorn;
+use Stringable;
 
-class ZodiacComparableDate
+class ZodiacComparableDate implements Stringable
 {
     /**
      * Create new instance
@@ -60,7 +61,11 @@ class ZodiacComparableDate
                     ->addDay()
             ];
 
-            return ($this->date->between(...$period1) || $this->date->between(...$period2));
+            if ($this->date->between(...$period1)) {
+                return true;
+            }
+
+            return $this->date->between(...$period2);
         }
 
         return $this->date->between(

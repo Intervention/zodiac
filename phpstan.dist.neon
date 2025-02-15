@@ -5,3 +5,4 @@ parameters:
     ignoreErrors:
         -
             identifier: trait.unused
+    treatPhpDocTypesAsCertain: false

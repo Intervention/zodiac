@@ -26,6 +26,7 @@ abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
      * {@inheritdoc}
      *
      * @see ZodiacInterface::start()
+     *
      * @throws InvalidFormatException
      * @throws RuntimeException
      */
@@ -47,6 +48,7 @@ abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
      * {@inheritdoc}
      *
      * @see ZodiacInterface::end()
+     *
      * @throws InvalidFormatException
      * @throws RuntimeException
      */
@@ -71,6 +73,7 @@ abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
      * {@inheritdoc}
      *
      * @see ZodiacInterface::localized()
+     *
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */

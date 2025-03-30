@@ -42,9 +42,9 @@ class ZodiacBridge
     }
 
     /**
-     * @return Translator
      * @throws BindingResolutionException
      * @throws RuntimeException
+     * @return Translator
      */
     private function translator(): Translator
     {

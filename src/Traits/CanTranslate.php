@@ -36,6 +36,7 @@ trait CanTranslate
      * {@inheritdoc}
      *
      * @see TranslatableInterface::translator()
+     *
      * @throws InvalidArgumentException
      */
     public function translator(?string $locale = null): Translator

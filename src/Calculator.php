@@ -40,6 +40,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      * {@inheritdoc}
      *
      * @see ZodiacInterface::zodiac()
+     *
      * @throws NotReadableException
      * @throws RuntimeException
      */
@@ -74,6 +75,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      * Alias of zodiac()
      *
      * @see self::zodiac()
+     *
      * @throws NotReadableException
      * @throws RuntimeException
      */

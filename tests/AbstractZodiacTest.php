@@ -38,12 +38,12 @@ final class AbstractZodiacTest extends TestCase
             $html,
         ) extends AbstractZodiac {
             public function __construct(
-                $startDay,
-                $startMonth,
-                $endDay,
-                $endMonth,
-                $name,
-                $html
+                int $startDay,
+                int $startMonth,
+                int $endDay,
+                int $endMonth,
+                string $name,
+                string $html
             ) {
                 $this->startDay = $startDay;
                 $this->startMonth = $startMonth;

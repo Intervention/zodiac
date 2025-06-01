@@ -97,9 +97,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
     /**
      * Normalze given date to Carbon object
      *
-     * @param string|DateTimeInterface $date
      * @throws NotReadableException
-     * @return ZodiacComparableDate
      */
     private function normalizeDate(int|string|DateTimeInterface $date): ZodiacComparableDate
     {

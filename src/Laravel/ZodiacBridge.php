@@ -25,13 +25,11 @@ class ZodiacBridge
     /**
      * Create zodiac from input date
      *
-     * @param int|string|DateTimeInterface $date
      * @throws NotReadableException
      * @throws InvalidArgumentException
      * @throws ReflectionException
      * @throws RuntimeException
      * @throws BindingResolutionException
-     * @return ZodiacInterface
      */
     public function make(int|string|DateTimeInterface $date): ZodiacInterface
     {
@@ -44,7 +42,6 @@ class ZodiacBridge
     /**
      * @throws BindingResolutionException
      * @throws RuntimeException
-     * @return Translator
      */
     private function translator(): Translator
     {

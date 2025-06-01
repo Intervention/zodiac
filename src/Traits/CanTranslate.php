@@ -15,10 +15,8 @@ trait CanTranslate
 {
     /**
      * Translator
-     *
-     * @var Translator
      */
-    protected $translator;
+    protected ?Translator $translator = null;
 
     /**
      * {@inheritdoc}
@@ -41,7 +39,7 @@ trait CanTranslate
      */
     public function translator(?string $locale = null): Translator
     {
-        if (is_a($this->translator, Translator::class)) {
+        if (is_object($this->translator) && is_a($this->translator, Translator::class)) {
             if (is_string($locale) && $this->translator->getLocale() !== $locale) {
                 // switch translator to given locale
                 $translator = clone $this->translator;

@@ -15,9 +15,6 @@ class ZodiacComparableDate implements Stringable
 {
     /**
      * Create new instance
-     *
-     * @param Carbon $date
-     * @return void
      */
     public function __construct(protected Carbon $date)
     {
@@ -27,10 +24,8 @@ class ZodiacComparableDate implements Stringable
     /**
      * Determine if the current date matches given zodiac sign
      *
-     * @param ZodiacInterface $zodiac
      * @throws InvalidFormatException
      * @throws RuntimeException
-     * @return bool
      */
     public function isZodiac(ZodiacInterface $zodiac): bool
     {
@@ -76,8 +71,6 @@ class ZodiacComparableDate implements Stringable
 
     /**
      * Cast object to string
-     *
-     * @return string
      */
     public function __toString(): string
     {

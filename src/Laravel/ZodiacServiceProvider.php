@@ -11,17 +11,13 @@ class ZodiacServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
      */
-    protected $defer = true;
+    protected bool $defer = true;
 
     /**
      * Bootstrap the application events.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // load translation files
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'zodiacs');
@@ -29,10 +25,8 @@ class ZodiacServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton('zodiac', fn(Application $app): ZodiacBridge => new ZodiacBridge($app));
     }
@@ -42,6 +36,7 @@ class ZodiacServiceProvider extends ServiceProvider
      *
      * @return array<string>
      */
+    // phpcs:ignore SlevomatCodingStandard.TypeHints.ReturnTypeHint
     public function provides()
     {
         return ['zodiac'];

@@ -10,7 +10,7 @@ use Intervention\Zodiac\Laravel\ZodiacFacade;
 
 trait CanResolveZodiac
 {
-    protected $birthdayAttribute = 'birthday';
+    protected string $birthdayAttribute = 'birthday';
 
     public function getZodiacAttribute(): ?ZodiacInterface
     {

@@ -196,10 +196,6 @@ class Compatibility
 
     /**
      * Calculate zodiac sign compatibility between two signs
-     *
-     * @param ZodiacInterface $a
-     * @param ZodiacInterface $b
-     * @return float
      */
     public function __invoke(ZodiacInterface $a, ZodiacInterface $b): float
     {

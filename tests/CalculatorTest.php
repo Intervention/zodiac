@@ -133,10 +133,8 @@ final class CalculatorTest extends TestCase
 
     public static function invalidZodiacDataProvider(): Generator
     {
-        yield [
-            'foobar',
-            '',
-        ];
+        yield ['foobar'];
+        yield [''];
     }
 
     public function testCompare(): void

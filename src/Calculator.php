@@ -101,6 +101,10 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      */
     private function normalizeDate(int|string|DateTimeInterface $date): ZodiacComparableDate
     {
+        if (empty($date)) {
+            throw new NotReadableException('Unable to create zodiac from empty value.');
+        }
+
         try {
             $date = match (true) {
                 is_numeric($date) => Carbon::createFromTimestamp($date),

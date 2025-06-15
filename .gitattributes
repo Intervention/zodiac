@@ -5,3 +5,4 @@
 Dockerfile export-ignore
 docker-compose.yml export-ignore
 phpunit.xml export-ignore
+CONTRIBUTING.md export-ignore

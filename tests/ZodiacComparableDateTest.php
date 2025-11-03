@@ -44,11 +44,15 @@ final class ZodiacComparableDateTest extends TestCase
     {
         $comparable = new ZodiacComparableDate($date);
 
-        foreach (array_filter($this::ZODIAC_CLASSNAMES, fn (string $name) => $name === $matchingZodiac) as $classname) {
+        foreach (
+            array_filter($this::ZODIAC_CLASSNAMES, fn(string $name): bool => $name === $matchingZodiac,) as $classname
+        ) {
             $this->assertTrue($comparable->isZodiac(new $classname()));
         }
 
-        foreach (array_filter($this::ZODIAC_CLASSNAMES, fn (string $name) => $name !== $matchingZodiac) as $classname) {
+        foreach (
+            array_filter($this::ZODIAC_CLASSNAMES, fn(string $name): bool => $name !== $matchingZodiac,) as $classname
+        ) {
             $this->assertFalse($comparable->isZodiac(new $classname()));
         }
     }

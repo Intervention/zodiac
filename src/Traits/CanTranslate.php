@@ -39,7 +39,7 @@ trait CanTranslate
      */
     public function translator(?string $locale = null): Translator
     {
-        if (is_object($this->translator) && is_a($this->translator, Translator::class)) {
+        if ($this->translator instanceof Translator) {
             if (is_string($locale) && $this->translator->getLocale() !== $locale) {
                 // switch translator to given locale
                 $translator = clone $this->translator;

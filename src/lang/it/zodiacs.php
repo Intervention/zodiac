@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 return [
-    \Intervention\Zodiac\Zodiacs\Aries::class => 'Ariete',
-    \Intervention\Zodiac\Zodiacs\Taurus::class => 'Toro',
-    \Intervention\Zodiac\Zodiacs\Gemini::class => 'Gemelli',
-    \Intervention\Zodiac\Zodiacs\Cancer::class => 'Cancro',
-    \Intervention\Zodiac\Zodiacs\Leo::class => 'Leone',
-    \Intervention\Zodiac\Zodiacs\Virgo::class => 'Vergine',
-    \Intervention\Zodiac\Zodiacs\Libra::class => 'Bilancia',
-    \Intervention\Zodiac\Zodiacs\Scorpio::class => 'Scorpione',
-    \Intervention\Zodiac\Zodiacs\Sagittarius::class => 'Sagittario',
-    \Intervention\Zodiac\Zodiacs\Capricorn::class => 'Capricorno',
-    \Intervention\Zodiac\Zodiacs\Aquarius::class => 'Acquario',
-    \Intervention\Zodiac\Zodiacs\Pisces::class => 'Pesci'
+    \Intervention\Zodiac\Zodiacs\Western\Aries::class => 'Ariete',
+    \Intervention\Zodiac\Zodiacs\Western\Taurus::class => 'Toro',
+    \Intervention\Zodiac\Zodiacs\Western\Gemini::class => 'Gemelli',
+    \Intervention\Zodiac\Zodiacs\Western\Cancer::class => 'Cancro',
+    \Intervention\Zodiac\Zodiacs\Western\Leo::class => 'Leone',
+    \Intervention\Zodiac\Zodiacs\Western\Virgo::class => 'Vergine',
+    \Intervention\Zodiac\Zodiacs\Western\Libra::class => 'Bilancia',
+    \Intervention\Zodiac\Zodiacs\Western\Scorpio::class => 'Scorpione',
+    \Intervention\Zodiac\Zodiacs\Western\Sagittarius::class => 'Sagittario',
+    \Intervention\Zodiac\Zodiacs\Western\Capricorn::class => 'Capricorno',
+    \Intervention\Zodiac\Zodiacs\Western\Aquarius::class => 'Acquario',
+    \Intervention\Zodiac\Zodiacs\Western\Pisces::class => 'Pesci'
 ];

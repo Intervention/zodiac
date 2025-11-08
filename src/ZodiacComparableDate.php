@@ -9,7 +9,7 @@ use Carbon\Exceptions\InvalidFormatException;
 use DateTimeInterface;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
-use Intervention\Zodiac\Zodiacs\Capricorn;
+use Intervention\Zodiac\Zodiacs\Western\Capricorn;
 use Stringable;
 
 class ZodiacComparableDate implements Stringable

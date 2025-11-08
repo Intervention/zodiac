@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Intervention\Zodiac\Zodiacs;
+namespace Intervention\Zodiac\Zodiacs\Western;
 
 use Intervention\Zodiac\Zodiac;
 

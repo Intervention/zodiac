@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 return [
-    \Intervention\Zodiac\Zodiacs\Aries::class => 'Овен',
-    \Intervention\Zodiac\Zodiacs\Taurus::class => 'Телець',
-    \Intervention\Zodiac\Zodiacs\Gemini::class => 'Близнюки',
-    \Intervention\Zodiac\Zodiacs\Cancer::class => 'Рак',
-    \Intervention\Zodiac\Zodiacs\Leo::class => 'Лев',
-    \Intervention\Zodiac\Zodiacs\Virgo::class => 'Діва',
-    \Intervention\Zodiac\Zodiacs\Libra::class => 'Терези',
-    \Intervention\Zodiac\Zodiacs\Scorpio::class => 'Скорпіон',
-    \Intervention\Zodiac\Zodiacs\Sagittarius::class => 'Стрілець',
-    \Intervention\Zodiac\Zodiacs\Capricorn::class => 'Козоріг',
-    \Intervention\Zodiac\Zodiacs\Aquarius::class => 'Водолій',
-    \Intervention\Zodiac\Zodiacs\Pisces::class => 'Риби'
+    \Intervention\Zodiac\Zodiacs\Western\Aries::class => 'Овен',
+    \Intervention\Zodiac\Zodiacs\Western\Taurus::class => 'Телець',
+    \Intervention\Zodiac\Zodiacs\Western\Gemini::class => 'Близнюки',
+    \Intervention\Zodiac\Zodiacs\Western\Cancer::class => 'Рак',
+    \Intervention\Zodiac\Zodiacs\Western\Leo::class => 'Лев',
+    \Intervention\Zodiac\Zodiacs\Western\Virgo::class => 'Діва',
+    \Intervention\Zodiac\Zodiacs\Western\Libra::class => 'Терези',
+    \Intervention\Zodiac\Zodiacs\Western\Scorpio::class => 'Скорпіон',
+    \Intervention\Zodiac\Zodiacs\Western\Sagittarius::class => 'Стрілець',
+    \Intervention\Zodiac\Zodiacs\Western\Capricorn::class => 'Козоріг',
+    \Intervention\Zodiac\Zodiacs\Western\Aquarius::class => 'Водолій',
+    \Intervention\Zodiac\Zodiacs\Western\Pisces::class => 'Риби'
 ];

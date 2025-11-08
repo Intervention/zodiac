@@ -23,18 +23,18 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      * @var array<string>
      */
     protected static array $zodiacClassnames = [
-        Zodiacs\Aquarius::class,
-        Zodiacs\Aries::class,
-        Zodiacs\Cancer::class,
-        Zodiacs\Capricorn::class,
-        Zodiacs\Gemini::class,
-        Zodiacs\Leo::class,
-        Zodiacs\Libra::class,
-        Zodiacs\Pisces::class,
-        Zodiacs\Sagittarius::class,
-        Zodiacs\Scorpio::class,
-        Zodiacs\Taurus::class,
-        Zodiacs\Virgo::class,
+        Zodiacs\Western\Aquarius::class,
+        Zodiacs\Western\Aries::class,
+        Zodiacs\Western\Cancer::class,
+        Zodiacs\Western\Capricorn::class,
+        Zodiacs\Western\Gemini::class,
+        Zodiacs\Western\Leo::class,
+        Zodiacs\Western\Libra::class,
+        Zodiacs\Western\Pisces::class,
+        Zodiacs\Western\Sagittarius::class,
+        Zodiacs\Western\Scorpio::class,
+        Zodiacs\Western\Taurus::class,
+        Zodiacs\Western\Virgo::class,
     ];
 
     /**

@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 return [
-    'aries' => '牡羊座',
-    'taurus' => '牡牛座',
-    'gemini' => '双子座',
-    'cancer' => '蟹座',
-    'leo' => '獅子座',
-    'virgo' => '乙女座',
-    'libra' => '天秤座',
-    'scorpio' => '蠍座',
-    'sagittarius' => '射手座',
-    'capricorn' => '山羊座',
-    'aquarius' => '水瓶座',
-    'pisces' => '魚座'
+    \Intervention\Zodiac\Zodiacs\Aries::class => '牡羊座',
+    \Intervention\Zodiac\Zodiacs\Taurus::class => '牡牛座',
+    \Intervention\Zodiac\Zodiacs\Gemini::class => '双子座',
+    \Intervention\Zodiac\Zodiacs\Cancer::class => '蟹座',
+    \Intervention\Zodiac\Zodiacs\Leo::class => '獅子座',
+    \Intervention\Zodiac\Zodiacs\Virgo::class => '乙女座',
+    \Intervention\Zodiac\Zodiacs\Libra::class => '天秤座',
+    \Intervention\Zodiac\Zodiacs\Scorpio::class => '蠍座',
+    \Intervention\Zodiac\Zodiacs\Sagittarius::class => '射手座',
+    \Intervention\Zodiac\Zodiacs\Capricorn::class => '山羊座',
+    \Intervention\Zodiac\Zodiacs\Aquarius::class => '水瓶座',
+    \Intervention\Zodiac\Zodiacs\Pisces::class => '魚座'
 ];

@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 return [
-    'aries' => 'Ram',
-    'taurus' => 'Stier',
-    'gemini' => 'Tweelingen',
-    'cancer' => 'Kreeft',
-    'leo' => 'Leeuw',
-    'virgo' => 'Maagd',
-    'libra' => 'Weegschaal',
-    'scorpio' => 'Schorpioen',
-    'sagittarius' => 'Boogschutter',
-    'capricorn' => 'Steenbok',
-    'aquarius' => 'Waterman',
-    'pisces' => 'Vissen'
+    \Intervention\Zodiac\Zodiacs\Aries::class => 'Ram',
+    \Intervention\Zodiac\Zodiacs\Taurus::class => 'Stier',
+    \Intervention\Zodiac\Zodiacs\Gemini::class => 'Tweelingen',
+    \Intervention\Zodiac\Zodiacs\Cancer::class => 'Kreeft',
+    \Intervention\Zodiac\Zodiacs\Leo::class => 'Leeuw',
+    \Intervention\Zodiac\Zodiacs\Virgo::class => 'Maagd',
+    \Intervention\Zodiac\Zodiacs\Libra::class => 'Weegschaal',
+    \Intervention\Zodiac\Zodiacs\Scorpio::class => 'Schorpioen',
+    \Intervention\Zodiac\Zodiacs\Sagittarius::class => 'Boogschutter',
+    \Intervention\Zodiac\Zodiacs\Capricorn::class => 'Steenbok',
+    \Intervention\Zodiac\Zodiacs\Aquarius::class => 'Waterman',
+    \Intervention\Zodiac\Zodiacs\Pisces::class => 'Vissen'
 ];

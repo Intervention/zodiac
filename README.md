@@ -27,37 +27,37 @@ Read the full [documentation](https://zodiac.intervention.io) for this library.
 ## Code Examples
 
 ```php
-use Intervention\Zodiac\Calculator;
+use Intervention\Zodiac\Zodiac;
 use DateTime;
 use Carbon\Carbon;
 
 // get zodiac object from a date
-$zodiac = Calculator::zodiac('1980-09-15');
+$zodiac = Zodiac::fromString('1980-09-15');
 
 // method takes mixed formats
-$zodiac = Calculator::zodiac('first day of June 2008');
+$zodiac = Zodiac::fromString('first day of June 2008');
 
 // create from DateTime object
-$zodiac = Calculator::zodiac(new DateTime('1977-03-15'));
+$zodiac = Zodiac::fromDate(new DateTime('1977-03-15'));
 
-// get zodiac from a Carbon object
-$zodiac = Calculator::zodiac(Carbon::yesterday());
+// since Carbon dates extend from DateTime they can also be read
+$zodiac = Zodiac::fromDate(Carbon::yesterday());
 
 // get zodiac from unix timestamp
-$zodiac = Calculator::zodiac(228268800);
+$zodiac = Zodiac::fromUnix(228268800);
 ```
 
 ```php
-use Intervention\Zodiac\Calculator;
+use Intervention\Zodiac\Zodiac;
 use DateTime;
 use Carbon\Carbon;
 
 // calculate zodiac sing
-$zodiac = Calculator::zodiac('1977-06-17');
+$zodiac = Zodiac::fromString('1977-06-17');
 
-$name = $zodiac->name(); // 'gemini'
+$name = $zodiac->name(); // 'Gemini'
+$name = $zodiac->localized('fr')->name(); // Gémeaux
 $html = $zodiac->html(); // '♊︎'
-$localized = $zodiac->localized('fr'); // Gémeaux
 $compatibility = $zodiac->compatibility($zodiac); // .6
 ```
 

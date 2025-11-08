@@ -11,10 +11,10 @@ interface TranslatableInterface
     /**
      * Get translator for given locale
      */
-    public function translator(?string $locale = null): Translator;
+    public static function translator(?string $locale = null): Translator;
 
     /**
      * Set translator on current object
      */
-    public function setTranslator(Translator $translator): CalculatorInterface|ZodiacInterface;
+    public function setTranslator(?Translator $translator): CalculatorInterface|ZodiacInterface;
 }

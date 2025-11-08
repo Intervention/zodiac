@@ -5,23 +5,24 @@ declare(strict_types=1);
 namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
-use Carbon\Exceptions\InvalidFormatException;
 use DateTimeInterface;
 use Intervention\Zodiac\Exceptions\NotReadableException;
-use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
 use Intervention\Zodiac\Interfaces\TranslatableInterface;
-use InvalidArgumentException;
+use Stringable;
+use Throwable;
 
 class Calculator implements CalculatorInterface, TranslatableInterface
 {
     use Traits\CanTranslate;
 
     /**
+     * All western zodiac classes
+     *
      * @var array<string>
      */
-    protected array $zodiac_classnames = [
+    protected static array $zodiacClassnames = [
         Zodiacs\Aquarius::class,
         Zodiacs\Aries::class,
         Zodiacs\Cancer::class,
@@ -39,49 +40,52 @@ class Calculator implements CalculatorInterface, TranslatableInterface
     /**
      * {@inheritdoc}
      *
-     * @see ZodiacInterface::zodiac()
-     *
-     * @throws NotReadableException
-     * @throws RuntimeException
+     * @see CalculatorInterface::fromString()
      */
-    public static function zodiac(int|string|DateTimeInterface $date): ZodiacInterface
+    public static function fromString(string|Stringable $date): ZodiacInterface
     {
-        $calculator = new self();
-        $date = $calculator->normalizeDate($date);
+        // normalize types
+        $date = $date instanceof Stringable ? $date->__toString() : $date;
 
-        foreach ($calculator->zodiac_classnames as $classname) {
-            try {
-                $zodiac = new $classname();
-                if (
-                    ($zodiac instanceof ZodiacInterface) &&
-                    ($zodiac instanceof TranslatableInterface) &&
-                    $date->isZodiac($zodiac)
-                ) {
-                    $zodiac->setTranslator($calculator->translator());
-
-                    return $zodiac;
-                }
-            } catch (InvalidFormatException | InvalidArgumentException) {
-                // try next zodiac
-            }
+        if ($date === '') { // empty string is allowed in Carbon::parse() but not here
+            throw new NotReadableException('Unable to create zodiac from empty string.');
         }
 
-        throw new NotReadableException(
-            'Unable to create zodiac from value (' . $date . ')'
+        try {
+            return self::fromComparableDate(
+                new ZodiacComparableDate(
+                    Carbon::parse($date)
+                )
+            );
+        } catch (Throwable) {
+            throw new NotReadableException('Unable to create zodiac from string (' . $date . ').');
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see CalculatorInterface::fromDate()
+     */
+    public static function fromDate(DateTimeInterface $date): ZodiacInterface
+    {
+        return self::fromComparableDate(
+            new ZodiacComparableDate($date)
         );
     }
 
     /**
-     * Alias of zodiac()
+     * {@inheritdoc}
      *
-     * @see self::zodiac()
-     *
-     * @throws NotReadableException
-     * @throws RuntimeException
+     * @see CalculatorInterface::fromUnix()
      */
-    public static function make(int|string|DateTimeInterface $date): ZodiacInterface
+    public static function fromUnix(string|int $date): ZodiacInterface
     {
-        return (new self())->zodiac($date);
+        return self::fromComparableDate(
+            new ZodiacComparableDate(
+                Carbon::createFromTimestamp($date)
+            )
+        );
     }
 
     /**
@@ -89,31 +93,31 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      *
      * @see CalculatorInterface::compare()
      */
-    public static function compare(ZodiacInterface $zodiac1, ZodiacInterface $zodiac2): float
+    public static function compare(ZodiacInterface $zodiac, ZodiacInterface $with): float
     {
-        return $zodiac1->compatibility($zodiac2);
+        return $zodiac->compatibility($with);
     }
 
     /**
-     * Normalze given date to Carbon object
-     *
-     * @throws NotReadableException
+     * Calcuate zodiac from given comparable date
      */
-    private function normalizeDate(int|string|DateTimeInterface $date): ZodiacComparableDate
+    private static function fromComparableDate(ZodiacComparableDate $date): ZodiacInterface
     {
-        if (empty($date)) {
-            throw new NotReadableException('Unable to create zodiac from empty value.');
+        foreach (static::$zodiacClassnames as $classname) {
+            $zodiac = new $classname();
+            if (
+                $zodiac instanceof ZodiacInterface &&
+                $zodiac instanceof TranslatableInterface &&
+                $date->isZodiac($zodiac)
+            ) {
+                $zodiac->setTranslator(self::$translator);
+
+                return $zodiac;
+            }
         }
 
-        try {
-            $date = match (true) {
-                is_numeric($date) => Carbon::createFromTimestamp($date),
-                default => Carbon::parse($date),
-            };
-        } catch (InvalidFormatException | InvalidArgumentException) {
-            throw new NotReadableException('Unable to create zodiac from value.');
-        }
-
-        return new ZodiacComparableDate($date);
+        throw new NotReadableException(
+            'Unable to create zodiac from value (' . $date . ')'
+        );
     }
 }

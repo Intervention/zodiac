@@ -16,16 +16,16 @@ trait CanTranslate
     /**
      * Translator
      */
-    protected ?Translator $translator = null;
+    protected static ?Translator $translator = null;
 
     /**
      * {@inheritdoc}
      *
      * @see TranslatableInterface::setTranslator()
      */
-    public function setTranslator(Translator $translator): CalculatorInterface|ZodiacInterface
+    public function setTranslator(?Translator $translator): CalculatorInterface|ZodiacInterface
     {
-        $this->translator = $translator;
+        static::$translator = $translator;
 
         return $this;
     }
@@ -37,23 +37,15 @@ trait CanTranslate
      *
      * @throws InvalidArgumentException
      */
-    public function translator(?string $locale = null): Translator
+    public static function translator(?string $locale = null): Translator
     {
-        if ($this->translator instanceof Translator) {
-            if (is_string($locale) && $this->translator->getLocale() !== $locale) {
-                // switch translator to given locale
-                $translator = clone $this->translator;
-                $translator->setLocale($locale);
-
-                return $translator;
-            }
-
-            return $this->translator;
+        if (static::$translator instanceof Translator) {
+            return static::$translator;
         }
 
-        $locale = empty($locale) ? 'en' : $locale;
-        $loader = new FileLoader(new Filesystem(), __DIR__ . '/../lang');
-
-        return new Translator($loader, $locale);
+        return new Translator(
+            new FileLoader(new Filesystem(), __DIR__ . '/../lang'),
+            $locale ?: 'en'
+        );
     }
 }

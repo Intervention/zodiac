@@ -9,18 +9,18 @@ use Carbon\Exceptions\InvalidFormatException;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\TranslatableInterface;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
-use InvalidArgumentException;
+use Stringable;
 
-abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
+abstract class Zodiac implements ZodiacInterface, TranslatableInterface, Stringable
 {
     use Traits\CanTranslate;
 
+    protected string $name;
+    protected string $html;
     protected int $startDay;
     protected int $startMonth;
     protected int $endDay;
     protected int $endMonth;
-    protected string $name;
-    protected string $html;
 
     /**
      * {@inheritdoc}
@@ -37,7 +37,7 @@ abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
             day: $this->startDay
         );
 
-        if ($date == false) {
+        if ($date === null) {
             throw new RuntimeException('Unable to create end date of zodiac sign.');
         }
 
@@ -62,38 +62,11 @@ abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
             second: 59
         );
 
-        if ($date == false) {
+        if ($date === null) {
             throw new RuntimeException('Unable to create end date of zodiac sign.');
         }
 
         return $date;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see ZodiacInterface::localized()
-     *
-     * @throws InvalidArgumentException
-     * @throws RuntimeException
-     */
-    public function localized(?string $locale = null): ?string
-    {
-        $translator = $this->translator($locale);
-        $key = "zodiacs.{$this->name}";
-
-        $translated = match ($translator->has($key)) {
-            true => $translator->get($key),
-            false => $translator->get("zodiacs::{$key}"),
-        };
-
-        if (is_array($translated)) {
-            throw new RuntimeException(
-                'Unable to get translated name from array, should be string.'
-            );
-        }
-
-        return $translated;
     }
 
     /**
@@ -124,6 +97,28 @@ abstract class AbstractZodiac implements ZodiacInterface, TranslatableInterface
     public function compatibility(ZodiacInterface $zodiac): float
     {
         return call_user_func(new Compatibility(), $this, $zodiac);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see ZodiacInterface::localized()
+     */
+    public function localized(string $locale = 'en'): ZodiacInterface
+    {
+        $key = 'zodiacs.' . $this::class;
+
+        if (!$this->translator()->has($key, locale: $locale)) {
+            return $this;
+        }
+
+        $translatedName = $this->translator()->get($key, locale: $locale);
+
+        if (is_string($translatedName)) {
+            $this->name = $translatedName;
+        }
+
+        return $this;
     }
 
     /**

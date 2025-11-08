@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 return [
-    'aries' => 'Aries',
-    'taurus' => 'Taurus',
-    'gemini' => 'Gemini',
-    'cancer' => 'Cancer',
-    'leo' => 'Leo',
-    'virgo' => 'Virgo',
-    'libra' => 'Libra',
-    'scorpio' => 'Scorpio',
-    'sagittarius' => 'Sagittarius',
-    'capricorn' => 'Capricorn',
-    'aquarius' => 'Aquarius',
-    'pisces' => 'Pisces'
+    \Intervention\Zodiac\Zodiacs\Aries::class => 'Aries',
+    \Intervention\Zodiac\Zodiacs\Taurus::class => 'Taurus',
+    \Intervention\Zodiac\Zodiacs\Gemini::class => 'Gemini',
+    \Intervention\Zodiac\Zodiacs\Cancer::class => 'Cancer',
+    \Intervention\Zodiac\Zodiacs\Leo::class => 'Leo',
+    \Intervention\Zodiac\Zodiacs\Virgo::class => 'Virgo',
+    \Intervention\Zodiac\Zodiacs\Libra::class => 'Libra',
+    \Intervention\Zodiac\Zodiacs\Scorpio::class => 'Scorpio',
+    \Intervention\Zodiac\Zodiacs\Sagittarius::class => 'Sagittarius',
+    \Intervention\Zodiac\Zodiacs\Capricorn::class => 'Capricorn',
+    \Intervention\Zodiac\Zodiacs\Aquarius::class => 'Aquarius',
+    \Intervention\Zodiac\Zodiacs\Pisces::class => 'Pisces'
 ];

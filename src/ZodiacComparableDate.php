@@ -6,6 +6,7 @@ namespace Intervention\Zodiac;
 
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
+use DateTimeInterface;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\ZodiacInterface;
 use Intervention\Zodiac\Zodiacs\Capricorn;
@@ -14,11 +15,17 @@ use Stringable;
 class ZodiacComparableDate implements Stringable
 {
     /**
+     * Date to compare against
+     */
+    protected Carbon $date;
+
+    /**
      * Create new instance
      */
-    public function __construct(protected Carbon $date)
+    public function __construct(DateTimeInterface $date)
     {
-        //
+        // normalize date to Carbon instance
+        $this->date = $date instanceof Carbon ? $date : Carbon::parse($date);
     }
 
     /**
@@ -56,13 +63,10 @@ class ZodiacComparableDate implements Stringable
                     ->addDay()
             ];
 
-            if ($this->date->between(...$period1)) {
-                return true;
-            }
-
-            return $this->date->between(...$period2);
+            return $this->date->between(...$period1) || $this->date->between(...$period2);
         }
 
+        // all other zodiac signs
         return $this->date->between(
             $zodiac->start()->setYear($this->date->year),
             $zodiac->end()->setYear($this->date->year)

@@ -83,7 +83,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      */
     private static function fromComparableDate(ZodiacComparableDate $date): ZodiacInterface
     {
-        foreach ((Type::WESTERN)->zodiacClassnames() as $classname) {
+        foreach ((Calendar::WESTERN)->zodiacClassnames() as $classname) {
             $zodiac = new $classname();
             if (
                 $zodiac instanceof ZodiacInterface &&

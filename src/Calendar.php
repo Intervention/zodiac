@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac;
 
-enum Type
+enum Calendar
 {
     case WESTERN;
+    case CHINESE;
 
     /**
      * Get all possible zodiac classname of current type
@@ -29,6 +30,20 @@ enum Type
                 Zodiacs\Western\Scorpio::class,
                 Zodiacs\Western\Taurus::class,
                 Zodiacs\Western\Virgo::class,
+            ],
+            self::CHINESE => [
+                Zodiacs\Chinese\Rat::class,
+                Zodiacs\Chinese\Ox::class,
+                Zodiacs\Chinese\Tiger::class,
+                Zodiacs\Chinese\Rabbit::class,
+                Zodiacs\Chinese\Dragon::class,
+                Zodiacs\Chinese\Snake::class,
+                Zodiacs\Chinese\Horse::class,
+                Zodiacs\Chinese\Goat::class,
+                Zodiacs\Chinese\Monkey::class,
+                Zodiacs\Chinese\Rooster::class,
+                Zodiacs\Chinese\Dog::class,
+                Zodiacs\Chinese\Pig::class,
             ],
         };
     }

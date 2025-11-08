@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Intervention\Zodiac\Tests;
 
 use Generator;
-use Intervention\Zodiac\Type;
+use Intervention\Zodiac\Calendar;
 use Intervention\Zodiac\Zodiacs\Western\Aquarius;
 use Intervention\Zodiac\Zodiacs\Western\Aries;
 use Intervention\Zodiac\Zodiacs\Western\Cancer;
@@ -27,7 +27,7 @@ class TypeTest extends TestCase
      * @param array<string> $classes
      */
     #[DataProvider('zodiacClassnameProvider')]
-    public function testZodiacClassnames(Type $type, array $classes): void
+    public function testZodiacClassnames(Calendar $type, array $classes): void
     {
         $this->assertEquals($classes, $type->zodiacClassnames());
     }
@@ -35,7 +35,7 @@ class TypeTest extends TestCase
     public static function zodiacClassnameProvider(): Generator
     {
         yield [
-            Type::WESTERN,
+            Calendar::WESTERN,
             [
                 Aquarius::class,
                 Aries::class,

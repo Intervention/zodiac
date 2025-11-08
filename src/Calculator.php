@@ -22,7 +22,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      *
      * @see CalculatorInterface::fromString()
      */
-    public static function fromString(string|Stringable $date): ZodiacInterface
+    public static function fromString(string|Stringable $date, Calendar $calendar = Calendar::WESTERN): ZodiacInterface
     {
         // normalize types
         $date = $date instanceof Stringable ? $date->__toString() : $date;
@@ -33,9 +33,8 @@ class Calculator implements CalculatorInterface, TranslatableInterface
 
         try {
             return self::fromComparableDate(
-                new ZodiacComparableDate(
-                    Carbon::parse($date)
-                )
+                date: new ZodiacComparableDate(Carbon::parse($date)),
+                calendar: $calendar
             );
         } catch (Throwable) {
             throw new NotReadableException('Unable to create zodiac from string (' . $date . ').');
@@ -47,10 +46,11 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      *
      * @see CalculatorInterface::fromDate()
      */
-    public static function fromDate(DateTimeInterface $date): ZodiacInterface
+    public static function fromDate(DateTimeInterface $date, Calendar $calendar = Calendar::WESTERN): ZodiacInterface
     {
         return self::fromComparableDate(
-            new ZodiacComparableDate($date)
+            date: new ZodiacComparableDate($date),
+            calendar: $calendar
         );
     }
 
@@ -59,12 +59,11 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      *
      * @see CalculatorInterface::fromUnix()
      */
-    public static function fromUnix(string|int $date): ZodiacInterface
+    public static function fromUnix(string|int $date, Calendar $calendar = Calendar::WESTERN): ZodiacInterface
     {
         return self::fromComparableDate(
-            new ZodiacComparableDate(
-                Carbon::createFromTimestamp($date)
-            )
+            date: new ZodiacComparableDate(Carbon::createFromTimestamp($date)),
+            calendar: $calendar
         );
     }
 
@@ -81,9 +80,9 @@ class Calculator implements CalculatorInterface, TranslatableInterface
     /**
      * Calcuate zodiac from given comparable date
      */
-    private static function fromComparableDate(ZodiacComparableDate $date): ZodiacInterface
+    private static function fromComparableDate(ZodiacComparableDate $date, Calendar $calendar): ZodiacInterface
     {
-        foreach ((Calendar::WESTERN)->zodiacClassnames() as $classname) {
+        foreach ($calendar->range($date->year()) as $classname) {
             $zodiac = new $classname();
             if (
                 $zodiac instanceof ZodiacInterface &&

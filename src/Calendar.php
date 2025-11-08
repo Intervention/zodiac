@@ -47,4 +47,29 @@ enum Calendar
             ],
         };
     }
+
+    /**
+     * @return array<string>
+     */
+    public function range(int $year): array
+    {
+        if ($this === self::WESTERN) {
+            return $this->zodiacClassnames();
+        }
+
+        // $table = [
+        //     2000 => [
+        //         Dragon::class => [1, 1],
+        //         Snake::class => [1, 29],
+        //     ],
+        // ];
+
+        // $range = [];
+
+        // foreach (range(1, 12) as $month) {
+        //     $range[$month] = $month;
+        // }
+
+        return [];
+    }
 }

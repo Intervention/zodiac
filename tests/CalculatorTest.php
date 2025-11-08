@@ -4,64 +4,48 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Tests;
 
-use Carbon\Carbon;
-use DateTime;
 use DateTimeInterface;
-use Generator;
 use Intervention\Zodiac\Calculator;
+use Intervention\Zodiac\Calendar;
 use Intervention\Zodiac\Exceptions\NotReadableException;
-use Intervention\Zodiac\Zodiacs\Western\Aquarius;
+use Intervention\Zodiac\Tests\Providers\InvalidDataProvider;
+use Intervention\Zodiac\Tests\Providers\WesternDataProvider;
 use Intervention\Zodiac\Zodiacs\Western\Aries;
-use Intervention\Zodiac\Zodiacs\Western\Cancer;
-use Intervention\Zodiac\Zodiacs\Western\Capricorn;
-use Intervention\Zodiac\Zodiacs\Western\Gemini;
 use Intervention\Zodiac\Zodiacs\Western\Leo;
-use Intervention\Zodiac\Zodiacs\Western\Libra;
-use Intervention\Zodiac\Zodiacs\Western\Pisces;
-use Intervention\Zodiac\Zodiacs\Western\Sagittarius;
-use Intervention\Zodiac\Zodiacs\Western\Scorpio;
-use Intervention\Zodiac\Zodiacs\Western\Taurus;
-use Intervention\Zodiac\Zodiacs\Western\Virgo;
-use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use PHPUnit\Framework\TestCase;
 use Stringable;
 
 final class CalculatorTest extends TestCase
 {
-    #[DataProvider('validZodiacStringDataProvider')]
-    #[DataProvider('validZodiacStringableDataProvider')]
-    public function testFromString(string|Stringable $input, string $resultClassname): void
+    #[DataProviderExternal(WesternDataProvider::class, 'stringDates')]
+    #[DataProviderExternal(WesternDataProvider::class, 'stringableDates')]
+    public function testFromString(string|Stringable $input, string $resultClassname, Calendar $calendar): void
     {
-        $this->assertInstanceOf($resultClassname, Calculator::fromString($input));
-        $this->assertInstanceOf($resultClassname, (new Calculator())->fromString($input));
+        $this->assertInstanceOf($resultClassname, Calculator::fromString($input, $calendar));
+        $this->assertInstanceOf($resultClassname, (new Calculator())->fromString($input, $calendar));
     }
 
-    #[DataProvider('validZodiacDateTimeDataProvider')]
-    #[DataProvider('validZodiacCarbonDataProvider')]
-    public function testFromDate(DateTimeInterface $input, string $resultClassname): void
+    #[DataProviderExternal(WesternDataProvider::class, 'dateTimeDates')]
+    #[DataProviderExternal(WesternDataProvider::class, 'carbonDates')]
+    public function testFromDate(DateTimeInterface $input, string $resultClassname, Calendar $calendar): void
     {
-        $this->assertInstanceOf($resultClassname, Calculator::fromDate($input));
-        $this->assertInstanceOf($resultClassname, (new Calculator())->fromDate($input));
+        $this->assertInstanceOf($resultClassname, Calculator::fromDate($input, $calendar));
+        $this->assertInstanceOf($resultClassname, (new Calculator())->fromDate($input, $calendar));
     }
 
-    #[DataProvider('validZodiacUnixTimestampDataProvider')]
-    public function testFromUnix(int|string $input, string $resultClassname): void
+    #[DataProviderExternal(WesternDataProvider::class, 'unixTimestampDates')]
+    public function testFromUnix(int|string $input, string $resultClassname, Calendar $calendar): void
     {
-        $this->assertInstanceOf($resultClassname, (new Calculator())->fromUnix($input));
+        $this->assertInstanceOf($resultClassname, Calculator::fromUnix($input, $calendar));
+        $this->assertInstanceOf($resultClassname, (new Calculator())->fromUnix($input, $calendar));
     }
 
-    #[DataProvider('invalidStringDataProvider')]
+    #[DataProviderExternal(InvalidDataProvider::class, 'invalidStringDates')]
     public function testGetInvalidZodiac(mixed $input): void
     {
         $this->expectException(NotReadableException::class);
         (new Calculator())->fromString($input);
-    }
-
-    public static function invalidStringDataProvider(): Generator
-    {
-        yield ['foobar'];
-        yield ['1234567'];
-        yield [''];
     }
 
     public function testCompare(): void
@@ -74,132 +58,5 @@ final class CalculatorTest extends TestCase
         $result = Calculator::compare(new Aries(), new Leo());
         $this->assertIsFloat($result);
         $this->assertTrue($result >= 0 && $result <= 1);
-    }
-
-    public static function validZodiacStringDataProvider(): Generator
-    {
-        yield ['1977-03-27', Aries::class];
-        yield ['1977-04-27', Taurus::class];
-        yield ['1977-05-27', Gemini::class];
-        yield ['1977-06-27', Cancer::class];
-        yield ['1977-07-27', Leo::class];
-        yield ['1977-08-27', Virgo::class];
-        yield ['1977-09-27', Libra::class];
-        yield ['1977-10-27', Scorpio::class];
-        yield ['1977-11-27', Sagittarius::class];
-        yield ['1977-12-27', Capricorn::class];
-        yield ['1977-12-31 23:59:59', Capricorn::class];
-        yield ['1977-01-15', Capricorn::class];
-        yield ['1977-01-26', Aquarius::class];
-        yield ['1977-02-27', Pisces::class];
-        yield ['first day of june 1977', Gemini::class];
-        yield ['first day of june', Gemini::class];
-    }
-
-    public static function validZodiacStringableDataProvider(): Generator
-    {
-        yield [self::stringableDateObject('1977-03-27'), Aries::class];
-        yield [self::stringableDateObject('1977-04-27'), Taurus::class];
-        yield [self::stringableDateObject('1977-05-27'), Gemini::class];
-        yield [self::stringableDateObject('1977-06-27'), Cancer::class];
-        yield [self::stringableDateObject('1977-07-27'), Leo::class];
-        yield [self::stringableDateObject('1977-08-27'), Virgo::class];
-        yield [self::stringableDateObject('1977-09-27'), Libra::class];
-        yield [self::stringableDateObject('1977-10-27'), Scorpio::class];
-        yield [self::stringableDateObject('1977-11-27'), Sagittarius::class];
-        yield [self::stringableDateObject('1977-12-27'), Capricorn::class];
-    }
-
-    public static function validZodiacDateTimeDataProvider(): Generator
-    {
-        yield [new DateTime('1977-03-27'), Aries::class];
-        yield [new DateTime('1977-04-27'), Taurus::class];
-        yield [new DateTime('1977-05-27'), Gemini::class];
-        yield [new DateTime('1977-06-27'), Cancer::class];
-        yield [new DateTime('1977-07-27'), Leo::class];
-        yield [new DateTime('1977-06-21'), Gemini::class];
-        yield [new DateTime('1977-08-27'), Virgo::class];
-        yield [new DateTime('1977-09-27'), Libra::class];
-        yield [new DateTime('1977-10-27'), Scorpio::class];
-        yield [new DateTime('1977-11-27'), Sagittarius::class];
-        yield [new DateTime('1977-12-27'), Capricorn::class];
-        yield [new DateTime('1977-12-31'), Capricorn::class];
-        yield [new DateTime('1977-01-01'), Capricorn::class];
-        yield [new DateTime('1977-01-15'), Capricorn::class];
-        yield [new DateTime('1977-01-26'), Aquarius::class];
-        yield [new DateTime('1977-02-27'), Pisces::class];
-    }
-
-    public static function validZodiacCarbonDataProvider(): Generator
-    {
-        yield [Carbon::parse('1977-03-27'), Aries::class];
-        yield [Carbon::parse('1977-04-27'), Taurus::class];
-        yield [Carbon::parse('1977-05-27'), Gemini::class];
-        yield [Carbon::parse('1977-06-27'), Cancer::class];
-        yield [Carbon::parse('1977-07-27'), Leo::class];
-        yield [Carbon::parse('1977-06-21'), Gemini::class];
-        yield [Carbon::parse('1977-08-27'), Virgo::class];
-        yield [Carbon::parse('1977-09-27'), Libra::class];
-        yield [Carbon::parse('1977-10-27'), Scorpio::class];
-        yield [Carbon::parse('1977-11-27'), Sagittarius::class];
-        yield [Carbon::parse('1977-12-27'), Capricorn::class];
-        yield [Carbon::parse('1977-12-31'), Capricorn::class];
-        yield [Carbon::parse('1977-01-01'), Capricorn::class];
-        yield [Carbon::parse('1977-01-15'), Capricorn::class];
-        yield [Carbon::parse('1977-01-26'), Aquarius::class];
-        yield [Carbon::parse('1977-02-27'), Pisces::class];
-    }
-
-    public static function validZodiacUnixTimestampDataProvider(): Generator
-    {
-        yield ['228268800', Aries::class];
-        yield ['230947200', Taurus::class];
-        yield ['233539200', Gemini::class];
-        yield ['236217600', Cancer::class];
-        yield ['238809600', Leo::class];
-        yield ['235699200', Gemini::class];
-        yield ['241488000', Virgo::class];
-        yield ['244166400', Libra::class];
-        yield ['246758400', Scorpio::class];
-        yield ['249436800', Sagittarius::class];
-        yield ['252028800', Capricorn::class];
-        yield ['252374400', Capricorn::class];
-        yield ['220924800', Capricorn::class];
-        yield ['222134400', Capricorn::class];
-        yield ['223084800', Aquarius::class];
-        yield ['225849600', Pisces::class];
-
-        yield [228268800, Aries::class];
-        yield [230947200, Taurus::class];
-        yield [233539200, Gemini::class];
-        yield [236217600, Cancer::class];
-        yield [238809600, Leo::class];
-        yield [235699200, Gemini::class];
-        yield [241488000, Virgo::class];
-        yield [244166400, Libra::class];
-        yield [246758400, Scorpio::class];
-        yield [249436800, Sagittarius::class];
-        yield [252028800, Capricorn::class];
-        yield [252374400, Capricorn::class];
-        yield [220924800, Capricorn::class];
-        yield [222134400, Capricorn::class];
-        yield [223084800, Aquarius::class];
-        yield [225849600, Pisces::class];
-    }
-
-    private static function stringableDateObject(string $date): Stringable
-    {
-        return new class ($date) implements Stringable
-        {
-            public function __construct(protected string $date)
-            {
-                //
-            }
-
-            public function __toString(): string
-            {
-                return $this->date;
-            }
-        };
     }
 }

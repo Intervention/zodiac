@@ -17,24 +17,29 @@ abstract class Zodiac implements ZodiacInterface, TranslatableInterface, Stringa
 
     protected string $name;
     protected string $html;
+
     protected int $startDay;
     protected int $startMonth;
+    protected ?int $startYear = null;
+
     protected int $endDay;
     protected int $endMonth;
+    protected ?int $endYear = null;
 
     /**
      * {@inheritdoc}
      *
      * @see ZodiacInterface::start()
      *
-     * @throws InvalidFormatException
-     * @throws RuntimeException
+     * @throcs InvalidFormatException
+     * @throcs RuntimeException
      */
     public function start(): Carbon
     {
         $date = Carbon::create(
             month: $this->startMonth,
-            day: $this->startDay
+            day: $this->startDay,
+            year: (int) $this->startYear
         );
 
         if ($date === null) {
@@ -57,6 +62,7 @@ abstract class Zodiac implements ZodiacInterface, TranslatableInterface, Stringa
         $date = Carbon::create(
             month: $this->endMonth,
             day: $this->endDay,
+            year: (int) $this->endYear,
             hour: 23,
             minute: 59,
             second: 59

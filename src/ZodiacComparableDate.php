@@ -29,6 +29,14 @@ class ZodiacComparableDate implements Stringable
     }
 
     /**
+     * Get year of date
+     */
+    public function year(): int
+    {
+        return $this->date->year;
+    }
+
+    /**
      * Determine if the current date matches given zodiac sign
      *
      * @throws InvalidFormatException

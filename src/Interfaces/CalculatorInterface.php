@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Intervention\Zodiac\Interfaces;
 
 use DateTimeInterface;
+use Intervention\Zodiac\Calendar;
 use Stringable;
 
 interface CalculatorInterface
@@ -12,17 +13,17 @@ interface CalculatorInterface
     /**
      * Calculate zodiac from given date of type string
      */
-    public static function fromString(string|Stringable $date): ZodiacInterface;
+    public static function fromString(string|Stringable $date, Calendar $calendar = Calendar::WESTERN): ZodiacInterface;
 
     /**
      * Calculate zodiac from given date object which implements DateTimeInterface
      */
-    public static function fromDate(DateTimeInterface $date): ZodiacInterface;
+    public static function fromDate(DateTimeInterface $date, Calendar $calendar = Calendar::WESTERN): ZodiacInterface;
 
     /**
      * Calculate zodiac from given unix timestamp date
      */
-    public static function fromUnix(string|int $date): ZodiacInterface;
+    public static function fromUnix(string|int $date, Calendar $calendar = Calendar::WESTERN): ZodiacInterface;
 
     /**
      * Calculate zodiac sign compatibility between given objects

@@ -18,26 +18,6 @@ class Calculator implements CalculatorInterface, TranslatableInterface
     use Traits\CanTranslate;
 
     /**
-     * All western zodiac classes
-     *
-     * @var array<string>
-     */
-    protected static array $zodiacClassnames = [
-        Zodiacs\Western\Aquarius::class,
-        Zodiacs\Western\Aries::class,
-        Zodiacs\Western\Cancer::class,
-        Zodiacs\Western\Capricorn::class,
-        Zodiacs\Western\Gemini::class,
-        Zodiacs\Western\Leo::class,
-        Zodiacs\Western\Libra::class,
-        Zodiacs\Western\Pisces::class,
-        Zodiacs\Western\Sagittarius::class,
-        Zodiacs\Western\Scorpio::class,
-        Zodiacs\Western\Taurus::class,
-        Zodiacs\Western\Virgo::class,
-    ];
-
-    /**
      * {@inheritdoc}
      *
      * @see CalculatorInterface::fromString()
@@ -103,7 +83,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      */
     private static function fromComparableDate(ZodiacComparableDate $date): ZodiacInterface
     {
-        foreach (static::$zodiacClassnames as $classname) {
+        foreach ((Type::WESTERN)->zodiacClassnames() as $classname) {
             $zodiac = new $classname();
             if (
                 $zodiac instanceof ZodiacInterface &&

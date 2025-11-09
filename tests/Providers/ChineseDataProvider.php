@@ -6,18 +6,18 @@ namespace Intervention\Zodiac\Tests\Providers;
 
 use Generator;
 use Intervention\Zodiac\Calendar;
-use Intervention\Zodiac\Zodiacs\Chinese\Dog;
-use Intervention\Zodiac\Zodiacs\Chinese\Dragon;
-use Intervention\Zodiac\Zodiacs\Chinese\Goat;
-use Intervention\Zodiac\Zodiacs\Chinese\Horse;
-use Intervention\Zodiac\Zodiacs\Chinese\Monkey;
-use Intervention\Zodiac\Zodiacs\Chinese\Ox;
-use Intervention\Zodiac\Zodiacs\Chinese\Pig;
-use Intervention\Zodiac\Zodiacs\Chinese\Rabbit;
-use Intervention\Zodiac\Zodiacs\Chinese\Rat;
-use Intervention\Zodiac\Zodiacs\Chinese\Rooster;
-use Intervention\Zodiac\Zodiacs\Chinese\Snake;
-use Intervention\Zodiac\Zodiacs\Chinese\Tiger;
+use Intervention\Zodiac\Signs\Chinese\Dog;
+use Intervention\Zodiac\Signs\Chinese\Dragon;
+use Intervention\Zodiac\Signs\Chinese\Goat;
+use Intervention\Zodiac\Signs\Chinese\Horse;
+use Intervention\Zodiac\Signs\Chinese\Monkey;
+use Intervention\Zodiac\Signs\Chinese\Ox;
+use Intervention\Zodiac\Signs\Chinese\Pig;
+use Intervention\Zodiac\Signs\Chinese\Rabbit;
+use Intervention\Zodiac\Signs\Chinese\Rat;
+use Intervention\Zodiac\Signs\Chinese\Rooster;
+use Intervention\Zodiac\Signs\Chinese\Snake;
+use Intervention\Zodiac\Signs\Chinese\Tiger;
 
 class ChineseDataProvider
 {

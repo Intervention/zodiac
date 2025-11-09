@@ -6,7 +6,7 @@ namespace Intervention\Zodiac\Interfaces;
 
 use Carbon\Carbon;
 
-interface ZodiacInterface
+interface SignInterface
 {
     /**
      * Return the title of the current zodiac

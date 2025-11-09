@@ -7,31 +7,31 @@ namespace Intervention\Zodiac\Tests;
 use Carbon\Carbon;
 use Generator;
 use Intervention\Zodiac\Calendar;
-use Intervention\Zodiac\Interfaces\ZodiacInterface;
-use Intervention\Zodiac\Zodiacs\Chinese\Dog;
-use Intervention\Zodiac\Zodiacs\Chinese\Dragon;
-use Intervention\Zodiac\Zodiacs\Chinese\Goat;
-use Intervention\Zodiac\Zodiacs\Chinese\Horse;
-use Intervention\Zodiac\Zodiacs\Chinese\Monkey;
-use Intervention\Zodiac\Zodiacs\Chinese\Ox;
-use Intervention\Zodiac\Zodiacs\Chinese\Pig;
-use Intervention\Zodiac\Zodiacs\Chinese\Rabbit;
-use Intervention\Zodiac\Zodiacs\Chinese\Rat;
-use Intervention\Zodiac\Zodiacs\Chinese\Rooster;
-use Intervention\Zodiac\Zodiacs\Chinese\Snake;
-use Intervention\Zodiac\Zodiacs\Chinese\Tiger;
-use Intervention\Zodiac\Zodiacs\Western\Aquarius;
-use Intervention\Zodiac\Zodiacs\Western\Aries;
-use Intervention\Zodiac\Zodiacs\Western\Cancer;
-use Intervention\Zodiac\Zodiacs\Western\Capricorn;
-use Intervention\Zodiac\Zodiacs\Western\Gemini;
-use Intervention\Zodiac\Zodiacs\Western\Leo;
-use Intervention\Zodiac\Zodiacs\Western\Libra;
-use Intervention\Zodiac\Zodiacs\Western\Pisces;
-use Intervention\Zodiac\Zodiacs\Western\Sagittarius;
-use Intervention\Zodiac\Zodiacs\Western\Scorpio;
-use Intervention\Zodiac\Zodiacs\Western\Taurus;
-use Intervention\Zodiac\Zodiacs\Western\Virgo;
+use Intervention\Zodiac\Interfaces\SignInterface;
+use Intervention\Zodiac\Signs\Chinese\Dog;
+use Intervention\Zodiac\Signs\Chinese\Dragon;
+use Intervention\Zodiac\Signs\Chinese\Goat;
+use Intervention\Zodiac\Signs\Chinese\Horse;
+use Intervention\Zodiac\Signs\Chinese\Monkey;
+use Intervention\Zodiac\Signs\Chinese\Ox;
+use Intervention\Zodiac\Signs\Chinese\Pig;
+use Intervention\Zodiac\Signs\Chinese\Rabbit;
+use Intervention\Zodiac\Signs\Chinese\Rat;
+use Intervention\Zodiac\Signs\Chinese\Rooster;
+use Intervention\Zodiac\Signs\Chinese\Snake;
+use Intervention\Zodiac\Signs\Chinese\Tiger;
+use Intervention\Zodiac\Signs\Western\Aquarius;
+use Intervention\Zodiac\Signs\Western\Aries;
+use Intervention\Zodiac\Signs\Western\Cancer;
+use Intervention\Zodiac\Signs\Western\Capricorn;
+use Intervention\Zodiac\Signs\Western\Gemini;
+use Intervention\Zodiac\Signs\Western\Leo;
+use Intervention\Zodiac\Signs\Western\Libra;
+use Intervention\Zodiac\Signs\Western\Pisces;
+use Intervention\Zodiac\Signs\Western\Sagittarius;
+use Intervention\Zodiac\Signs\Western\Scorpio;
+use Intervention\Zodiac\Signs\Western\Taurus;
+use Intervention\Zodiac\Signs\Western\Virgo;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -86,7 +86,7 @@ class CalendarTest extends TestCase
     }
 
     /**
-     * @param array<ZodiacInterface> $range
+     * @param array<SignInterface> $range
      */
     #[DataProvider('westernRangeDataProvider')]
     #[DataProvider('chineseRangeDataProvider')]
@@ -98,7 +98,7 @@ class CalendarTest extends TestCase
     public static function westernRangeDataProvider(): Generator
     {
         $instances = array_map(
-            fn(string $classname): ZodiacInterface => new $classname(),
+            fn(string $classname): SignInterface => new $classname(),
             (Calendar::WESTERN)->signClassnames(),
         );
 

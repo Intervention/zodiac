@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Intervention\Zodiac;
+namespace Intervention\Zodiac\Signs\Chinese;
 
 use Carbon\Carbon;
 use Intervention\Zodiac\Exceptions\RuntimeException;
+use Intervention\Zodiac\Signs\Western\Sign as WesternSign;
 
-abstract class ChineseZodiac extends Zodiac
+abstract class Sign extends WesternSign
 {
     final public function __construct(?Carbon $from = null, ?Carbon $to = null)
     {

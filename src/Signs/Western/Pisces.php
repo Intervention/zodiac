@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Intervention\Zodiac\Zodiacs\Western;
+namespace Intervention\Zodiac\Signs\Western;
 
-use Intervention\Zodiac\Zodiac;
-
-class Pisces extends Zodiac
+class Pisces extends Sign
 {
     protected string $name = 'Pisces';
     protected string $html = '&#9811;';

@@ -7,7 +7,7 @@ namespace Intervention\Zodiac;
 use Carbon\Carbon;
 use DateTimeInterface;
 use Intervention\Zodiac\Exceptions\NotReadableException;
-use Intervention\Zodiac\Interfaces\ZodiacInterface;
+use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
 use Intervention\Zodiac\Interfaces\TranslatableInterface;
 use Stringable;
@@ -22,7 +22,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      *
      * @see CalculatorInterface::fromString()
      */
-    public static function fromString(string|Stringable $date, Calendar $calendar = Calendar::WESTERN): ZodiacInterface
+    public static function fromString(string|Stringable $date, Calendar $calendar = Calendar::WESTERN): SignInterface
     {
         // normalize types
         $date = $date instanceof Stringable ? $date->__toString() : $date;
@@ -46,7 +46,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      *
      * @see CalculatorInterface::fromDate()
      */
-    public static function fromDate(DateTimeInterface $date, Calendar $calendar = Calendar::WESTERN): ZodiacInterface
+    public static function fromDate(DateTimeInterface $date, Calendar $calendar = Calendar::WESTERN): SignInterface
     {
         return self::fromComparableDate(
             date: new ZodiacComparableDate($date),
@@ -59,7 +59,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      *
      * @see CalculatorInterface::fromUnix()
      */
-    public static function fromUnix(string|int $date, Calendar $calendar = Calendar::WESTERN): ZodiacInterface
+    public static function fromUnix(string|int $date, Calendar $calendar = Calendar::WESTERN): SignInterface
     {
         return self::fromComparableDate(
             date: new ZodiacComparableDate(Carbon::createFromTimestamp($date)),
@@ -72,7 +72,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      *
      * @see CalculatorInterface::compare()
      */
-    public static function compare(ZodiacInterface $zodiac, ZodiacInterface $with): float
+    public static function compare(SignInterface $zodiac, SignInterface $with): float
     {
         return $zodiac->compatibility($with);
     }
@@ -80,7 +80,7 @@ class Calculator implements CalculatorInterface, TranslatableInterface
     /**
      * Calcuate zodiac from given comparable date
      */
-    private static function fromComparableDate(ZodiacComparableDate $date, Calendar $calendar): ZodiacInterface
+    private static function fromComparableDate(ZodiacComparableDate $date, Calendar $calendar): SignInterface
     {
         foreach ($calendar->range($date->year()) as $zodiac) {
             if (

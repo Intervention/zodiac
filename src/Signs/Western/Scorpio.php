@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Intervention\Zodiac\Zodiacs\Western;
+namespace Intervention\Zodiac\Signs\Western;
 
-use Intervention\Zodiac\Zodiac;
-
-class Scorpio extends Zodiac
+class Scorpio extends Sign
 {
     protected string $name = 'Scorpio';
     protected string $html = '&#9807;';

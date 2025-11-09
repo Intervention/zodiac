@@ -8,8 +8,8 @@ use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
 use DateTimeInterface;
 use Intervention\Zodiac\Exceptions\RuntimeException;
-use Intervention\Zodiac\Interfaces\ZodiacInterface;
-use Intervention\Zodiac\Zodiacs\Western\Capricorn;
+use Intervention\Zodiac\Interfaces\SignInterface;
+use Intervention\Zodiac\Signs\Western\Capricorn;
 use Stringable;
 
 class ZodiacComparableDate implements Stringable
@@ -42,7 +42,7 @@ class ZodiacComparableDate implements Stringable
      * @throws InvalidFormatException
      * @throws RuntimeException
      */
-    public function isZodiac(ZodiacInterface $zodiac): bool
+    public function isZodiac(SignInterface $zodiac): bool
     {
         // The zodiac sign Capricorn spans over the turn of
         // the year and requires special treatment.

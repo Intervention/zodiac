@@ -16,5 +16,5 @@ interface TranslatableInterface
     /**
      * Set translator on current object
      */
-    public function setTranslator(?Translator $translator): CalculatorInterface|ZodiacInterface;
+    public function setTranslator(?Translator $translator): CalculatorInterface|SignInterface;
 }

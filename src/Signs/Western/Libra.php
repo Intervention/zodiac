@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Intervention\Zodiac\Zodiacs\Western;
+namespace Intervention\Zodiac\Signs\Western;
 
-use Intervention\Zodiac\Zodiac;
-
-class Libra extends Zodiac
+class Libra extends Sign
 {
     protected string $name = 'Libra';
     protected string $html = '&#9806;';

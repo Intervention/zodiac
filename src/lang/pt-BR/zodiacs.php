@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 return [
-    \Intervention\Zodiac\Zodiacs\Western\Aries::class => 'Áries',
-    \Intervention\Zodiac\Zodiacs\Western\Taurus::class => 'Touro',
-    \Intervention\Zodiac\Zodiacs\Western\Gemini::class => 'Gêmeos',
-    \Intervention\Zodiac\Zodiacs\Western\Cancer::class => 'Câncer',
-    \Intervention\Zodiac\Zodiacs\Western\Leo::class => 'Leão',
-    \Intervention\Zodiac\Zodiacs\Western\Virgo::class => 'Virgem',
-    \Intervention\Zodiac\Zodiacs\Western\Libra::class => 'Libra',
-    \Intervention\Zodiac\Zodiacs\Western\Scorpio::class => 'Escorpião',
-    \Intervention\Zodiac\Zodiacs\Western\Sagittarius::class => 'Sagitário',
-    \Intervention\Zodiac\Zodiacs\Western\Capricorn::class => 'Capricórnio',
-    \Intervention\Zodiac\Zodiacs\Western\Aquarius::class => 'Aquário',
-    \Intervention\Zodiac\Zodiacs\Western\Pisces::class => 'Peixes'
+    \Intervention\Zodiac\Signs\Western\Aries::class => 'Áries',
+    \Intervention\Zodiac\Signs\Western\Taurus::class => 'Touro',
+    \Intervention\Zodiac\Signs\Western\Gemini::class => 'Gêmeos',
+    \Intervention\Zodiac\Signs\Western\Cancer::class => 'Câncer',
+    \Intervention\Zodiac\Signs\Western\Leo::class => 'Leão',
+    \Intervention\Zodiac\Signs\Western\Virgo::class => 'Virgem',
+    \Intervention\Zodiac\Signs\Western\Libra::class => 'Libra',
+    \Intervention\Zodiac\Signs\Western\Scorpio::class => 'Escorpião',
+    \Intervention\Zodiac\Signs\Western\Sagittarius::class => 'Sagitário',
+    \Intervention\Zodiac\Signs\Western\Capricorn::class => 'Capricórnio',
+    \Intervention\Zodiac\Signs\Western\Aquarius::class => 'Aquário',
+    \Intervention\Zodiac\Signs\Western\Pisces::class => 'Peixes'
 ];

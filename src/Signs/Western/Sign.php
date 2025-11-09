@@ -2,18 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Intervention\Zodiac;
+namespace Intervention\Zodiac\Signs\Western;
 
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
+use Intervention\Zodiac\Compatibility;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\TranslatableInterface;
-use Intervention\Zodiac\Interfaces\ZodiacInterface;
+use Intervention\Zodiac\Interfaces\SignInterface;
+use Intervention\Zodiac\Traits\CanTranslate;
 use Stringable;
 
-abstract class Zodiac implements ZodiacInterface, TranslatableInterface, Stringable
+abstract class Sign implements SignInterface, TranslatableInterface, Stringable
 {
-    use Traits\CanTranslate;
+    use CanTranslate;
 
     protected string $name;
     protected string $html;
@@ -29,7 +31,7 @@ abstract class Zodiac implements ZodiacInterface, TranslatableInterface, Stringa
     /**
      * {@inheritdoc}
      *
-     * @see ZodiacInterface::start()
+     * @see SignInterface::start()
      *
      * @throcs InvalidFormatException
      * @throcs RuntimeException
@@ -52,7 +54,7 @@ abstract class Zodiac implements ZodiacInterface, TranslatableInterface, Stringa
     /**
      * {@inheritdoc}
      *
-     * @see ZodiacInterface::end()
+     * @see SignInterface::end()
      *
      * @throws InvalidFormatException
      * @throws RuntimeException
@@ -78,7 +80,7 @@ abstract class Zodiac implements ZodiacInterface, TranslatableInterface, Stringa
     /**
      * {@inheritdoc}
      *
-     * @see ZodiacInterface::name()
+     * @see SignInterface::name()
      */
     public function name(): string
     {
@@ -88,7 +90,7 @@ abstract class Zodiac implements ZodiacInterface, TranslatableInterface, Stringa
     /**
      * {@inheritdoc}
      *
-     * @see ZodiacInterface::html()
+     * @see SignInterface::html()
      */
     public function html(): string
     {
@@ -98,9 +100,9 @@ abstract class Zodiac implements ZodiacInterface, TranslatableInterface, Stringa
     /**
      * {@inheritdoc}
      *
-     * @see ZodiacInterface::compatibility()
+     * @see SignInterface::compatibility()
      */
-    public function compatibility(ZodiacInterface $zodiac): float
+    public function compatibility(SignInterface $zodiac): float
     {
         return call_user_func(new Compatibility(), $this, $zodiac);
     }
@@ -108,9 +110,9 @@ abstract class Zodiac implements ZodiacInterface, TranslatableInterface, Stringa
     /**
      * {@inheritdoc}
      *
-     * @see ZodiacInterface::localized()
+     * @see SignInterface::localized()
      */
-    public function localized(string $locale = 'en'): ZodiacInterface
+    public function localized(string $locale = 'en'): SignInterface
     {
         $key = 'zodiacs.' . $this::class;
 
@@ -130,7 +132,7 @@ abstract class Zodiac implements ZodiacInterface, TranslatableInterface, Stringa
     /**
      * {@inheritdoc}
      *
-     * @see ZodiacInterface::__toString()
+     * @see SignInterface::__toString()
      */
     public function __toString(): string
     {

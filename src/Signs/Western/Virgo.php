@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Intervention\Zodiac\Zodiacs\Western;
+namespace Intervention\Zodiac\Signs\Western;
 
-use Intervention\Zodiac\Zodiac;
-
-class Virgo extends Zodiac
+class Virgo extends Sign
 {
     protected string $name = 'Virgo';
     protected string $html = '&#9805;';

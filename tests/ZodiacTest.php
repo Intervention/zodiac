@@ -5,20 +5,20 @@ declare(strict_types=1);
 namespace Intervention\Zodiac\Tests;
 
 use Generator;
-use Intervention\Zodiac\Interfaces\ZodiacInterface;
-use Intervention\Zodiac\Zodiac;
-use Intervention\Zodiac\Zodiacs\Western\Aquarius;
-use Intervention\Zodiac\Zodiacs\Western\Aries;
-use Intervention\Zodiac\Zodiacs\Western\Cancer;
-use Intervention\Zodiac\Zodiacs\Western\Capricorn;
-use Intervention\Zodiac\Zodiacs\Western\Gemini;
-use Intervention\Zodiac\Zodiacs\Western\Leo;
-use Intervention\Zodiac\Zodiacs\Western\Libra;
-use Intervention\Zodiac\Zodiacs\Western\Pisces;
-use Intervention\Zodiac\Zodiacs\Western\Sagittarius;
-use Intervention\Zodiac\Zodiacs\Western\Scorpio;
-use Intervention\Zodiac\Zodiacs\Western\Taurus;
-use Intervention\Zodiac\Zodiacs\Western\Virgo;
+use Intervention\Zodiac\Interfaces\SignInterface;
+use Intervention\Zodiac\Signs\Western\Aquarius;
+use Intervention\Zodiac\Signs\Western\Aries;
+use Intervention\Zodiac\Signs\Western\Cancer;
+use Intervention\Zodiac\Signs\Western\Capricorn;
+use Intervention\Zodiac\Signs\Western\Gemini;
+use Intervention\Zodiac\Signs\Western\Leo;
+use Intervention\Zodiac\Signs\Western\Libra;
+use Intervention\Zodiac\Signs\Western\Pisces;
+use Intervention\Zodiac\Signs\Western\Sagittarius;
+use Intervention\Zodiac\Signs\Western\Scorpio;
+use Intervention\Zodiac\Signs\Western\Sign;
+use Intervention\Zodiac\Signs\Western\Taurus;
+use Intervention\Zodiac\Signs\Western\Virgo;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -49,7 +49,7 @@ final class ZodiacTest extends TestCase
     }
 
     #[DataProvider('localizedDataProvider')]
-    public function testLocalized(ZodiacInterface $zodiac, ?string $locale, string $localizedName): void
+    public function testLocalized(SignInterface $zodiac, ?string $locale, string $localizedName): void
     {
         $this->assertEquals(
             $localizedName,
@@ -113,7 +113,7 @@ final class ZodiacTest extends TestCase
         int $endDay = 2,
         string $name = 'test',
         string $html = 'test',
-    ): Zodiac {
+    ): Sign {
         return new class (
             $startDay,
             $startMonth,
@@ -121,7 +121,7 @@ final class ZodiacTest extends TestCase
             $endMonth,
             $name,
             $html,
-        ) extends Zodiac {
+        ) extends Sign {
             public function __construct(
                 int $startDay,
                 int $startMonth,

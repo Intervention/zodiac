@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac;
 
-use Intervention\Zodiac\Interfaces\ZodiacInterface;
-use Intervention\Zodiac\Zodiacs\Western\Aquarius;
-use Intervention\Zodiac\Zodiacs\Western\Aries;
-use Intervention\Zodiac\Zodiacs\Western\Cancer;
-use Intervention\Zodiac\Zodiacs\Western\Capricorn;
-use Intervention\Zodiac\Zodiacs\Western\Gemini;
-use Intervention\Zodiac\Zodiacs\Western\Leo;
-use Intervention\Zodiac\Zodiacs\Western\Libra;
-use Intervention\Zodiac\Zodiacs\Western\Pisces;
-use Intervention\Zodiac\Zodiacs\Western\Sagittarius;
-use Intervention\Zodiac\Zodiacs\Western\Scorpio;
-use Intervention\Zodiac\Zodiacs\Western\Taurus;
-use Intervention\Zodiac\Zodiacs\Western\Virgo;
+use Intervention\Zodiac\Interfaces\SignInterface;
+use Intervention\Zodiac\Signs\Western\Aquarius;
+use Intervention\Zodiac\Signs\Western\Aries;
+use Intervention\Zodiac\Signs\Western\Cancer;
+use Intervention\Zodiac\Signs\Western\Capricorn;
+use Intervention\Zodiac\Signs\Western\Gemini;
+use Intervention\Zodiac\Signs\Western\Leo;
+use Intervention\Zodiac\Signs\Western\Libra;
+use Intervention\Zodiac\Signs\Western\Pisces;
+use Intervention\Zodiac\Signs\Western\Sagittarius;
+use Intervention\Zodiac\Signs\Western\Scorpio;
+use Intervention\Zodiac\Signs\Western\Taurus;
+use Intervention\Zodiac\Signs\Western\Virgo;
 
 class Compatibility
 {
@@ -197,7 +197,7 @@ class Compatibility
     /**
      * Calculate zodiac sign compatibility between two signs
      */
-    public function __invoke(ZodiacInterface $a, ZodiacInterface $b): float
+    public function __invoke(SignInterface $a, SignInterface $b): float
     {
         return $this->factors[$a::class][$b::class];
     }

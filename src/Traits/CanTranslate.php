@@ -8,7 +8,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
-use Intervention\Zodiac\Interfaces\ZodiacInterface;
+use Intervention\Zodiac\Interfaces\SignInterface;
 use InvalidArgumentException;
 
 trait CanTranslate
@@ -23,7 +23,7 @@ trait CanTranslate
      *
      * @see TranslatableInterface::setTranslator()
      */
-    public function setTranslator(?Translator $translator): CalculatorInterface|ZodiacInterface
+    public function setTranslator(?Translator $translator): CalculatorInterface|SignInterface
     {
         static::$translator = $translator;
 

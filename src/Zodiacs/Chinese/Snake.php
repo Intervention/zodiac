@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Zodiacs\Chinese;
 
-use Intervention\Zodiac\Zodiac;
+use Intervention\Zodiac\ChineseZodiac;
 
-class Snake extends Zodiac
+class Snake extends ChineseZodiac
 {
     protected string $name = 'Snake';
     protected string $html = '🐍';

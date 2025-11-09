@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac;
 
+use Carbon\Carbon;
+use Intervention\Zodiac\Interfaces\ZodiacInterface;
+
 enum Calendar
 {
     case WESTERN;
@@ -14,7 +17,7 @@ enum Calendar
      *
      * @return array<string>
      */
-    public function zodiacClassnames(): array
+    public function signClassnames(): array
     {
         return match ($this) {
             self::WESTERN => [
@@ -49,27 +52,29 @@ enum Calendar
     }
 
     /**
-     * @return array<string>
+     * @return array<ZodiacInterface>
      */
     public function range(int $year): array
     {
-        if ($this === self::WESTERN) {
-            return $this->zodiacClassnames();
+        if ($this === self::CHINESE) {
+            $lastYear = ChineseNewYearCalculator::newYear($year - 1);
+            $newYear = ChineseNewYearCalculator::newYear($year);
+
+            // @phpstan-ignore return.type
+            return [
+                $lastYear['classname']::create(
+                    from: Carbon::create(...$lastYear['day']),
+                    to: Carbon::create(...$newYear['day']),
+                ),
+                $newYear['classname']::create(
+                    from: Carbon::create(...$newYear['day']),
+                ),
+            ];
         }
 
-        // $table = [
-        //     2000 => [
-        //         Dragon::class => [1, 1],
-        //         Snake::class => [1, 29],
-        //     ],
-        // ];
-
-        // $range = [];
-
-        // foreach (range(1, 12) as $month) {
-        //     $range[$month] = $month;
-        // }
-
-        return [];
+        return array_map(
+            fn(string $classname): ZodiacInterface => new $classname(), // @phpstan-ignore return.type
+            $this->signClassnames()
+        );
     }
 }

@@ -27,33 +27,61 @@ Read the full [documentation](https://zodiac.intervention.io) for this library.
 ## Code Examples
 
 ```php
-use Intervention\Zodiac\Zodiac;
+use Intervention\Zodiac\Calculator;
 use DateTime;
 use Carbon\Carbon;
 
 // get zodiac object from a date
-$zodiac = Zodiac::fromString('1980-09-15');
+$zodiac = Calculator::fromString('1980-09-15');
 
 // method takes mixed formats
-$zodiac = Zodiac::fromString('first day of June 2008');
+$zodiac = Calculator::fromString('first day of June 2008');
 
 // create from DateTime object
-$zodiac = Zodiac::fromDate(new DateTime('1977-03-15'));
+$zodiac = Calculator::fromDate(new DateTime('1977-03-15'));
 
 // since Carbon dates extend from DateTime they can also be read
-$zodiac = Zodiac::fromDate(Carbon::yesterday());
+$zodiac = Calculator::fromDate(Carbon::yesterday());
 
 // get zodiac from unix timestamp
-$zodiac = Zodiac::fromUnix(228268800);
+$zodiac = Calculator::fromUnix(228268800);
 ```
 
+### Chinese Zodiac
+
+It is also possible to calculate the traditional chinese zodiac classification in the same way.
+
 ```php
-use Intervention\Zodiac\Zodiac;
+use Intervention\Zodiac\Calculator;
+use Intervention\Zodiac\Calendar;
+use DateTime;
+use Carbon\Carbon;
+
+// get zodiac object from a date
+$zodiac = Calculator::fromString('1980-09-15', Calendar::CHINESE);
+
+// method takes mixed formats
+$zodiac = Calculator::fromString('first day of June 2008', Calendar::CHINESE);
+
+// create from DateTime object
+$zodiac = Calculator::fromDate(new DateTime('1977-03-15'), Calendar::CHINESE);
+
+// since Carbon dates extend from DateTime they can also be read
+$zodiac = Calculator::fromDate(Carbon::yesterday(), Calendar::CHINESE);
+
+// get zodiac from unix timestamp
+$zodiac = Calculator::fromUnix(228268800, Calendar::CHINESE);
+```
+
+### Zodiac Sign Interface
+
+```php
+use Intervention\Zodiac\Calculator;
 use DateTime;
 use Carbon\Carbon;
 
 // calculate zodiac sing
-$zodiac = Zodiac::fromString('1977-06-17');
+$zodiac = Calculator::fromString('1977-06-17'); // instance of Intervention\Zodiac\Interfaces\SignInterface
 
 $name = $zodiac->name(); // 'Gemini'
 $name = $zodiac->localized('fr')->name(); // Gémeaux

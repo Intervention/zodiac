@@ -24,8 +24,8 @@ class Calculator implements CalculatorInterface, TranslatableInterface
      */
     public static function fromString(string|Stringable $date, Calendar $calendar = Calendar::WESTERN): SignInterface
     {
-        // normalize types
-        $date = $date instanceof Stringable ? $date->__toString() : $date;
+        // normalize date
+        $date = (string) $date;
 
         if ($date === '') { // empty string is allowed in Carbon::parse() but not here
             throw new NotReadableException('Unable to create zodiac from empty string.');

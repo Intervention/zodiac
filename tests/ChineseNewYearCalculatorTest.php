@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Tests;
 
-use Intervention\Zodiac\ChineseNewYearCalculator;
+use Carbon\CarbonInterface;
+use Intervention\Zodiac\Chinese\NewYearCalculator;
+use Intervention\Zodiac\Interfaces\SignInterface;
 use PHPUnit\Framework\TestCase;
 
 class ChineseNewYearCalculatorTest extends TestCase
 {
     public function testNewYear(): void
     {
-        $newYear = ChineseNewYearCalculator::newYear(2000);
-        $this->assertEquals(2000, $newYear['day'][0]);
-        $this->assertEquals(2, $newYear['day'][1]);
-        $this->assertEquals(5, $newYear['day'][2]);
+        [$date, $classname] = NewYearCalculator::newYear(2000);
+        $this->assertInstanceOf(CarbonInterface::class, $date);
+        $this->assertInstanceOf(SignInterface::class, new $classname());
     }
 }

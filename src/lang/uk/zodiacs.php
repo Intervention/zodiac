@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 return [
-    \Intervention\Zodiac\Signs\Western\Aries::class => 'Овен',
-    \Intervention\Zodiac\Signs\Western\Taurus::class => 'Телець',
-    \Intervention\Zodiac\Signs\Western\Gemini::class => 'Близнюки',
-    \Intervention\Zodiac\Signs\Western\Cancer::class => 'Рак',
-    \Intervention\Zodiac\Signs\Western\Leo::class => 'Лев',
-    \Intervention\Zodiac\Signs\Western\Virgo::class => 'Діва',
-    \Intervention\Zodiac\Signs\Western\Libra::class => 'Терези',
-    \Intervention\Zodiac\Signs\Western\Scorpio::class => 'Скорпіон',
-    \Intervention\Zodiac\Signs\Western\Sagittarius::class => 'Стрілець',
-    \Intervention\Zodiac\Signs\Western\Capricorn::class => 'Козоріг',
-    \Intervention\Zodiac\Signs\Western\Aquarius::class => 'Водолій',
-    \Intervention\Zodiac\Signs\Western\Pisces::class => 'Риби'
+    \Intervention\Zodiac\Western\Signs\Aries::class => 'Овен',
+    \Intervention\Zodiac\Western\Signs\Taurus::class => 'Телець',
+    \Intervention\Zodiac\Western\Signs\Gemini::class => 'Близнюки',
+    \Intervention\Zodiac\Western\Signs\Cancer::class => 'Рак',
+    \Intervention\Zodiac\Western\Signs\Leo::class => 'Лев',
+    \Intervention\Zodiac\Western\Signs\Virgo::class => 'Діва',
+    \Intervention\Zodiac\Western\Signs\Libra::class => 'Терези',
+    \Intervention\Zodiac\Western\Signs\Scorpio::class => 'Скорпіон',
+    \Intervention\Zodiac\Western\Signs\Sagittarius::class => 'Стрілець',
+    \Intervention\Zodiac\Western\Signs\Capricorn::class => 'Козоріг',
+    \Intervention\Zodiac\Western\Signs\Aquarius::class => 'Водолій',
+    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Риби'
 ];

@@ -6,19 +6,19 @@ namespace Intervention\Zodiac\Tests;
 
 use Generator;
 use Intervention\Zodiac\Interfaces\SignInterface;
-use Intervention\Zodiac\Signs\Western\Aquarius;
-use Intervention\Zodiac\Signs\Western\Aries;
-use Intervention\Zodiac\Signs\Western\Cancer;
-use Intervention\Zodiac\Signs\Western\Capricorn;
-use Intervention\Zodiac\Signs\Western\Gemini;
-use Intervention\Zodiac\Signs\Western\Leo;
-use Intervention\Zodiac\Signs\Western\Libra;
-use Intervention\Zodiac\Signs\Western\Pisces;
-use Intervention\Zodiac\Signs\Western\Sagittarius;
-use Intervention\Zodiac\Signs\Western\Scorpio;
-use Intervention\Zodiac\Signs\Western\Sign;
-use Intervention\Zodiac\Signs\Western\Taurus;
-use Intervention\Zodiac\Signs\Western\Virgo;
+use Intervention\Zodiac\Western\Signs\Aquarius;
+use Intervention\Zodiac\Western\Signs\Aries;
+use Intervention\Zodiac\Western\Signs\Cancer;
+use Intervention\Zodiac\Western\Signs\Capricorn;
+use Intervention\Zodiac\Western\Signs\Gemini;
+use Intervention\Zodiac\Western\Signs\Leo;
+use Intervention\Zodiac\Western\Signs\Libra;
+use Intervention\Zodiac\Western\Signs\Pisces;
+use Intervention\Zodiac\Western\Signs\Sagittarius;
+use Intervention\Zodiac\Western\Signs\Scorpio;
+use Intervention\Zodiac\Western\Signs\Sign;
+use Intervention\Zodiac\Western\Signs\Taurus;
+use Intervention\Zodiac\Western\Signs\Virgo;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -32,15 +32,6 @@ final class ZodiacTest extends TestCase
     public function testHtml(): void
     {
         $this->assertEquals('foo', $this->zodiac(html: 'foo')->html());
-    }
-
-    public function testStartEnd(): void
-    {
-        $zodiac = $this->zodiac(startMonth: 6, startDay: 17, endMonth: 6, endDay: 30);
-        $this->assertEquals(17, $zodiac->start()->day);
-        $this->assertEquals(6, $zodiac->start()->month);
-        $this->assertEquals(30, $zodiac->end()->day);
-        $this->assertEquals(6, $zodiac->end()->month);
     }
 
     public function testCompatibility(): void

@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 return [
-    \Intervention\Zodiac\Signs\Western\Aries::class => 'Ovan',
-    \Intervention\Zodiac\Signs\Western\Taurus::class => 'Bik',
-    \Intervention\Zodiac\Signs\Western\Gemini::class => 'Blizanci',
-    \Intervention\Zodiac\Signs\Western\Cancer::class => 'Rak',
-    \Intervention\Zodiac\Signs\Western\Leo::class => 'Lav',
-    \Intervention\Zodiac\Signs\Western\Virgo::class => 'Djevica',
-    \Intervention\Zodiac\Signs\Western\Libra::class => 'Vaga',
-    \Intervention\Zodiac\Signs\Western\Scorpio::class => 'Škorpion',
-    \Intervention\Zodiac\Signs\Western\Sagittarius::class => 'Strijelac',
-    \Intervention\Zodiac\Signs\Western\Capricorn::class => 'Jarac',
-    \Intervention\Zodiac\Signs\Western\Aquarius::class => 'Vodenjak',
-    \Intervention\Zodiac\Signs\Western\Pisces::class => 'Ribe'
+    \Intervention\Zodiac\Western\Signs\Aries::class => 'Ovan',
+    \Intervention\Zodiac\Western\Signs\Taurus::class => 'Bik',
+    \Intervention\Zodiac\Western\Signs\Gemini::class => 'Blizanci',
+    \Intervention\Zodiac\Western\Signs\Cancer::class => 'Rak',
+    \Intervention\Zodiac\Western\Signs\Leo::class => 'Lav',
+    \Intervention\Zodiac\Western\Signs\Virgo::class => 'Djevica',
+    \Intervention\Zodiac\Western\Signs\Libra::class => 'Vaga',
+    \Intervention\Zodiac\Western\Signs\Scorpio::class => 'Škorpion',
+    \Intervention\Zodiac\Western\Signs\Sagittarius::class => 'Strijelac',
+    \Intervention\Zodiac\Western\Signs\Capricorn::class => 'Jarac',
+    \Intervention\Zodiac\Western\Signs\Aquarius::class => 'Vodenjak',
+    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Ribe'
 ];

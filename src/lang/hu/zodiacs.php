@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 return [
-    \Intervention\Zodiac\Signs\Western\Aries::class => 'Kos',
-    \Intervention\Zodiac\Signs\Western\Taurus::class => 'Bika',
-    \Intervention\Zodiac\Signs\Western\Gemini::class => 'Ikrek',
-    \Intervention\Zodiac\Signs\Western\Cancer::class => 'Rák',
-    \Intervention\Zodiac\Signs\Western\Leo::class => 'Oroszlán',
-    \Intervention\Zodiac\Signs\Western\Virgo::class => 'Szűz',
-    \Intervention\Zodiac\Signs\Western\Libra::class => 'Mérleg',
-    \Intervention\Zodiac\Signs\Western\Scorpio::class => 'Skorpió',
-    \Intervention\Zodiac\Signs\Western\Sagittarius::class => 'Nyilas',
-    \Intervention\Zodiac\Signs\Western\Capricorn::class => 'Bak',
-    \Intervention\Zodiac\Signs\Western\Aquarius::class => 'Vízöntő',
-    \Intervention\Zodiac\Signs\Western\Pisces::class => 'Halak'
+    \Intervention\Zodiac\Western\Signs\Aries::class => 'Kos',
+    \Intervention\Zodiac\Western\Signs\Taurus::class => 'Bika',
+    \Intervention\Zodiac\Western\Signs\Gemini::class => 'Ikrek',
+    \Intervention\Zodiac\Western\Signs\Cancer::class => 'Rák',
+    \Intervention\Zodiac\Western\Signs\Leo::class => 'Oroszlán',
+    \Intervention\Zodiac\Western\Signs\Virgo::class => 'Szűz',
+    \Intervention\Zodiac\Western\Signs\Libra::class => 'Mérleg',
+    \Intervention\Zodiac\Western\Signs\Scorpio::class => 'Skorpió',
+    \Intervention\Zodiac\Western\Signs\Sagittarius::class => 'Nyilas',
+    \Intervention\Zodiac\Western\Signs\Capricorn::class => 'Bak',
+    \Intervention\Zodiac\Western\Signs\Aquarius::class => 'Vízöntő',
+    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Halak'
 ];

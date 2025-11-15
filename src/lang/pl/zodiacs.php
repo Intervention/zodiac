@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 return [
-    \Intervention\Zodiac\Signs\Western\Aries::class => 'Baran',
-    \Intervention\Zodiac\Signs\Western\Taurus::class => 'Byk',
-    \Intervention\Zodiac\Signs\Western\Gemini::class => 'Bliźnięta',
-    \Intervention\Zodiac\Signs\Western\Cancer::class => 'Rak',
-    \Intervention\Zodiac\Signs\Western\Leo::class => 'Lew',
-    \Intervention\Zodiac\Signs\Western\Virgo::class => 'Panna',
-    \Intervention\Zodiac\Signs\Western\Libra::class => 'Waga',
-    \Intervention\Zodiac\Signs\Western\Scorpio::class => 'Skorpion',
-    \Intervention\Zodiac\Signs\Western\Sagittarius::class => 'Strzelec',
-    \Intervention\Zodiac\Signs\Western\Capricorn::class => 'Koziorożec',
-    \Intervention\Zodiac\Signs\Western\Aquarius::class => 'Wodnik',
-    \Intervention\Zodiac\Signs\Western\Pisces::class => 'Ryby'
+    \Intervention\Zodiac\Western\Signs\Aries::class => 'Baran',
+    \Intervention\Zodiac\Western\Signs\Taurus::class => 'Byk',
+    \Intervention\Zodiac\Western\Signs\Gemini::class => 'Bliźnięta',
+    \Intervention\Zodiac\Western\Signs\Cancer::class => 'Rak',
+    \Intervention\Zodiac\Western\Signs\Leo::class => 'Lew',
+    \Intervention\Zodiac\Western\Signs\Virgo::class => 'Panna',
+    \Intervention\Zodiac\Western\Signs\Libra::class => 'Waga',
+    \Intervention\Zodiac\Western\Signs\Scorpio::class => 'Skorpion',
+    \Intervention\Zodiac\Western\Signs\Sagittarius::class => 'Strzelec',
+    \Intervention\Zodiac\Western\Signs\Capricorn::class => 'Koziorożec',
+    \Intervention\Zodiac\Western\Signs\Aquarius::class => 'Wodnik',
+    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Ryby'
 ];

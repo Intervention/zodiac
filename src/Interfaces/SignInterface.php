@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Interfaces;
 
-use Carbon\Carbon;
-
 interface SignInterface
 {
     /**
@@ -19,14 +17,9 @@ interface SignInterface
     public function html(): string;
 
     /**
-     * Return the start date of the current zodiac sign
+     * Return the time period in which the sign is located in the given year.
      */
-    public function start(): Carbon;
-
-    /**
-     * Return the end date of the current zodiac sign
-     */
-    public function end(): Carbon;
+    public function period(int $year): PeriodInterface;
 
     /**
      * Calculate zodiac sign compatibility with any other sign in love & life

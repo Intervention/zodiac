@@ -7,6 +7,7 @@ namespace Intervention\Zodiac;
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use DateTimeInterface;
+use Intervention\Zodiac\Exceptions\DateException;
 use Intervention\Zodiac\Exceptions\NotReadableException;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
@@ -15,12 +16,32 @@ use Throwable;
 
 class Calculator implements CalculatorInterface
 {
+    protected static Calendar $calendar = Calendar::WESTERN;
+
+    /**
+     * Create new calculator instance with calender to calculate with
+     */
+    public function __construct(Calendar $calendar = Calendar::WESTERN)
+    {
+        static::$calendar = $calendar;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see CalculatorInterface::withCalendar()
+     */
+    public static function withCalendar(Calendar $calendar): self
+    {
+        return new self($calendar);
+    }
+
     /**
      * {@inheritdoc}
      *
      * @see CalculatorInterface::fromString()
      */
-    public static function fromString(string|Stringable $date, Calendar $calendar = Calendar::WESTERN): SignInterface
+    public static function fromString(string|Stringable $date, ?Calendar $calendar = null): SignInterface
     {
         // normalize date
         $date = (string) $date;
@@ -32,7 +53,7 @@ class Calculator implements CalculatorInterface
         try {
             return self::fromCarbon(
                 date: Carbon::parse($date),
-                calendar: $calendar
+                calendar: $calendar ?: self::$calendar
             );
         } catch (Throwable) {
             throw new NotReadableException('Unable to create zodiac from string (' . $date . ').');
@@ -44,11 +65,11 @@ class Calculator implements CalculatorInterface
      *
      * @see CalculatorInterface::fromDate()
      */
-    public static function fromDate(DateTimeInterface $date, Calendar $calendar = Calendar::WESTERN): SignInterface
+    public static function fromDate(DateTimeInterface $date, ?Calendar $calendar = null): SignInterface
     {
         return self::fromCarbon(
             date: new Carbon($date),
-            calendar: $calendar
+            calendar: $calendar ?: self::$calendar
         );
     }
 
@@ -57,12 +78,12 @@ class Calculator implements CalculatorInterface
      *
      * @see CalculatorInterface::fromUnix()
      */
-    public static function fromUnix(string|int $date, Calendar $calendar = Calendar::WESTERN): SignInterface
+    public static function fromUnix(string|int $date, ?Calendar $calendar = null): SignInterface
     {
         try {
             return self::fromCarbon(
                 date: Carbon::createFromTimestamp($date),
-                calendar: $calendar
+                calendar: $calendar ?: self::$calendar
             );
         } catch (Throwable) {
             throw new NotReadableException('Unable to create zodiac from unix timestamp (' . $date . ').');
@@ -74,22 +95,25 @@ class Calculator implements CalculatorInterface
      *
      * @see CalculatorInterface::fromCarbon()
      */
-    public static function fromCarbon(CarbonInterface $date, Calendar $calendar = Calendar::WESTERN): SignInterface
+    public static function fromCarbon(CarbonInterface $date, ?Calendar $calendar = null): SignInterface
     {
-        $signs = array_filter($calendar->signClassnames(), function (string $classname) use ($date): bool {
-            try {
-                return (new $classname())->period($date->year)->contains($date);
-            } catch (Throwable) {
-                return false;
-            }
-        });
+        foreach (($calendar ?: self::$calendar)->signClassnames() as $classname) {
+            $sign = new $classname();
 
-        // only one sing may remain
-        if (count($signs) !== 1) {
-            throw new NotReadableException('Unable to calculate zodiac');
+            if (!($sign instanceof SignInterface)) {
+                continue;
+            }
+
+            try {
+                if ($sign->period($date->year)->contains($date)) {
+                    return $sign;
+                }
+            } catch (DateException) {
+                // next sign
+            }
         }
 
-        return new $signs[array_key_first($signs)]();
+        throw new NotReadableException('Unable to calculate zodiac from CarbonInterface (' . (string) $date . ')');
     }
 
     /**

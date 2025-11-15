@@ -20,20 +20,24 @@ abstract class Sign extends AbstractSign
      */
     public function period(int $year): PeriodInterface
     {
-        [$start, $startClassname] = NewYearCalculator::newYear($year);
+        // get chinese new year for given year
+        $start = NewYearCalculator::newYear($year);
 
-        if ($startClassname !== $this::class) {
-            [$start, $startClassname] = NewYearCalculator::newYear($year - 1);
+        // if zodiac sign does not match it might be part of the last year
+        if ($start->sign !== $this::class) {
+            $start = NewYearCalculator::newYear($year - 1);
         }
 
-        if ($startClassname !== $this::class) {
+        // if "part of last year zodiac sign" does not match either it is not the year of the sign
+        if ($start->sign !== $this::class) {
             throw new DateException('The zodiac sign ' . $this->name() . ' does not appear in the year ' . $year);
         }
 
-        [$end] = NewYearCalculator::newYear($start->year + 1);
+        // calculate the last day of the chinese zodiac sign which is the new years day next year
+        $end = NewYearCalculator::newYear($start->date->year + 1);
 
         return new Period([
-            CarbonPeriod::since($start)->until($end)->excludeEndDate(),
+            CarbonPeriod::since($start->date)->until($end->date)->excludeEndDate(),
         ]);
     }
 }

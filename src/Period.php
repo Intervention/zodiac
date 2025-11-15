@@ -14,7 +14,7 @@ use Traversable;
 class Period implements PeriodInterface, Stringable
 {
     /**
-     * @param array<Carbon\CarbonPeriod> $periods
+     * @param array<int, \Carbon\CarbonPeriod> $periods
      */
     public function __construct(protected array $periods = [])
     {

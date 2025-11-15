@@ -7,6 +7,9 @@ namespace Intervention\Zodiac\Interfaces;
 use Carbon\CarbonInterface;
 use IteratorAggregate;
 
+/**
+ * @extends IteratorAggregate<\Carbon\CarbonPeriod>
+ */
 interface PeriodInterface extends IteratorAggregate
 {
     /**

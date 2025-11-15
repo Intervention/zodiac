@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Chinese;
 
-use Carbon\Carbon;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Chinese\Signs\Dog;
 use Intervention\Zodiac\Chinese\Signs\Dragon;
@@ -18,6 +17,7 @@ use Intervention\Zodiac\Chinese\Signs\Rat;
 use Intervention\Zodiac\Chinese\Signs\Rooster;
 use Intervention\Zodiac\Chinese\Signs\Snake;
 use Intervention\Zodiac\Chinese\Signs\Tiger;
+use TypeError;
 
 class NewYearCalculator
 {
@@ -25,7 +25,11 @@ class NewYearCalculator
      * @var array<int, array{int, int, string}> $table
      */
     private static array $table = [
-        1999 => [2, 16, Rabbit::class],
+        1901 => [2, 4, Ox::class],
+        1902 => [2, 5, Tiger::class],
+        1903 => [2, 5, Rabbit::class],
+        1904 => [2, 5, Dragon::class],
+
         2000 => [2, 5, Dragon::class],
         2001 => [1, 24, Snake::class],
         2002 => [2, 12, Horse::class],
@@ -129,20 +133,13 @@ class NewYearCalculator
         2100 => [2, 9, Monkey::class],
     ];
 
-    /**
-     * @return array{Carbon\CarbonInterface, string}
-     */
-    public static function newYear(int $year): array
+    public static function newYear(int $year): NewYear
     {
-        [$month, $day, $classname] = self::$table[$year] ?? [null, null, null];
-
-        if ($classname === null) {
-            throw new RuntimeException('Could not calculate new year data for ' . $year);
+        try {
+            // @phpstan-ignore-next-line
+            return new NewYear($year, ...self::$table[$year] ?? [null, null, null]);
+        } catch (TypeError) {
+            throw new RuntimeException('Missing new year data for ' . $year);
         }
-
-        return [
-            Carbon::create($year, $month, $day),
-            $classname,
-        ];
     }
 }

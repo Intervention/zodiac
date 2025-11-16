@@ -75,7 +75,7 @@ class Calculator implements CalculatorInterface
         );
     }
 
-    /**
+    /*
      * {@inheritdoc}
      *
      * @see CalculatorInterface::fromUnix()
@@ -99,6 +99,7 @@ class Calculator implements CalculatorInterface
      */
     public static function fromCarbon(CarbonInterface $date, ?Calendar $calendar = null): SignInterface
     {
+        // try each zodiac sign of the given (or default) calendar
         foreach (($calendar ?: self::$calendar)->signClassnames() as $classname) {
             $sign = new $classname();
 
@@ -107,11 +108,12 @@ class Calculator implements CalculatorInterface
             }
 
             try {
+                // check if the period of the zodiac sign matches the given date
                 if ($sign->period($date->year)->contains($date)) {
                     return $sign;
                 }
             } catch (DateException) {
-                // next sign
+                // try next sign
             }
         }
 

@@ -39,5 +39,5 @@ interface CalculatorInterface
     /**
      * Calculate zodiac sign compatibility between given objects
      */
-    public static function compare(SignInterface $zodiac, SignInterface $with): float;
+    public static function compare(SignInterface $sign, SignInterface $with): float;
 }

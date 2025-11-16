@@ -5,12 +5,11 @@
 [![Monthly Downloads](https://img.shields.io/packagist/dm/intervention/zodiac.svg)](https://packagist.org/packages/intervention/zodiac/stats)
 [![Support me on Ko-fi](https://raw.githubusercontent.com/Intervention/zodiac/main/.github/images/support.svg)](https://ko-fi.com/interventionphp)
 
-Intervention Zodiac is a calculator for zodiac signs to resolve the respective
-zodiac sign from various data types.
+Intervention Zodiac is a astrological calculator that resolves Western and Chinese zodiac signs from various data types.
 
 ## Installation
 
-Use [Composer](https://getcomposer.org) for the installation by running the following command.
+The installation works with [Composer](https://getcomposer.org) by running the following command.
 
     $ composer require intervention/zodiac
 
@@ -50,7 +49,9 @@ $zodiac = Calculator::fromUnix(228268800);
 
 ### Chinese Zodiac
 
-It is also possible to calculate traditional chinese zodiac signs from gregorian calendar dates.
+It is also possible to calculate traditional chinese zodiac signs from
+gregorian calendar dates. Please note that the calculation is currently only
+possible for dates between 1900 and 2100.
 
 ```php
 use Intervention\Zodiac\Calculator;

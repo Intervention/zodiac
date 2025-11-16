@@ -16,6 +16,8 @@ use Throwable;
 
 class Calculator implements CalculatorInterface
 {
+    use Traits\CanTranslate;
+
     protected static Calendar $calendar = Calendar::WESTERN;
 
     /**

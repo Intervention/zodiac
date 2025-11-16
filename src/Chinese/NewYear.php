@@ -16,7 +16,7 @@ class NewYear
 
     public function __construct(int $year, int $month, int $day, string $sign)
     {
-        $this->date = Carbon::createFromDate($year, $month, $day);
+        $this->date = Carbon::createFromDate($year, $month, $day)->setTime(0, 0, 0);
         $this->sign = $sign;
     }
 

@@ -50,8 +50,8 @@ abstract class Sign extends AbstractSign implements SignInterface, TranslatableI
      *
      * @see SignInterface::compatibility()
      */
-    public function compatibility(SignInterface $zodiac): float
+    public function compatibility(SignInterface $sign): float
     {
-        return call_user_func(new Compatibility(), $this, $zodiac);
+        return call_user_func(new Compatibility(), $this, $sign);
     }
 }

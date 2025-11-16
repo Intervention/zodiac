@@ -29,7 +29,7 @@ interface SignInterface extends Stringable
      *
      * Completely made up :) Don't plan your life around it.
      */
-    public function compatibility(self $zodiac): float;
+    public function compatibility(self $sign): float;
 
      /**
      * Return the localized version of the current zodiac sign

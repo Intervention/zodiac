@@ -18,6 +18,11 @@ class Capricorn extends Sign
     protected int $endDay = 20;
     protected int $endMonth = 1;
 
+    /**
+     * Zodiac sign Capricorn spans several years and requires multiple periods
+     *
+     * @see SignInterface::period()
+     */
     public function period(int $year): PeriodInterface
     {
         return new Period([

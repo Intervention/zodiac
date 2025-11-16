@@ -13,7 +13,14 @@ abstract class AbstractSign implements SignInterface, TranslatableInterface, Str
 {
     use CanTranslate;
 
+    /**
+     * Name of zodiac sign
+     */
     protected string $name;
+
+    /**
+     * HTML representation of zodiac sign
+     */
     protected string $html;
 
     /**

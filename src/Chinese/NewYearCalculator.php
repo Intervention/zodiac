@@ -17,11 +17,12 @@ use Intervention\Zodiac\Chinese\Signs\Rat;
 use Intervention\Zodiac\Chinese\Signs\Rooster;
 use Intervention\Zodiac\Chinese\Signs\Snake;
 use Intervention\Zodiac\Chinese\Signs\Tiger;
-use TypeError;
 
 class NewYearCalculator
 {
     /**
+     * Static data table of chinese new years days
+     *
      * @var array<int, array{int, int, string}> $table
      */
     private static array $table = [
@@ -228,6 +229,9 @@ class NewYearCalculator
         2100 => [2, 9, Monkey::class],
     ];
 
+    /**
+     * Get chinese new years day of given year
+     */
     public static function newYear(int $year): NewYear
     {
         if (!array_key_exists($year, self::$table)) {

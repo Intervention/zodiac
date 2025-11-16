@@ -6,7 +6,7 @@ namespace Intervention\Zodiac\Chinese;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
-use Intervention\Zodiac\Chinese\Signs\Sign as  ChineseZodiacSign;
+use Intervention\Zodiac\Chinese\Signs\Sign as ChineseZodiacSign;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\SignInterface;
 

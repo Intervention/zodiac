@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Interfaces;
 
-interface SignInterface
+use Stringable;
+
+interface SignInterface extends Stringable
 {
     /**
      * Return the title of the current zodiac

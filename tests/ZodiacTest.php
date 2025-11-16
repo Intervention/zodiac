@@ -44,7 +44,7 @@ final class ZodiacTest extends TestCase
     {
         $this->assertEquals(
             $localizedName,
-            $locale ? $zodiac->localized($locale)->name() : $zodiac->localized()->name(),
+            $locale ? $zodiac->localize($locale)->name() : $zodiac->localize()->name(),
         );
     }
 

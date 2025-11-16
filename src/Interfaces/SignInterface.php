@@ -34,7 +34,7 @@ interface SignInterface extends Stringable
      /**
      * Return the localized version of the current zodiac sign
      */
-    public function localized(string $locale = 'en'): self;
+    public function localize(string $locale = 'en'): self;
 
     /**
      * Cast current object to string

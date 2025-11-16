@@ -34,14 +34,17 @@ use Carbon\Carbon;
 // get zodiac object from a date
 $zodiac = Calculator::fromString('1980-09-15');
 
-// method takes mixed formats
+// method takes mixed string formats
 $zodiac = Calculator::fromString('first day of June 2008');
 
-// create from DateTime object
+// Create zodiac sign from DateTime objects
 $zodiac = Calculator::fromDate(new DateTime('1977-03-15'));
 
 // since Carbon dates extend from DateTime they can also be read
 $zodiac = Calculator::fromDate(Carbon::yesterday());
+
+// or use the dedicated method to create from carbon dates
+$zodiac = Calculator::fromCarbon(Carbon::yesterday());
 
 // get zodiac from unix timestamp
 $zodiac = Calculator::fromUnix(228268800);
@@ -49,7 +52,7 @@ $zodiac = Calculator::fromUnix(228268800);
 
 ### Chinese Zodiac
 
-It is also possible to calculate the traditional chinese zodiac classification in the same way.
+It is also possible to calculate traditional chinese zodiac signs from gregorian calendar dates.
 
 ```php
 use Intervention\Zodiac\Calculator;
@@ -57,11 +60,11 @@ use Intervention\Zodiac\Calendar;
 use DateTime;
 use Carbon\Carbon;
 
-// get zodiac object from a date
+// get zodiac object from a string date
 $zodiac = Calculator::fromString('1980-09-15', Calendar::CHINESE);
 
 // method takes mixed formats
-$zodiac = Calculator::fromString('first day of June 2008', Calendar::CHINESE);
+$zodiac = Calculator::fromString('first day of January 2010', Calendar::CHINESE);
 
 // create from DateTime object
 $zodiac = Calculator::fromDate(new DateTime('1977-03-15'), Calendar::CHINESE);
@@ -71,6 +74,24 @@ $zodiac = Calculator::fromDate(Carbon::yesterday(), Calendar::CHINESE);
 
 // get zodiac from unix timestamp
 $zodiac = Calculator::fromUnix(228268800, Calendar::CHINESE);
+```
+
+### Calculator Instantiation
+
+When creating calculator instances, you can specify directly which type of
+zodiac sign should be used by default. This means that you do not need to
+redefine this for each calculation.
+
+```php
+
+use Intervention\Zodiac\Calculator;
+use Intervention\Zodiac\Calendar;
+use DateTime;
+use Carbon\Carbon;
+
+$calculator = Calculator::withCalendar(Calendar::CHINESE);
+$sign = $calculator->fromString('2018-03-16 15:45'); // Intervention\Zodiac\Chinese\Signs\Dog
+$sign = $calculator->fromString('2001-05-01'); // Intervention\Zodiac\Chinese\Signs\Snake
 ```
 
 ### Zodiac Sign Interface

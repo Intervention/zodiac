@@ -14,5 +14,18 @@ return [
     \Intervention\Zodiac\Western\Signs\Sagittarius::class => 'Nyilas',
     \Intervention\Zodiac\Western\Signs\Capricorn::class => 'Bak',
     \Intervention\Zodiac\Western\Signs\Aquarius::class => 'Vízöntő',
-    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Halak'
+    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Halak',
+
+    \Intervention\Zodiac\Chinese\Signs\Rat::class => 'Patkány',
+    \Intervention\Zodiac\Chinese\Signs\Ox::class => 'Ökör',
+    \Intervention\Zodiac\Chinese\Signs\Tiger::class => 'Tigris',
+    \Intervention\Zodiac\Chinese\Signs\Rabbit::class => 'Nyúl',
+    \Intervention\Zodiac\Chinese\Signs\Dragon::class => 'Sárkány',
+    \Intervention\Zodiac\Chinese\Signs\Snake::class => 'Kígyó',
+    \Intervention\Zodiac\Chinese\Signs\Horse::class => 'Ló',
+    \Intervention\Zodiac\Chinese\Signs\Goat::class => 'Kecske',
+    \Intervention\Zodiac\Chinese\Signs\Monkey::class => 'Majom',
+    \Intervention\Zodiac\Chinese\Signs\Rooster::class => 'Kakas',
+    \Intervention\Zodiac\Chinese\Signs\Dog::class => 'Kutya',
+    \Intervention\Zodiac\Chinese\Signs\Pig::class => 'Disznó',
 ];

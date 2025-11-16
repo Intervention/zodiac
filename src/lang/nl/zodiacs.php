@@ -14,5 +14,18 @@ return [
     \Intervention\Zodiac\Western\Signs\Sagittarius::class => 'Boogschutter',
     \Intervention\Zodiac\Western\Signs\Capricorn::class => 'Steenbok',
     \Intervention\Zodiac\Western\Signs\Aquarius::class => 'Waterman',
-    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Vissen'
+    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Vissen',
+
+    \Intervention\Zodiac\Chinese\Signs\Rat::class => 'Rat',
+    \Intervention\Zodiac\Chinese\Signs\Ox::class => 'Os',
+    \Intervention\Zodiac\Chinese\Signs\Tiger::class => 'Tijger',
+    \Intervention\Zodiac\Chinese\Signs\Rabbit::class => 'Konijn',
+    \Intervention\Zodiac\Chinese\Signs\Dragon::class => 'Draak',
+    \Intervention\Zodiac\Chinese\Signs\Snake::class => 'Slang',
+    \Intervention\Zodiac\Chinese\Signs\Horse::class => 'Paad',
+    \Intervention\Zodiac\Chinese\Signs\Goat::class => 'Geit',
+    \Intervention\Zodiac\Chinese\Signs\Monkey::class => 'Aap',
+    \Intervention\Zodiac\Chinese\Signs\Rooster::class => 'Haan',
+    \Intervention\Zodiac\Chinese\Signs\Dog::class => 'Hond',
+    \Intervention\Zodiac\Chinese\Signs\Pig::class => 'Varken',
 ];

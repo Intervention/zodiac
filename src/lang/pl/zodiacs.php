@@ -14,5 +14,18 @@ return [
     \Intervention\Zodiac\Western\Signs\Sagittarius::class => 'Strzelec',
     \Intervention\Zodiac\Western\Signs\Capricorn::class => 'Koziorożec',
     \Intervention\Zodiac\Western\Signs\Aquarius::class => 'Wodnik',
-    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Ryby'
+    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Ryby',
+
+    \Intervention\Zodiac\Chinese\Signs\Rat::class => 'Szczur',
+    \Intervention\Zodiac\Chinese\Signs\Ox::class => 'Wół',
+    \Intervention\Zodiac\Chinese\Signs\Tiger::class => 'Tygrys',
+    \Intervention\Zodiac\Chinese\Signs\Rabbit::class => 'Królik',
+    \Intervention\Zodiac\Chinese\Signs\Dragon::class => 'Smok',
+    \Intervention\Zodiac\Chinese\Signs\Snake::class => 'Wąż',
+    \Intervention\Zodiac\Chinese\Signs\Horse::class => 'Koń',
+    \Intervention\Zodiac\Chinese\Signs\Goat::class => 'Koza',
+    \Intervention\Zodiac\Chinese\Signs\Monkey::class => 'Małpa',
+    \Intervention\Zodiac\Chinese\Signs\Rooster::class => 'Kogut',
+    \Intervention\Zodiac\Chinese\Signs\Dog::class => 'Pies',
+    \Intervention\Zodiac\Chinese\Signs\Pig::class => 'Świnia',
 ];

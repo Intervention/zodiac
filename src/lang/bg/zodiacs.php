@@ -15,4 +15,17 @@ return [
     \Intervention\Zodiac\Western\Signs\Capricorn::class => 'Козирог',
     \Intervention\Zodiac\Western\Signs\Aquarius::class => 'Водолей',
     \Intervention\Zodiac\Western\Signs\Pisces::class => 'Риби',
+
+    \Intervention\Zodiac\Chinese\Signs\Rat::class => 'Плъх',
+    \Intervention\Zodiac\Chinese\Signs\Ox::class => 'Вол',
+    \Intervention\Zodiac\Chinese\Signs\Tiger::class => 'Тигър',
+    \Intervention\Zodiac\Chinese\Signs\Rabbit::class => 'Заек',
+    \Intervention\Zodiac\Chinese\Signs\Dragon::class => 'Дракон',
+    \Intervention\Zodiac\Chinese\Signs\Snake::class => 'Змия',
+    \Intervention\Zodiac\Chinese\Signs\Horse::class => 'Кон',
+    \Intervention\Zodiac\Chinese\Signs\Goat::class => 'Коза',
+    \Intervention\Zodiac\Chinese\Signs\Monkey::class => 'Маймуна',
+    \Intervention\Zodiac\Chinese\Signs\Rooster::class => 'Петел',
+    \Intervention\Zodiac\Chinese\Signs\Dog::class => 'Куче',
+    \Intervention\Zodiac\Chinese\Signs\Pig::class => 'Свинско',
 ];

@@ -14,5 +14,5 @@ return [
     \Intervention\Zodiac\Western\Signs\Sagittarius::class => '射手座',
     \Intervention\Zodiac\Western\Signs\Capricorn::class => '魔羯座',
     \Intervention\Zodiac\Western\Signs\Aquarius::class => '水瓶座',
-    \Intervention\Zodiac\Western\Signs\Pisces::class => '雙魚座'
+    \Intervention\Zodiac\Western\Signs\Pisces::class => '雙魚座',
 ];

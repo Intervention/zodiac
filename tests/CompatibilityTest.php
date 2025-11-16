@@ -5,7 +5,20 @@ declare(strict_types=1);
 namespace Intervention\Zodiac\Tests;
 
 use Generator;
-use Intervention\Zodiac\Compatibility;
+use Intervention\Zodiac\Chinese\Compatibility as ChineseCompatibility;
+use Intervention\Zodiac\Chinese\Signs\Dog;
+use Intervention\Zodiac\Chinese\Signs\Dragon;
+use Intervention\Zodiac\Chinese\Signs\Goat;
+use Intervention\Zodiac\Chinese\Signs\Horse;
+use Intervention\Zodiac\Chinese\Signs\Monkey;
+use Intervention\Zodiac\Chinese\Signs\Ox;
+use Intervention\Zodiac\Chinese\Signs\Pig;
+use Intervention\Zodiac\Chinese\Signs\Rabbit;
+use Intervention\Zodiac\Chinese\Signs\Rat;
+use Intervention\Zodiac\Chinese\Signs\Rooster;
+use Intervention\Zodiac\Chinese\Signs\Snake;
+use Intervention\Zodiac\Chinese\Signs\Tiger;
+use Intervention\Zodiac\Western\Compatibility;
 use Intervention\Zodiac\Western\Signs\Aquarius;
 use Intervention\Zodiac\Western\Signs\Aries;
 use Intervention\Zodiac\Western\Signs\Cancer;
@@ -23,15 +36,16 @@ use PHPUnit\Framework\TestCase;
 
 final class CompatibilityTest extends TestCase
 {
-    #[DataProvider('factorDataProvider')]
-    public function testCalculate(string $a, string $b): void
+    #[DataProvider('westernFactorDataProvider')]
+    #[DataProvider('chineseFactorDataProvider')]
+    public function testCalculate(string $a, string $b, Compatibility $compatibility): void
     {
-        $result = call_user_func(new Compatibility(), new $a(), new $b());
+        $result = call_user_func($compatibility, new $a(), new $b());
         $this->assertIsFloat($result);
         $this->assertTrue($result >= 0 && $result <= 1);
     }
 
-    public static function factorDataProvider(): Generator
+    public static function westernFactorDataProvider(): Generator
     {
         $zodiacs = [
             Aquarius::class,
@@ -50,7 +64,31 @@ final class CompatibilityTest extends TestCase
 
         foreach ($zodiacs as $a) {
             foreach ($zodiacs as $b) {
-                yield [$a, $b];
+                yield [$a, $b, new Compatibility()];
+            }
+        }
+    }
+
+    public static function chineseFactorDataProvider(): Generator
+    {
+        $zodiacs = [
+            Rat::class,
+            Ox::class,
+            Tiger::class,
+            Rabbit::class,
+            Dragon::class,
+            Snake::class,
+            Horse::class,
+            Goat::class,
+            Monkey::class,
+            Rooster::class,
+            Dog::class,
+            Pig::class,
+        ];
+
+        foreach ($zodiacs as $a) {
+            foreach ($zodiacs as $b) {
+                yield [$a, $b, new ChineseCompatibility()];
             }
         }
     }

@@ -10,6 +10,8 @@ use Intervention\Zodiac\Exceptions\DateException;
 use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Intervention\Zodiac\Period;
 use Intervention\Zodiac\AbstractSign;
+use Intervention\Zodiac\Interfaces\SignInterface;
+use Intervention\Zodiac\Chinese\Compatibility;
 
 abstract class Sign extends AbstractSign
 {
@@ -39,5 +41,15 @@ abstract class Sign extends AbstractSign
         return new Period([
             CarbonPeriod::since($start->date)->until($end->date)->excludeEndDate(),
         ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see SignInterface::compatibility()
+     */
+    public function compatibility(SignInterface $zodiac): float
+    {
+        return call_user_func(new Compatibility(), $this, $zodiac);
     }
 }

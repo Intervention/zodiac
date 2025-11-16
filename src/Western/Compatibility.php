@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Intervention\Zodiac;
+namespace Intervention\Zodiac\Western;
 
+use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Western\Signs\Aquarius;
 use Intervention\Zodiac\Western\Signs\Aries;
@@ -199,6 +200,14 @@ class Compatibility
      */
     public function __invoke(SignInterface $a, SignInterface $b): float
     {
+        if (!array_key_exists($a::class, $this->factors)) {
+            throw new RuntimeException('Unable to match compatibility of ' . $a::class);
+        }
+
+        if (!array_key_exists($b::class, $this->factors[$a::class])) {
+            throw new RuntimeException('Unable to match compatibility of ' . $b::class);
+        }
+
         return $this->factors[$a::class][$b::class];
     }
 }

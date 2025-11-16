@@ -11,6 +11,7 @@ use Intervention\Zodiac\Interfaces\TranslatableInterface;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Period;
 use Intervention\Zodiac\AbstractSign;
+use Intervention\Zodiac\Western\Compatibility;
 use Stringable;
 
 abstract class Sign extends AbstractSign implements SignInterface, TranslatableInterface, Stringable
@@ -42,5 +43,15 @@ abstract class Sign extends AbstractSign implements SignInterface, TranslatableI
                 )
             )
         ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see SignInterface::compatibility()
+     */
+    public function compatibility(SignInterface $zodiac): float
+    {
+        return call_user_func(new Compatibility(), $this, $zodiac);
     }
 }

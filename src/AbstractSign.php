@@ -46,16 +46,6 @@ abstract class AbstractSign implements SignInterface, TranslatableInterface, Str
     /**
      * {@inheritdoc}
      *
-     * @see SignInterface::compatibility()
-     */
-    public function compatibility(SignInterface $zodiac): float
-    {
-        return call_user_func(new Compatibility(), $this, $zodiac);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
      * @see SignInterface::localized()
      */
     public function localized(string $locale = 'en'): SignInterface

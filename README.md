@@ -10,9 +10,7 @@ zodiac sign from various data types.
 
 ## Installation
 
-You can install this package with Composer.
-
-Require the package via Composer:
+Use [Composer](https://getcomposer.org) for the installation by running the following command.
 
     $ composer require intervention/zodiac
 

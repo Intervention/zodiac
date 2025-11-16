@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use DateTime;
 use Generator;
 use Intervention\Zodiac\Calendar;
+use Intervention\Zodiac\Chinese\Compatibility;
 use Intervention\Zodiac\Chinese\Signs\Dog;
 use Intervention\Zodiac\Chinese\Signs\Dragon;
 use Intervention\Zodiac\Chinese\Signs\Goat;
@@ -119,6 +120,30 @@ class ChineseDataProvider
         yield ['1266105600', Tiger::class, Calendar::CHINESE];
         yield ['1296691200', Rabbit::class, Calendar::CHINESE];
         yield ['1327276800', Dragon::class, Calendar::CHINESE];
+    }
+
+    public static function compatibilityFactorDataProvider(): Generator
+    {
+        $zodiacs = [
+            Rat::class,
+            Ox::class,
+            Tiger::class,
+            Rabbit::class,
+            Dragon::class,
+            Snake::class,
+            Horse::class,
+            Goat::class,
+            Monkey::class,
+            Rooster::class,
+            Dog::class,
+            Pig::class,
+        ];
+
+        foreach ($zodiacs as $a) {
+            foreach ($zodiacs as $b) {
+                yield [$a, $b, new Compatibility()];
+            }
+        }
     }
 
     private static function stringableDateObject(string $date): Stringable

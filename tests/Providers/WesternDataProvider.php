@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use DateTime;
 use Generator;
 use Intervention\Zodiac\Calendar;
+use Intervention\Zodiac\Western\Compatibility;
 use Intervention\Zodiac\Western\Signs\Aquarius;
 use Intervention\Zodiac\Western\Signs\Aries;
 use Intervention\Zodiac\Western\Signs\Cancer;
@@ -133,6 +134,30 @@ class WesternDataProvider
         yield [Carbon::parse('1977-01-15'), Capricorn::class, Calendar::WESTERN];
         yield [Carbon::parse('1977-01-26'), Aquarius::class, Calendar::WESTERN];
         yield [Carbon::parse('1977-02-27'), Pisces::class, Calendar::WESTERN];
+    }
+
+    public static function compatibilityFactorDataProvider(): Generator
+    {
+        $zodiacs = [
+            Aquarius::class,
+            Aries::class,
+            Cancer::class,
+            Capricorn::class,
+            Gemini::class,
+            Leo::class,
+            Libra::class,
+            Pisces::class,
+            Sagittarius::class,
+            Scorpio::class,
+            Taurus::class,
+            Virgo::class,
+        ];
+
+        foreach ($zodiacs as $a) {
+            foreach ($zodiacs as $b) {
+                yield [$a, $b, new Compatibility()];
+            }
+        }
     }
 
     private static function stringableDateObject(string $date): Stringable

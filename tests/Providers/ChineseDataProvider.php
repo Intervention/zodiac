@@ -26,6 +26,7 @@ class ChineseDataProvider
 {
     public static function stringDates(): Generator
     {
+        yield ['1946-04-10', Dog::class, Calendar::CHINESE];
         yield ['2001-01-24', Snake::class, Calendar::CHINESE];
         yield ['2002-02-12', Horse::class, Calendar::CHINESE];
         yield ['2003-02-01', Goat::class, Calendar::CHINESE];
@@ -42,6 +43,7 @@ class ChineseDataProvider
 
     public static function stringableDates(): Generator
     {
+        yield [static::stringableDateObject('1946-04-10'), Dog::class, Calendar::CHINESE];
         yield [static::stringableDateObject('2001-01-24'), Snake::class, Calendar::CHINESE];
         yield [static::stringableDateObject('2002-02-12'), Horse::class, Calendar::CHINESE];
         yield [static::stringableDateObject('2003-02-01'), Goat::class, Calendar::CHINESE];
@@ -58,6 +60,7 @@ class ChineseDataProvider
 
     public static function dateTimeDates(): Generator
     {
+        yield [new DateTime('1946-04-10'), Dog::class, Calendar::CHINESE];
         yield [new DateTime('2001-01-24'), Snake::class, Calendar::CHINESE];
         yield [new DateTime('2002-02-12'), Horse::class, Calendar::CHINESE];
         yield [new DateTime('2003-02-01'), Goat::class, Calendar::CHINESE];
@@ -74,6 +77,7 @@ class ChineseDataProvider
 
     public static function carbonDates(): Generator
     {
+        yield [Carbon::parse('1946-04-10'), Dog::class, Calendar::CHINESE];
         yield [Carbon::parse('2001-01-24'), Snake::class, Calendar::CHINESE];
         yield [Carbon::parse('2002-02-12'), Horse::class, Calendar::CHINESE];
         yield [Carbon::parse('2003-02-01'), Goat::class, Calendar::CHINESE];

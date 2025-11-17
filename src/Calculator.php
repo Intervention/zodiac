@@ -116,9 +116,7 @@ class Calculator implements CalculatorInterface
     public static function fromCarbon(CarbonInterface $date, ?Astrology $astrology = null): SignInterface
     {
         // try each zodiac sign of the given (or default) astrology
-        foreach (($astrology ?: self::$astrology)->signClassnames() as $classname) {
-            $sign = new $classname();
-
+        foreach (($astrology ?: self::$astrology)->signs() as $sign) {
             if (!($sign instanceof SignInterface)) {
                 continue;
             }

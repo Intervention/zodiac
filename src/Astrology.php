@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac;
 
+use Generator;
+
 enum Astrology
 {
     case WESTERN;
     case CHINESE;
 
     /**
-     * Get all possible zodiac classname of current type
+     * Get all possible zodiac classname of current astrology type
      *
      * @return array<string>
      */
@@ -46,5 +48,15 @@ enum Astrology
                 Chinese\Signs\Pig::class,
             ],
         };
+    }
+
+    /**
+     * Yield all possible sign instances of the current astrology
+     */
+    public function signs(): Generator
+    {
+        foreach ($this->signClassnames() as $classname) {
+            yield new $classname();
+        }
     }
 }

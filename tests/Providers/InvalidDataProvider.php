@@ -15,4 +15,12 @@ class InvalidDataProvider
         yield [''];
         yield ['🐇'];
     }
+
+    public static function invalidUnixDates(): Generator
+    {
+        yield ['foobar'];
+        yield ['123-45-67'];
+        yield [''];
+        yield ['🐇'];
+    }
 }

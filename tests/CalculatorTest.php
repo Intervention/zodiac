@@ -122,10 +122,17 @@ final class CalculatorTest extends TestCase
     }
 
     #[DataProviderExternal(InvalidDataProvider::class, 'invalidStringDates')]
-    public function testGetInvalidZodiac(mixed $input): void
+    public function testGetInvalidZodiacStrings(mixed $input): void
     {
         $this->expectException(NotReadableException::class);
         (new Calculator())->fromString($input);
+    }
+
+    #[DataProviderExternal(InvalidDataProvider::class, 'invalidUnixDates')]
+    public function testGetInvalidZodiacUnix(mixed $input): void
+    {
+        $this->expectException(NotReadableException::class);
+        (new Calculator())->fromUnix($input);
     }
 
     public function testCompare(): void

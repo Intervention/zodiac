@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac;
 
-enum Calendar
+enum Astrology
 {
     case WESTERN;
     case CHINESE;

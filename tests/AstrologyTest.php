@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Intervention\Zodiac\Tests;
 
 use Generator;
-use Intervention\Zodiac\Calendar;
+use Intervention\Zodiac\Astrology;
 use Intervention\Zodiac\Chinese\Signs\Dog;
 use Intervention\Zodiac\Chinese\Signs\Dragon;
 use Intervention\Zodiac\Chinese\Signs\Goat;
@@ -33,21 +33,21 @@ use Intervention\Zodiac\Western\Signs\Virgo;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-class CalendarTest extends TestCase
+class AstrologyTest extends TestCase
 {
     /**
      * @param array<string> $classes
      */
     #[DataProvider('zodiacClassnameProvider')]
-    public function testZodiacClassnames(Calendar $calendar, array $classes): void
+    public function testZodiacClassnames(Astrology $astrology, array $classes): void
     {
-        $this->assertEquals($classes, $calendar->signClassnames());
+        $this->assertEquals($classes, $astrology->signClassnames());
     }
 
     public static function zodiacClassnameProvider(): Generator
     {
         yield [
-            Calendar::WESTERN,
+            Astrology::WESTERN,
             [
                 Aquarius::class,
                 Aries::class,
@@ -65,7 +65,7 @@ class CalendarTest extends TestCase
         ];
 
         yield [
-            Calendar::CHINESE,
+            Astrology::CHINESE,
             [
                 Rat::class,
                 Ox::class,

@@ -18,24 +18,24 @@ class Calculator implements CalculatorInterface
 {
     use Traits\CanTranslate;
 
-    protected static Calendar $calendar = Calendar::WESTERN;
+    protected static Astrology $astrology = Astrology::WESTERN;
 
     /**
      * Create new calculator instance with calender to calculate with
      */
-    public function __construct(Calendar $calendar = Calendar::WESTERN)
+    public function __construct(Astrology $astrology = Astrology::WESTERN)
     {
-        static::$calendar = $calendar;
+        static::$astrology = $astrology;
     }
 
     /**
      * {@inheritdoc}
      *
-     * @see CalculatorInterface::withCalendar()
+     * @see CalculatorInterface::withAstrology()
      */
-    public static function withCalendar(Calendar $calendar): self
+    public static function withAstrology(Astrology $astrology): self
     {
-        return new self($calendar);
+        return new self($astrology);
     }
 
     /**
@@ -43,7 +43,7 @@ class Calculator implements CalculatorInterface
      *
      * @see CalculatorInterface::fromString()
      */
-    public static function fromString(string|Stringable $date, ?Calendar $calendar = null): SignInterface
+    public static function fromString(string|Stringable $date, ?Astrology $astrology = null): SignInterface
     {
         // normalize date
         $date = (string) $date;
@@ -55,7 +55,7 @@ class Calculator implements CalculatorInterface
         try {
             return self::fromCarbon(
                 date: Carbon::parse($date),
-                calendar: $calendar ?: self::$calendar
+                astrology: $astrology ?: self::$astrology
             );
         } catch (Throwable) {
             throw new NotReadableException('Unable to create zodiac from string (' . $date . ').');
@@ -67,11 +67,11 @@ class Calculator implements CalculatorInterface
      *
      * @see CalculatorInterface::fromDate()
      */
-    public static function fromDate(DateTimeInterface $date, ?Calendar $calendar = null): SignInterface
+    public static function fromDate(DateTimeInterface $date, ?Astrology $astrology = null): SignInterface
     {
         return self::fromCarbon(
             date: new Carbon($date),
-            calendar: $calendar ?: self::$calendar
+            astrology: $astrology ?: self::$astrology
         );
     }
 
@@ -80,12 +80,12 @@ class Calculator implements CalculatorInterface
      *
      * @see CalculatorInterface::fromUnix()
      */
-    public static function fromUnix(string|int $date, ?Calendar $calendar = null): SignInterface
+    public static function fromUnix(string|int $date, ?Astrology $astrology = null): SignInterface
     {
         try {
             return self::fromCarbon(
                 date: Carbon::createFromTimestamp($date),
-                calendar: $calendar ?: self::$calendar
+                astrology: $astrology ?: self::$astrology
             );
         } catch (Throwable) {
             throw new NotReadableException('Unable to create zodiac from unix timestamp (' . $date . ').');
@@ -97,10 +97,10 @@ class Calculator implements CalculatorInterface
      *
      * @see CalculatorInterface::fromCarbon()
      */
-    public static function fromCarbon(CarbonInterface $date, ?Calendar $calendar = null): SignInterface
+    public static function fromCarbon(CarbonInterface $date, ?Astrology $astrology = null): SignInterface
     {
-        // try each zodiac sign of the given (or default) calendar
-        foreach (($calendar ?: self::$calendar)->signClassnames() as $classname) {
+        // try each zodiac sign of the given (or default) astrology
+        foreach (($astrology ?: self::$astrology)->signClassnames() as $classname) {
             $sign = new $classname();
 
             if (!($sign instanceof SignInterface)) {

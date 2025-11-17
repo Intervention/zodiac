@@ -16,8 +16,10 @@ use Intervention\Zodiac\Chinese\Signs\Pig;
 use Intervention\Zodiac\Chinese\Signs\Rabbit;
 use Intervention\Zodiac\Chinese\Signs\Rat;
 use Intervention\Zodiac\Chinese\Signs\Rooster;
+use Intervention\Zodiac\Chinese\Signs\Sign as ChineseSign;
 use Intervention\Zodiac\Chinese\Signs\Snake;
 use Intervention\Zodiac\Chinese\Signs\Tiger;
+use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Western\Signs\Aquarius;
 use Intervention\Zodiac\Western\Signs\Aries;
 use Intervention\Zodiac\Western\Signs\Cancer;
@@ -28,6 +30,7 @@ use Intervention\Zodiac\Western\Signs\Libra;
 use Intervention\Zodiac\Western\Signs\Pisces;
 use Intervention\Zodiac\Western\Signs\Sagittarius;
 use Intervention\Zodiac\Western\Signs\Scorpio;
+use Intervention\Zodiac\Western\Signs\Sign as WesternSign;
 use Intervention\Zodiac\Western\Signs\Taurus;
 use Intervention\Zodiac\Western\Signs\Virgo;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -81,5 +84,18 @@ class AstrologyTest extends TestCase
                 Pig::class,
             ]
         ];
+    }
+
+    public function testSigns(): void
+    {
+        foreach (Astrology::WESTERN->signs() as $sign) {
+            $this->assertInstanceOf(SignInterface::class, $sign);
+            $this->assertInstanceOf(WesternSign::class, $sign);
+        }
+
+        foreach (Astrology::CHINESE->signs() as $sign) {
+            $this->assertInstanceOf(SignInterface::class, $sign);
+            $this->assertInstanceOf(ChineseSign::class, $sign);
+        }
     }
 }

@@ -2,7 +2,4 @@ parameters:
     level: 10
     paths:
         - src
-    ignoreErrors:
-        -
-            identifier: trait.unused
     treatPhpDocTypesAsCertain: false

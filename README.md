@@ -23,6 +23,8 @@ Read the full [documentation](https://zodiac.intervention.io) for this library.
 
 ## Code Examples
 
+### Calculator
+
 ```php
 use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Astrology;
@@ -58,6 +60,22 @@ $sign = Calculator::fromDate(new DateTime('2001-01-01'));
 $sign = Calculator::fromDate(Carbon::yesterday());
 $sign = Calculator::fromUnix(228268800);
 $sign = Calculator::fromUnix('228268800');
+```
+
+### SignInterface
+
+```php
+use Intervention\Zodiac\Calculator;
+use DateTime;
+use Carbon\Carbon;
+
+// calculate zodiac sing
+$sign = Calculator::fromDate($date);
+
+$name = $sign->name(); // 'gemini'
+$html = $sign->html(); // '♊︎'
+$localized = $sign->localized('fr')->name(); // Gémeaux
+$compatibility = $zodiac->compatibility($zodiac); // .6
 ```
 
 ## Development & Testing

@@ -74,7 +74,7 @@ $sign = Calculator::fromDate($date);
 
 $name = $sign->name(); // 'gemini'
 $html = $sign->html(); // '♊︎'
-$localized = $sign->localized('fr')->name(); // Gémeaux
+$localized = $sign->localize('fr')->name(); // Gémeaux
 $compatibility = $zodiac->compatibility($zodiac); // .6
 ```
 

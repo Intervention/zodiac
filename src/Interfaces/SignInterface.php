@@ -24,10 +24,8 @@ interface SignInterface extends Stringable
     public function period(int $year): PeriodInterface;
 
     /**
-     * Calculate zodiac sign compatibility with any other sign in love & life
-     * where 0 means no match and a maximum of 10 is a total match.
-     *
-     * Completely made up :) Don't plan your life around it.
+     * Calculate zodiac sign compatibility with other sign in the same astrology
+     * where 0 means no match and a maximum of 1 is total compatibility.
      */
     public function compatibility(self $sign): float;
 

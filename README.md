@@ -37,10 +37,17 @@ $sign = Calculator::chinese()->fromString('2001-01-01'); // create chinese calcu
 $sign = Calculator::western()->fromString('2001-01-01', Astrology::CHINESE); // override default
 $sign = Calculator::chinese()->fromString('2001-01-01', Astrology::WESTERN); // override default
 
-$sign = Calculator::withAstrology(Astrology::CHINESE)->fromString('2001-01-01');
-$sign = Calculator::withAstrology(Astrology::WESTERN)->fromString('2001-01-01');
-$sign = Calculator::withAstrology(Astrology::CHINESE)->fromString('2001-01-01', Astrology::WESTERN);
-$sign = Calculator::withAstrology(Astrology::WESTERN)->fromString('2001-01-01', Astrology::CHINESE);
+$sign = Calculator::withAstrology(Astrology::CHINESE)
+    ->fromString('2001-01-01');
+
+$sign = Calculator::withAstrology(Astrology::WESTERN)
+    ->fromString('2001-01-01');
+
+$sign = Calculator::withAstrology(Astrology::CHINESE)
+    ->fromString('2001-01-01', Astrology::WESTERN);
+
+$sign = Calculator::withAstrology(Astrology::WESTERN)
+    ->fromString('2001-01-01', Astrology::CHINESE);
 
 $sign = Calculator::fromDate(new DateTime('2001-01-01'));
 $sign = Calculator::fromDate(Carbon::yesterday());

@@ -29,7 +29,7 @@ interface CalculatorInterface
     /**
      * Calculate zodiac from given unix timestamp date
      */
-    public static function fromUnix(string|int $date, ?Astrology $astrology = null): SignInterface;
+    public static function fromUnix(string|int|float $date, ?Astrology $astrology = null): SignInterface;
 
     /**
      * Calculate zodiac from given Carbon date

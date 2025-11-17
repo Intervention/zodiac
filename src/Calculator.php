@@ -96,7 +96,7 @@ class Calculator implements CalculatorInterface
      *
      * @see CalculatorInterface::fromUnix()
      */
-    public static function fromUnix(string|int $date, ?Astrology $astrology = null): SignInterface
+    public static function fromUnix(string|int|float $date, ?Astrology $astrology = null): SignInterface
     {
         try {
             return self::fromCarbon(

@@ -56,6 +56,7 @@ $sign = Calculator::withAstrology(Astrology::CHINESE)
 
 // parse various date formats
 $sign = Calculator::fromString('first day of june 2014');
+$sign = Calculator::fromString('2018-06-15 12:34:00');
 $sign = Calculator::fromDate(new DateTime('2001-01-01'));
 $sign = Calculator::fromDate(Carbon::yesterday());
 $sign = Calculator::fromUnix(228268800);

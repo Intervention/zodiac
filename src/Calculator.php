@@ -65,7 +65,7 @@ class Calculator implements CalculatorInterface
         $date = (string) $date;
 
         if ($date === '') { // empty string is allowed in Carbon::parse() but not here
-            throw new NotReadableException('Unable to create zodiac from empty string.');
+            throw new NotReadableException('Unable to create zodiac from empty string');
         }
 
         try {
@@ -74,7 +74,7 @@ class Calculator implements CalculatorInterface
                 astrology: $astrology ?: self::$astrology
             );
         } catch (Throwable) {
-            throw new NotReadableException('Unable to create zodiac from string (' . $date . ').');
+            throw new NotReadableException('Unable to create zodiac from string (' . $date . ')');
         }
     }
 
@@ -98,13 +98,17 @@ class Calculator implements CalculatorInterface
      */
     public static function fromUnix(string|int|float $date, ?Astrology $astrology = null): SignInterface
     {
+        if (!is_numeric($date)) {
+            throw new NotReadableException('Unable to create zodiac from non-numeric unix timestamp');
+        }
+
         try {
             return self::fromCarbon(
                 date: Carbon::createFromTimestamp($date),
                 astrology: $astrology ?: self::$astrology
             );
         } catch (Throwable) {
-            throw new NotReadableException('Unable to create zodiac from unix timestamp (' . $date . ').');
+            throw new NotReadableException('Unable to create zodiac from unix timestamp (' . $date . ')');
         }
     }
 

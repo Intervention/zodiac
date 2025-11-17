@@ -26,19 +26,26 @@ Read the full [documentation](https://zodiac.intervention.io) for this library.
 ```php
 use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Astrology;
+use Carbon\Carbon;
+use DateTime;
 
 $sign = Calculator::fromString('2001-01-01'); // western zodiac sign by default
 $sign = Calculator::fromString('2001-01-01', Astrology::CHINESE); // chinese astrology
 
-$sign = Calculator::western()->fromString('2001-01-01');
-$sign = Calculator::chinese()->fromString('2001-01-01');
-$sign = Calculator::western()->fromString('2001-01-01', Astrology::CHINESE);
-$sign = Calculator::chinese()->fromString('2001-01-01', Astrology::WESTERN);
+$sign = Calculator::western()->fromString('2001-01-01'); // create western calculator
+$sign = Calculator::chinese()->fromString('2001-01-01'); // create chinese calculator
+$sign = Calculator::western()->fromString('2001-01-01', Astrology::CHINESE); // override default
+$sign = Calculator::chinese()->fromString('2001-01-01', Astrology::WESTERN); // override default
 
 $sign = Calculator::withAstrology(Astrology::CHINESE)->fromString('2001-01-01');
 $sign = Calculator::withAstrology(Astrology::WESTERN)->fromString('2001-01-01');
 $sign = Calculator::withAstrology(Astrology::CHINESE)->fromString('2001-01-01', Astrology::WESTERN);
 $sign = Calculator::withAstrology(Astrology::WESTERN)->fromString('2001-01-01', Astrology::CHINESE);
+
+$sign = Calculator::fromDate(new DateTime('2001-01-01'));
+$sign = Calculator::fromDate(Carbon::yesterday());
+$sign = Calculator::fromUnix(228268800);
+$sign = Calculator::fromUnix('228268800');
 ```
 
 ## Development & Testing

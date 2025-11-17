@@ -8,6 +8,8 @@ use Carbon\CarbonInterface;
 use DateTimeInterface;
 use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Astrology;
+use Intervention\Zodiac\Chinese\Signs\Sign as ChineseSign;
+use Intervention\Zodiac\Western\Signs\Sign as WesternSign;
 use Intervention\Zodiac\Exceptions\NotReadableException;
 use Intervention\Zodiac\Tests\Providers\InvalidDataProvider;
 use Intervention\Zodiac\Tests\Providers\WesternDataProvider;
@@ -20,6 +22,69 @@ use Stringable;
 
 final class CalculatorTest extends TestCase
 {
+    public function testConstructors(): void
+    {
+        $this->assertInstanceOf(
+            WesternSign::class,
+            (new Calculator(Astrology::WESTERN))->fromString('2001-01-01'),
+        );
+
+        $this->assertInstanceOf(
+            ChineseSign::class,
+            (new Calculator(Astrology::CHINESE))->fromString('2001-01-01'),
+        );
+
+        $this->assertInstanceOf(
+            WesternSign::class,
+            Calculator::western()->fromString('2001-01-01'),
+        );
+
+        $this->assertInstanceOf(
+            ChineseSign::class,
+            Calculator::chinese()->fromString('2001-01-01'),
+        );
+
+        $this->assertInstanceOf(
+            WesternSign::class,
+            Calculator::withAstrology(Astrology::WESTERN)->fromString('2001-01-01'),
+        );
+
+        $this->assertInstanceOf(
+            ChineseSign::class,
+            Calculator::withAstrology(Astrology::CHINESE)->fromString('2001-01-01'),
+        );
+
+        $this->assertInstanceOf(
+            ChineseSign::class,
+            (new Calculator(Astrology::WESTERN))->fromString('2001-01-01', Astrology::CHINESE),
+        );
+
+        $this->assertInstanceOf(
+            WesternSign::class,
+            (new Calculator(Astrology::CHINESE))->fromString('2001-01-01', Astrology::WESTERN),
+        );
+
+        $this->assertInstanceOf(
+            ChineseSign::class,
+            Calculator::western()->fromString('2001-01-01', Astrology::CHINESE),
+        );
+
+        $this->assertInstanceOf(
+            WesternSign::class,
+            Calculator::chinese()->fromString('2001-01-01', Astrology::WESTERN),
+        );
+
+        $this->assertInstanceOf(
+            ChineseSign::class,
+            Calculator::withAstrology(Astrology::WESTERN)->fromString('2001-01-01', Astrology::CHINESE),
+        );
+
+        $this->assertInstanceOf(
+            WesternSign::class,
+            Calculator::withAstrology(Astrology::CHINESE)->fromString('2001-01-01', Astrology::WESTERN),
+        );
+    }
+
     #[DataProviderExternal(WesternDataProvider::class, 'stringDates')]
     #[DataProviderExternal(WesternDataProvider::class, 'stringableDates')]
     #[DataProviderExternal(ChineseDataProvider::class, 'stringDates')]

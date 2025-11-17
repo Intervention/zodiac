@@ -29,6 +29,22 @@ class Calculator implements CalculatorInterface
     }
 
     /**
+     * Static factory method to create western astrology calculator
+     */
+    public static function western(): self
+    {
+        return new self(Astrology::WESTERN);
+    }
+
+    /**
+     * Static factory method to create chinese astrology calculator
+     */
+    public static function chinese(): self
+    {
+        return new self(Astrology::CHINESE);
+    }
+
+    /**
      * {@inheritdoc}
      *
      * @see CalculatorInterface::withAstrology()

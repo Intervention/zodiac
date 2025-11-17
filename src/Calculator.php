@@ -141,8 +141,8 @@ class Calculator implements CalculatorInterface
      *
      * @see CalculatorInterface::compare()
      */
-    public static function compare(SignInterface $zodiac, SignInterface $with): float
+    public static function compare(SignInterface $sign, SignInterface $with): float
     {
-        return $zodiac->compatibility($with);
+        return $sign->compatibility($with);
     }
 }

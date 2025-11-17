@@ -26,12 +26,12 @@ final class ZodiacTest extends TestCase
 {
     public function testName(): void
     {
-        $this->assertEquals('foo', $this->zodiac(name: 'foo')->name());
+        $this->assertEquals('foo', $this->zodiacSign(name: 'foo')->name());
     }
 
     public function testHtml(): void
     {
-        $this->assertEquals('foo', $this->zodiac(html: 'foo')->html());
+        $this->assertEquals('foo', $this->zodiacSign(html: 'foo')->html());
     }
 
     public function testCompatibility(): void
@@ -40,11 +40,11 @@ final class ZodiacTest extends TestCase
     }
 
     #[DataProvider('localizedDataProvider')]
-    public function testLocalized(SignInterface $zodiac, ?string $locale, string $localizedName): void
+    public function testLocalized(SignInterface $sign, ?string $locale, string $localizedName): void
     {
         $this->assertEquals(
             $localizedName,
-            $locale ? $zodiac->localize($locale)->name() : $zodiac->localize()->name(),
+            $locale ? $sign->localize($locale)->name() : $sign->localize()->name(),
         );
     }
 
@@ -92,12 +92,12 @@ final class ZodiacTest extends TestCase
 
     public function testToString(): void
     {
-        $zodiac = $this->zodiac(name: 'test');
-        $this->assertEquals('test', strval($zodiac));
-        $this->assertEquals('test', (string) $zodiac);
+        $sign = $this->zodiacSign(name: 'test');
+        $this->assertEquals('test', strval($sign));
+        $this->assertEquals('test', (string) $sign);
     }
 
-    private function zodiac(
+    private function zodiacSign(
         int $startMonth = 1,
         int $startDay = 1,
         int $endMonth = 2,

@@ -124,7 +124,7 @@ class ChineseDataProvider
 
     public static function compatibilityFactorDataProvider(): Generator
     {
-        $zodiacs = [
+        $signs = [
             Rat::class,
             Ox::class,
             Tiger::class,
@@ -139,8 +139,8 @@ class ChineseDataProvider
             Pig::class,
         ];
 
-        foreach ($zodiacs as $a) {
-            foreach ($zodiacs as $b) {
+        foreach ($signs as $a) {
+            foreach ($signs as $b) {
                 yield [$a, $b, new Compatibility()];
             }
         }

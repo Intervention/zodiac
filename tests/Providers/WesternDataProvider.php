@@ -138,7 +138,7 @@ class WesternDataProvider
 
     public static function compatibilityFactorDataProvider(): Generator
     {
-        $zodiacs = [
+        $signs = [
             Aquarius::class,
             Aries::class,
             Cancer::class,
@@ -153,8 +153,8 @@ class WesternDataProvider
             Virgo::class,
         ];
 
-        foreach ($zodiacs as $a) {
-            foreach ($zodiacs as $b) {
+        foreach ($signs as $a) {
+            foreach ($signs as $b) {
                 yield [$a, $b, new Compatibility()];
             }
         }

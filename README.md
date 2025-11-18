@@ -63,7 +63,7 @@ $sign = Calculator::fromUnix(228268800);
 $sign = Calculator::fromUnix('228268800');
 ```
 
-### SignInterface
+### Sign
 
 ```php
 use Intervention\Zodiac\Calculator;
@@ -76,7 +76,7 @@ $sign = Calculator::fromDate($date);
 $name = $sign->name(); // 'gemini'
 $html = $sign->html(); // '♊︎'
 $localized = $sign->localize('fr')->name(); // Gémeaux
-$compatibility = $zodiac->compatibility($zodiac); // .6
+$compatibility = $sign->compatibility($sign); // .6
 ```
 
 ## Development & Testing

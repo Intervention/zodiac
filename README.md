@@ -14,7 +14,7 @@ The installation works with [Composer](https://getcomposer.org) by running the f
     $ composer require intervention/zodiac
 
 Although the library is **framework agnostic** it comes with a service provider
-for the [Laravel Framework](https://zodiac.intervention.io/v5/introduction/frameworks). Which will be discovered
+for the [Laravel Framework](https://zodiac.intervention.io/v6/introduction/frameworks). Which will be discovered
 automatically and registers the calculator into your installation.
 
 ## Documentation

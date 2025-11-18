@@ -21,7 +21,7 @@ use Stringable;
  * @method static \Intervention\Zodiac\Calculator fromCarbon(CarbonInterface $date, null|Astrology $astrology = null)
  * @method static \Intervention\Zodiac\Calculator compare(SignInterface $sign, SignInterface $with)
  */
-class Calculator extends Facade
+class Zodiac extends Facade
 {
     /**
      * @return string

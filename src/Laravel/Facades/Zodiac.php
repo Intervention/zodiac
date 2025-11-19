@@ -12,14 +12,14 @@ use Intervention\Zodiac\Interfaces\SignInterface;
 use Stringable;
 
 /**
- * @method static \Intervention\Zodiac\Calculator western()
- * @method static \Intervention\Zodiac\Calculator chinese()
- * @method static \Intervention\Zodiac\Calculator withAstrology(Astrology $astrology)
- * @method static \Intervention\Zodiac\Calculator fromString(string|Stringable $date, null|Astrology $astrology = null)
- * @method static \Intervention\Zodiac\Calculator fromDate(DateTimeInterface $date, null|Astrology $astrology = null)
- * @method static \Intervention\Zodiac\Calculator fromUnix(int|string $date, null|Astrology $astrology = null)
- * @method static \Intervention\Zodiac\Calculator fromCarbon(CarbonInterface $date, null|Astrology $astrology = null)
- * @method static \Intervention\Zodiac\Calculator compare(SignInterface $sign, SignInterface $with)
+ * @method static \Intervention\Zodiac\Interfaces\CalculatorInterface western()
+ * @method static \Intervention\Zodiac\Interfaces\CalculatorInterface chinese()
+ * @method static \Intervention\Zodiac\Interfaces\CalculatorInterface withAstrology(Astrology $astrology)
+ * @method static \Intervention\Zodiac\Interfaces\SignInterface fromString(string|Stringable $date, null|Astrology $astrology = null)
+ * @method static \Intervention\Zodiac\Interfaces\SignInterface fromDate(DateTimeInterface $date, null|Astrology $astrology = null)
+ * @method static \Intervention\Zodiac\Interfaces\SignInterface fromUnix(int|string $date, null|Astrology $astrology = null)
+ * @method static \Intervention\Zodiac\Interfaces\SignInterface fromCarbon(CarbonInterface $date, null|Astrology $astrology = null)
+ * @method static float compare(SignInterface $sign, SignInterface $with)
  */
 class Zodiac extends Facade
 {

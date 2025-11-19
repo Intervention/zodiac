@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Intervention\Zodiac\Laravel;
 
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\Translation\Translator;
 use Intervention\Zodiac\Astrology;
 use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
 
-class ZodiacServiceProvider extends ServiceProvider
+class ServiceProvider extends BaseServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.

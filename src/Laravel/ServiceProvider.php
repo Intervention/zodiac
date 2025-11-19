@@ -26,6 +26,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         // define config files for publishing
         $this->publishes([
+            /** @phpstan-ignore function.notFound */
             __DIR__ . '/config/zodiac.php' => config_path('zodiac.php')
         ]);
 
@@ -42,10 +43,10 @@ class ServiceProvider extends BaseServiceProvider
             $translator = $app->make(Translator::class);
 
             if (!($translator instanceof Translator)) {
-                throw new RuntimeException('Unable to resolve translator from Laravel application.');
+                throw new RuntimeException('Unable to resolve translator from Laravel application');
             }
 
-            $calculator = new Calculator(config('zodiac.astrology', Astrology::WESTERN));
+            $calculator = new Calculator($this->defaultAstrology());
             $calculator->setTranslator($translator);
 
             return $calculator;
@@ -61,5 +62,19 @@ class ServiceProvider extends BaseServiceProvider
     public function provides()
     {
         return ['zodiac'];
+    }
+
+    private function defaultAstrology(): Astrology
+    {
+        /** @phpstan-ignore function.notFound */
+        $astrology = config('zodiac.astrology', Astrology::WESTERN);
+
+        if (!($astrology instanceof Astrology)) {
+                throw new RuntimeException(
+                    'Unable to resolve default value for Intervention\Zodiac\Calculator parameter #1 $astrology',
+                );
+        }
+
+        return $astrology;
     }
 }

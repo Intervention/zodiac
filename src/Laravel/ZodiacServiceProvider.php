@@ -7,6 +7,7 @@ namespace Intervention\Zodiac\Laravel;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Translation\Translator;
+use Intervention\Zodiac\Astrology;
 use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
@@ -23,6 +24,11 @@ class ZodiacServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // define config files for publishing
+        $this->publishes([
+            __DIR__ . '/config/zodiac.php' => config_path('zodiac.php')
+        ]);
+
         // load translation files
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'zodiacs');
     }
@@ -39,7 +45,7 @@ class ZodiacServiceProvider extends ServiceProvider
                 throw new RuntimeException('Unable to resolve translator from Laravel application.');
             }
 
-            $calculator = new Calculator();
+            $calculator = new Calculator(config('zodiac.astrology', Astrology::WESTERN));
             $calculator->setTranslator($translator);
 
             return $calculator;

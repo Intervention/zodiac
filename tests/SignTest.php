@@ -22,7 +22,7 @@ use Intervention\Zodiac\Western\Signs\Virgo;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-final class ZodiacTest extends TestCase
+final class SignTest extends TestCase
 {
     public function testName(): void
     {

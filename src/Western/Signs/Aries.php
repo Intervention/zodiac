@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Western\Signs;
 
-class Aries extends Sign
+use Intervention\Zodiac\Western\AbstractSign;
+
+class Aries extends AbstractSign
 {
     protected string $name = 'Aries';
     protected string $html = '&#9800;';

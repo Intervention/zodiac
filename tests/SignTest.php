@@ -16,7 +16,7 @@ use Intervention\Zodiac\Western\Signs\Libra;
 use Intervention\Zodiac\Western\Signs\Pisces;
 use Intervention\Zodiac\Western\Signs\Sagittarius;
 use Intervention\Zodiac\Western\Signs\Scorpio;
-use Intervention\Zodiac\Western\Signs\Sign;
+use Intervention\Zodiac\Western\AbstractSign as AbstractWesternSign;
 use Intervention\Zodiac\Western\Signs\Taurus;
 use Intervention\Zodiac\Western\Signs\Virgo;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -104,7 +104,7 @@ final class SignTest extends TestCase
         int $endDay = 2,
         string $name = 'test',
         string $html = 'test',
-    ): Sign {
+    ): AbstractWesternSign {
         return new class (
             $startDay,
             $startMonth,
@@ -112,7 +112,7 @@ final class SignTest extends TestCase
             $endMonth,
             $name,
             $html,
-        ) extends Sign {
+        ) extends AbstractWesternSign {
             public function __construct(
                 int $startDay,
                 int $startMonth,

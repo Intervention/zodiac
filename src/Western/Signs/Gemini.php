@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Western\Signs;
 
-class Gemini extends Sign
+use Intervention\Zodiac\Western\AbstractSign;
+
+class Gemini extends AbstractSign
 {
     protected string $name = 'Gemini';
     protected string $html = '&#9802;';

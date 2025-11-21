@@ -2,18 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Intervention\Zodiac\Chinese\Signs;
+namespace Intervention\Zodiac\Chinese;
 
 use Carbon\CarbonPeriod;
-use Intervention\Zodiac\Chinese\NewYearCalculator;
 use Intervention\Zodiac\Exceptions\DateException;
 use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Intervention\Zodiac\Period;
-use Intervention\Zodiac\AbstractSign;
+use Intervention\Zodiac\AbstractSign as BaseSign;
 use Intervention\Zodiac\Interfaces\SignInterface;
-use Intervention\Zodiac\Chinese\Compatibility;
 
-abstract class Sign extends AbstractSign
+abstract class AbstractSign extends BaseSign
 {
     /**
      * {@inheritdoc}

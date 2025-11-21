@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Western\Signs;
 
-class Cancer extends Sign
+use Intervention\Zodiac\Western\AbstractSign;
+
+class Cancer extends AbstractSign
 {
     protected string $name = 'Cancer';
     protected string $html = '&#9803;';

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Western\Signs;
 
-class Leo extends Sign
+use Intervention\Zodiac\Western\AbstractSign;
+
+class Leo extends AbstractSign
 {
     protected string $name = 'Leo';
     protected string $html = '&#9804;';

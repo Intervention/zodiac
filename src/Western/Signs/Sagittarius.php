@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Western\Signs;
 
-class Sagittarius extends Sign
+use Intervention\Zodiac\Western\AbstractSign;
+
+class Sagittarius extends AbstractSign
 {
     protected string $name = 'Sagittarius';
     protected string $html = '&#9808;';

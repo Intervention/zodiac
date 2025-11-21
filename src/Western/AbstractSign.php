@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Intervention\Zodiac\Western\Signs;
+namespace Intervention\Zodiac\Western;
 
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -10,11 +10,10 @@ use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Intervention\Zodiac\Interfaces\TranslatableInterface;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Period;
-use Intervention\Zodiac\AbstractSign;
-use Intervention\Zodiac\Western\Compatibility;
+use Intervention\Zodiac\AbstractSign as BaseSign;
 use Stringable;
 
-abstract class Sign extends AbstractSign implements SignInterface, TranslatableInterface, Stringable
+abstract class AbstractSign extends BaseSign implements SignInterface, TranslatableInterface, Stringable
 {
     protected int $startDay;
     protected int $startMonth;

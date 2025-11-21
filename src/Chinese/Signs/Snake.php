@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Chinese\Signs;
 
-class Snake extends Sign
+use Intervention\Zodiac\Chinese\AbstractSign;
+
+class Snake extends AbstractSign
 {
     protected string $name = 'Snake';
     protected string $html = '🐍';

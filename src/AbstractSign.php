@@ -48,9 +48,13 @@ abstract class AbstractSign implements SignInterface, TranslatableInterface, Str
      *
      * @see SignInterface::localized()
      */
-    public function localize(string $locale = 'en'): SignInterface
+    public function localize(?string $locale = null): SignInterface
     {
         $key = 'zodiacs.' . $this::class;
+
+        if ($locale === null) {
+            $locale = self::$translator ? self::$translator->locale() : 'en';
+        }
 
         if (!$this->translator()->has($key, locale: $locale)) {
             return $this;

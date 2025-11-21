@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Intervention\Zodiac\Interfaces;
 
 use Illuminate\Translation\Translator;
+use Stringable;
 
-interface TranslatableInterface
+interface TranslatableInterface extends Stringable
 {
     /**
      * Get translator for given locale

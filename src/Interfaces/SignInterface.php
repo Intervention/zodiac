@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Interfaces;
 
-use Stringable;
-
-interface SignInterface extends Stringable
+interface SignInterface extends TranslatableInterface
 {
     /**
      * Return the title of the current zodiac
@@ -32,10 +30,5 @@ interface SignInterface extends Stringable
      /**
      * Return the localized version of the current zodiac sign
      */
-    public function localize(string $locale = 'en'): self;
-
-    /**
-     * Cast current object to string
-     */
-    public function __toString(): string;
+    public function localize(?string $locale = null): self;
 }

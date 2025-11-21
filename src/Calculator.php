@@ -128,7 +128,7 @@ class Calculator implements CalculatorInterface
             try {
                 // check if the period of the zodiac sign matches the given date
                 if ($sign->period($date->year)->contains($date)) {
-                    return $sign;
+                    return self::localizeSign($sign);
                 }
             } catch (DateException) {
                 // try next sign
@@ -146,5 +146,19 @@ class Calculator implements CalculatorInterface
     public static function compare(SignInterface $sign, SignInterface $with): float
     {
         return $sign->compatibility($with);
+    }
+
+    /**
+     * Localize given sign in the locale of the current translator
+     */
+    private static function localizeSign(SignInterface $sign): SignInterface
+    {
+        if (self::$translator === null) {
+            return $sign;
+        }
+
+        $sign->setTranslator(self::$translator);
+
+        return $sign->localize();
     }
 }

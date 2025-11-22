@@ -200,12 +200,16 @@ class Compatibility
      */
     public function __invoke(SignInterface $a, SignInterface $b): float
     {
+        if (substr($a::class, 0, 27) !== substr($b::class, 0, 27)) {
+            throw new RuntimeException('The signs of different astrologies are not comparable with each other');
+        }
+
         if (!array_key_exists($a::class, $this->factors)) {
-            throw new RuntimeException('Unable to match compatibility of ' . $a::class);
+            throw new RuntimeException('Unable to match compatibility of ' . $a::class . ' with ' . $b::class);
         }
 
         if (!array_key_exists($b::class, $this->factors[$a::class])) {
-            throw new RuntimeException('Unable to match compatibility of ' . $b::class);
+            throw new RuntimeException('Unable to match compatibility of ' . $a::class . ' with ' . $b::class);
         }
 
         return $this->factors[$a::class][$b::class];

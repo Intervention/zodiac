@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Intervention\Zodiac;
 
 use Intervention\Zodiac\Interfaces\SignInterface;
-use Intervention\Zodiac\Interfaces\TranslatableInterface;
 use Intervention\Zodiac\Traits\CanTranslate;
-use Stringable;
 
-abstract class AbstractSign implements SignInterface, TranslatableInterface, Stringable
+abstract class AbstractSign implements SignInterface
 {
     use CanTranslate;
 

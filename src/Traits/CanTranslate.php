@@ -43,9 +43,13 @@ trait CanTranslate
             return static::$translator;
         }
 
-        return new Translator(
+        $translator = new Translator(
             new FileLoader(new Filesystem(), __DIR__ . '/../lang'),
             $locale ?: 'en'
         );
+
+        $translator->addNamespace('zodiacs', __DIR__ . '/../lang');
+
+        return $translator;
     }
 }

@@ -70,9 +70,9 @@ class ServiceProvider extends BaseServiceProvider
         $astrology = config('zodiac.astrology', Astrology::WESTERN);
 
         if (!($astrology instanceof Astrology)) {
-                throw new RuntimeException(
-                    'Unable to resolve default value for Intervention\Zodiac\Calculator parameter #1 $astrology',
-                );
+            throw new RuntimeException(
+                'Unable to resolve default value for Intervention\Zodiac\Calculator parameter #1 $astrology',
+            );
         }
 
         return $astrology;

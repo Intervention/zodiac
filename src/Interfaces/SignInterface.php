@@ -27,7 +27,7 @@ interface SignInterface extends TranslatableInterface
      */
     public function compatibility(self $sign): float;
 
-     /**
+    /**
      * Return the localized version of the current zodiac sign
      */
     public function localize(?string $locale = null): self;

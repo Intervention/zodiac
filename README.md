@@ -47,16 +47,6 @@ $sign = $calculator->calculate('228268800');
 $sign = $calculator->calculate('2001-01-01', Astrology::CHINESE);
 ```
 
-```php
-use Intervention\Zodiac\Calculator;
-use Intervention\Zodiac\Astrology;
-
-// use static methods to create calculator
-$calculator = Calculator::create(Astrology::WESTERN);
-$calculator = Calculator::western();
-$calculator = Calculator::chinese();
-```
-
 ### Sign
 
 ```php
@@ -79,9 +69,8 @@ $sign = WesternSign::fromString('2000-01-01');
 
 // parse chinese signs directly
 $sign = ChineseSign::fromString('2000-01-01');
-```
 
-```php
+// sign methods
 $name = $sign->name(); // 'gemini'
 $html = $sign->html(); // '♊︎'
 $localized = $sign->localize('fr')->name(); // Gémeaux

@@ -7,7 +7,7 @@ namespace Intervention\Zodiac\Western\Signs;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Carbon\Exceptions\InvalidFormatException;
-use Intervention\Zodiac\Exceptions\InvalidArgumentException;
+use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Intervention\Zodiac\Period;
 use Intervention\Zodiac\Western\PreConcreteWesternSign;
@@ -26,7 +26,7 @@ class Capricorn extends PreConcreteWesternSign
      *
      * @see SignInterface::period()
      *
-     * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
     public function period(int $year): PeriodInterface
     {
@@ -60,7 +60,7 @@ class Capricorn extends PreConcreteWesternSign
                 ),
             ]);
         } catch (InvalidFormatException $e) {
-            throw new InvalidArgumentException(
+            throw new RuntimeException(
                 'Unable to calculate period for zodiac sign ' . $this::class,
                 previous: $e,
             );

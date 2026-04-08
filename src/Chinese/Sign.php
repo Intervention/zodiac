@@ -26,9 +26,9 @@ abstract class Sign extends BaseSign
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */
-    public static function fromCarbon(CarbonInterface $date, Astrology $astrology = Astrology::WESTERN): SignInterface
+    public static function fromCarbon(CarbonInterface $date, Astrology $astrology = Astrology::CHINESE): SignInterface
     {
-        if ($astrology !== Astrology::WESTERN) {
+        if ($astrology !== Astrology::CHINESE) {
             throw new InvalidArgumentException('Chinese zodiac signs can only be created with chinese astrology');
         }
 
@@ -40,9 +40,9 @@ abstract class Sign extends BaseSign
      *
      * @see SignInterface::fromString()
      */
-    public static function fromString(string|Stringable $date, Astrology $astrology = Astrology::WESTERN): SignInterface
+    public static function fromString(string|Stringable $date, Astrology $astrology = Astrology::CHINESE): SignInterface
     {
-        if ($astrology !== Astrology::WESTERN) {
+        if ($astrology !== Astrology::CHINESE) {
             throw new InvalidArgumentException('Chinese zodiac signs can only be created with chinese astrology');
         }
 
@@ -54,9 +54,9 @@ abstract class Sign extends BaseSign
      *
      * @see SignInterface::fromUnix()
      */
-    public static function fromUnix(string|int|float $date, Astrology $astrology = Astrology::WESTERN): SignInterface
+    public static function fromUnix(string|int|float $date, Astrology $astrology = Astrology::CHINESE): SignInterface
     {
-        if ($astrology !== Astrology::WESTERN) {
+        if ($astrology !== Astrology::CHINESE) {
             throw new InvalidArgumentException('Chinese zodiac signs can only be created with chinese astrology');
         }
 
@@ -71,9 +71,9 @@ abstract class Sign extends BaseSign
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */
-    public static function fromDate(DateTimeInterface $date, Astrology $astrology = Astrology::WESTERN): SignInterface
+    public static function fromDate(DateTimeInterface $date, Astrology $astrology = Astrology::CHINESE): SignInterface
     {
-        if ($astrology !== Astrology::WESTERN) {
+        if ($astrology !== Astrology::CHINESE) {
             throw new InvalidArgumentException('Chinese zodiac signs can only be created with chinese astrology');
         }
 

@@ -11,6 +11,7 @@ use DateTimeInterface;
 use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 use Intervention\Zodiac\Exceptions\LocalizationException;
 use Intervention\Zodiac\Exceptions\RuntimeException;
+use Intervention\Zodiac\Exceptions\ZodiacException;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Traits\HasTranslator;
 use Stringable;
@@ -49,7 +50,7 @@ abstract class Sign implements SignInterface
                 if ($sign->period($date->year)->contains($date)) {
                     return $sign->localize();
                 }
-            } catch (\Exception) { // TODO: catch more detailed exception
+            } catch (ZodiacException) {
                 // try next sign
             }
         }

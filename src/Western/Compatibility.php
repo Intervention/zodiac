@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Western;
 
+use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Western\Signs\Aquarius;
@@ -197,11 +198,14 @@ class Compatibility
 
     /**
      * Calculate zodiac sign compatibility between two signs
+     *
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
     public function __invoke(SignInterface $a, SignInterface $b): float
     {
         if (substr($a::class, 0, 27) !== substr($b::class, 0, 27)) {
-            throw new RuntimeException('The signs of different astrologies are not comparable with each other');
+            throw new InvalidArgumentException('The signs being compared must have the same astrology');
         }
 
         if (!array_key_exists($a::class, $this->factors)) {

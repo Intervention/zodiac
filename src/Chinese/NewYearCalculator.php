@@ -17,6 +17,7 @@ use Intervention\Zodiac\Chinese\Signs\Rat;
 use Intervention\Zodiac\Chinese\Signs\Rooster;
 use Intervention\Zodiac\Chinese\Signs\Snake;
 use Intervention\Zodiac\Chinese\Signs\Tiger;
+use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 
 class NewYearCalculator
 {
@@ -231,11 +232,14 @@ class NewYearCalculator
 
     /**
      * Get chinese new years day of given year
+     *
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
     public static function newYear(int $year): NewYear
     {
         if (!array_key_exists($year, self::$table)) {
-            throw new RuntimeException("Missing data for " . $year . " in new year's data table");
+            throw new RuntimeException("Data for " . $year . " is not implemented");
         }
 
         return new NewYear($year, ...self::$table[$year]);

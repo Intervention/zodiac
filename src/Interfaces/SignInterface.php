@@ -4,8 +4,45 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Interfaces;
 
+use Carbon\CarbonInterface;
+use DateTimeInterface;
+use Intervention\Zodiac\Astrology;
+use Stringable;
+
 interface SignInterface extends TranslatableInterface
 {
+    /**
+     * Calculate zodiac from given date of type string.
+     */
+    public static function fromString(
+        string|Stringable $date,
+        Astrology $astrology = Astrology::WESTERN,
+    ): self;
+
+    /**
+     * Calculate zodiac from given date object which implements DateTimeInterface.
+     */
+    public static function fromDate(
+        DateTimeInterface $date,
+        Astrology $astrology = Astrology::WESTERN,
+    ): self;
+
+    /**
+     * Calculate zodiac from given unix timestamp date.
+     */
+    public static function fromUnix(
+        string|int|float $date,
+        Astrology $astrology = Astrology::WESTERN,
+    ): self;
+
+    /**
+     * Calculate zodiac from given Carbon date.
+     */
+    public static function fromCarbon(
+        CarbonInterface $date,
+        Astrology $astrology = Astrology::WESTERN,
+    ): self;
+
     /**
      * Return the title of the current zodiac
      */

@@ -9,9 +9,8 @@ use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
 use Intervention\Zodiac\Interfaces\SignInterface;
-use InvalidArgumentException;
 
-trait CanTranslate
+trait HasTranslator
 {
     /**
      * Translator
@@ -34,8 +33,6 @@ trait CanTranslate
      * {@inheritdoc}
      *
      * @see TranslatableInterface::translator()
-     *
-     * @throws InvalidArgumentException
      */
     public static function translator(?string $locale = null): Translator
     {

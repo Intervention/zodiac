@@ -14,7 +14,7 @@ The installation works with [Composer](https://getcomposer.org) by running the f
     $ composer require intervention/zodiac
 
 Although the library is **framework agnostic** it comes with a service provider
-for the [Laravel Framework](https://zodiac.intervention.io/v6/introduction/frameworks). Which will be discovered
+for the [Laravel Framework](https://zodiac.intervention.io/v7/introduction/frameworks). Which will be discovered
 automatically and registers the calculator into your installation.
 
 ## Documentation
@@ -31,48 +31,57 @@ use Intervention\Zodiac\Astrology;
 use Carbon\Carbon;
 use DateTime;
 
-$sign = Calculator::fromString('2001-01-01');
-$sign = Calculator::fromString('2001-01-01', Astrology::CHINESE);
+// create calculator with astrology
+$calculator = new Calculator(Astrology::WESTERN);
 
-// create western calculator
-$sign = Calculator::western()
-    ->fromString('2001-01-01'); 
+// calculate various date formats
+$sign = $calculator->calculate('2001-01-01');
+$sign = $calculator->calculate('first day of june 2014');
+$sign = $calculator->calculate('2018-06-15 12:34:00');
+$sign = $calculator->calculate(new DateTime('2001-01-01'));
+$sign = $calculator->calculate(Carbon::yesterday());
+$sign = $calculator->calculate(228268800);
+$sign = $calculator->calculate('228268800');
 
-// create chinese calculator
-$sign = Calculator::chinese()
-    ->fromString('2001-01-01'); 
+// override the default astrology
+$sign = $calculator->calculate('2001-01-01', Astrology::CHINESE);
+```
 
-// override default
-$sign = Calculator::western()
-    ->fromString('2001-01-01', Astrology::CHINESE);
+```php
+use Intervention\Zodiac\Calculator;
+use Intervention\Zodiac\Astrology;
 
-// pass astrology as a parameter
-$sign = Calculator::withAstrology(Astrology::CHINESE)
-    ->fromString('2001-01-01');
-
-// override default
-$sign = Calculator::withAstrology(Astrology::CHINESE)
-    ->fromString('2001-01-01', Astrology::WESTERN);
-
-// parse various date formats
-$sign = Calculator::fromString('first day of june 2014');
-$sign = Calculator::fromString('2018-06-15 12:34:00');
-$sign = Calculator::fromDate(new DateTime('2001-01-01'));
-$sign = Calculator::fromDate(Carbon::yesterday());
-$sign = Calculator::fromUnix(228268800);
-$sign = Calculator::fromUnix('228268800');
+// use static methods to create calculator
+$calculator = Calculator::create(Astrology::WESTERN);
+$calculator = Calculator::western();
+$calculator = Calculator::chinese();
 ```
 
 ### Sign
 
 ```php
-use Intervention\Zodiac\Calculator;
+use Intervention\Zodiac\Sign;
+use Intervention\Zodiac\Chinese\Sign as ChineseSign;
+use Intervention\Zodiac\Western\Sign as WesternSign;
 use DateTime;
 use Carbon\Carbon;
 
-// calculate zodiac sing
-$sign = Calculator::fromDate($date);
+// parse signs directly
+$sign = Sign::fromString('2000-01-01');
+$sign = Sign::fromString('first day of june 2014');
+$sign = Sign::fromDate(new DateTime('2001-01-01'));
+$sign = Sign::fromCarbon(Carbon::yesterday());
+$sign = Sign::fromUnix(228268800);
+$sign = Sign::fromUnix('228268800');
 
+// parse western signs directly
+$sign = WesternSign::fromString('2000-01-01');
+
+// parse chinese signs directly
+$sign = ChineseSign::fromString('2000-01-01');
+```
+
+```php
 $name = $sign->name(); // 'gemini'
 $html = $sign->html(); // '♊︎'
 $localized = $sign->localize('fr')->name(); // Gémeaux

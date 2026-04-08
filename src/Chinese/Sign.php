@@ -8,10 +8,10 @@ use Carbon\CarbonPeriod;
 use Intervention\Zodiac\Exceptions\DateException;
 use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Intervention\Zodiac\Period;
-use Intervention\Zodiac\AbstractSign as BaseSign;
+use Intervention\Zodiac\Sign as BaseSign;
 use Intervention\Zodiac\Interfaces\SignInterface;
 
-abstract class AbstractSign extends BaseSign
+abstract class Sign extends BaseSign
 {
     /**
      * {@inheritdoc}

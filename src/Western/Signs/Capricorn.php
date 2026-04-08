@@ -8,9 +8,9 @@ use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Intervention\Zodiac\Period;
-use Intervention\Zodiac\Western\AbstractSign;
+use Intervention\Zodiac\Western\Sign as WesternSign;
 
-class Capricorn extends AbstractSign
+class Capricorn extends WesternSign
 {
     protected string $name = 'Capricorn';
     protected string $html = '&#9809;';

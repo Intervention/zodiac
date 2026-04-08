@@ -6,7 +6,7 @@ namespace Intervention\Zodiac\Chinese;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
-use Intervention\Zodiac\Chinese\AbstractSign as ChineseZodiacSign;
+use Intervention\Zodiac\Chinese\Sign as ChineseSign;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\SignInterface;
 
@@ -46,7 +46,7 @@ class NewYear
     {
         $sign = new $this->sign();
 
-        if (!($sign instanceof ChineseZodiacSign)) {
+        if (!($sign instanceof ChineseSign)) {
             throw new RuntimeException('Type of zodiac sign does not match');
         }
 

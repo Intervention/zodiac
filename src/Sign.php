@@ -7,7 +7,7 @@ namespace Intervention\Zodiac;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Traits\CanTranslate;
 
-abstract class AbstractSign implements SignInterface
+abstract class Sign implements SignInterface
 {
     use CanTranslate;
 

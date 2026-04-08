@@ -9,9 +9,9 @@ use Carbon\CarbonPeriod;
 use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Period;
-use Intervention\Zodiac\AbstractSign as BaseSign;
+use Intervention\Zodiac\Sign as BaseSign;
 
-abstract class AbstractSign extends BaseSign
+abstract class Sign extends BaseSign
 {
     protected int $startDay;
     protected int $startMonth;

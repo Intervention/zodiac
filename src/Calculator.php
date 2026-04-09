@@ -68,10 +68,10 @@ class Calculator implements CalculatorInterface
         $astrology = $astrology ?: $this->astrology;
 
         $sign = match (true) {
-            $date instanceof DateTimeInterface => Sign::fromDate($date, $astrology),
+            is_string($date) && is_numeric($date) => Sign::fromUnix($date, $astrology),
             is_string($date) || $date instanceof Stringable => Sign::fromString($date, $astrology),
-            is_string($date) && is_numeric($date),
             is_int($date) || is_float($date) => Sign::fromUnix($date, $astrology),
+            $date instanceof DateTimeInterface => Sign::fromDate($date, $astrology),
         };
 
         $sign->setTranslator($this->translator());

@@ -5,19 +5,25 @@
 [![Monthly Downloads](https://img.shields.io/packagist/dm/intervention/zodiac.svg)](https://packagist.org/packages/intervention/zodiac/stats)
 [![Support me on Ko-fi](https://raw.githubusercontent.com/Intervention/zodiac/main/.github/images/support.svg)](https://ko-fi.com/interventionphp)
 
-Intervention Zodiac is a astrological calculator that resolves Western and Chinese zodiac signs from various data types.
+Intervention Zodiac is a astrological calculator for PHP 8.2+ that resolves Western and Chinese zodiac signs from various data types.
+
+- Fluent interface to calculate zodiac signs
+- Support for western and chinese astrology
+- Framework-agnostic
 
 ## Installation
 
 The installation works with [Composer](https://getcomposer.org) by running the following command.
 
-    $ composer require intervention/zodiac
+```bash
+composer require intervention/zodiac
+```
 
-Although the library is **framework agnostic** it comes with a service provider
+Although the library is framework agnostic it comes with a service provider
 for the [Laravel Framework](https://zodiac.intervention.io/v7/introduction/frameworks). Which will be discovered
 automatically and registers the calculator into your installation.
 
-## Documentation
+## Getting Started
 
 Read the full [documentation](https://zodiac.intervention.io) for this library.
 

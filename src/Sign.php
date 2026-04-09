@@ -55,7 +55,7 @@ abstract class Sign implements SignInterface
             }
         }
 
-        throw new RuntimeException('Unable to calculate zodiac from CarbonInterface (' . (string) $date . ')');
+        throw new RuntimeException('No matching zodiac sign for date "' . (string) $date . '"');
     }
 
     /**
@@ -79,8 +79,8 @@ abstract class Sign implements SignInterface
                 date: Carbon::parse($date),
                 astrology: $astrology,
             );
-        } catch (Throwable) {
-            throw new InvalidArgumentException('Unable to create zodiac from string (' . $date . ')');
+        } catch (InvalidFormatException $e) {
+            throw new InvalidArgumentException('Unable to create zodiac from string (' . $date . ')', previous: $e);
         }
     }
 

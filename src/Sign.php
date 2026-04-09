@@ -64,6 +64,7 @@ abstract class Sign implements SignInterface
      * @see SignInterface::fromString()
      *
      * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
     public static function fromString(string|Stringable $date, Astrology $astrology = Astrology::WESTERN): SignInterface
     {

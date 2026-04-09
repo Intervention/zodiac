@@ -48,6 +48,7 @@ abstract class Sign extends BaseSign
      * @see SignInterface::fromString()
      *
      * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
     public static function fromString(string|Stringable $date, Astrology $astrology = Astrology::WESTERN): SignInterface
     {

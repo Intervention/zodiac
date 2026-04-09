@@ -6,14 +6,16 @@ namespace Intervention\Zodiac\Chinese;
 
 use DateTimeImmutable;
 use DateTimeInterface;
-use Exception;
 use Intervention\Zodiac\Chinese\Sign as ChineseSign;
 use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\SignInterface;
+use Intervention\Zodiac\Traits\CanCreateDate;
 
 class NewYear
 {
+    use CanCreateDate;
+
     /**
      * Date of new years day.
      */
@@ -31,12 +33,7 @@ class NewYear
      */
     public function __construct(int $year, int $month, int $day, string $sign)
     {
-        try {
-            $this->date = new DateTimeImmutable(sprintf('%04d-%02d-%02d 00:00:00', $year, $month, $day));
-        } catch (Exception $e) {
-            throw new InvalidArgumentException('Failed to create instance of ' . self::class, previous: $e);
-        }
-
+        $this->date = self::createDate($year, $month, $day);
         $this->sign = $sign;
     }
 

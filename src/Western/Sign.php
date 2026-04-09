@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Western;
 
-use DateTimeImmutable;
 use DateTimeInterface;
-use Exception;
 use Intervention\Zodiac\Astrology;
 use Intervention\Zodiac\DateRange;
 use Intervention\Zodiac\Exceptions\InvalidArgumentException;
@@ -15,10 +13,13 @@ use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Period;
 use Intervention\Zodiac\Sign as BaseSign;
+use Intervention\Zodiac\Traits\CanCreateDate;
 use Stringable;
 
 abstract class Sign extends BaseSign
 {
+    use CanCreateDate;
+
     protected int $startDay;
     protected int $startMonth;
     protected int $endDay;
@@ -83,16 +84,12 @@ abstract class Sign extends BaseSign
      */
     public function period(int $year): PeriodInterface
     {
-        try {
-            return new Period([
-                new DateRange(
-                    new DateTimeImmutable(sprintf('%04d-%02d-%02d', $year, $this->startMonth, $this->startDay)),
-                    new DateTimeImmutable(sprintf('%04d-%02d-%02d', $year, $this->endMonth, $this->endDay)),
-                ),
-            ]);
-        } catch (Exception $e) {
-            throw new InvalidArgumentException('Failed to created period for year ' . $year, previous: $e);
-        }
+        return new Period([
+            new DateRange(
+                self::createDate($year, $this->startMonth, $this->startDay),
+                self::createDate($year, $this->endMonth, $this->endDay),
+            ),
+        ]);
     }
 
     /**

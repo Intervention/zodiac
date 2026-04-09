@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Western\Signs;
 
-use DateTimeImmutable;
-use Exception;
 use Intervention\Zodiac\DateRange;
+use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Intervention\Zodiac\Period;
+use Intervention\Zodiac\Traits\CanCreateDate;
 use Intervention\Zodiac\Western\PreConcreteWesternSign;
 
 class Capricorn extends PreConcreteWesternSign
 {
+    use CanCreateDate;
+
     protected string $name = 'Capricorn';
     protected string $html = '&#9809;';
     protected int $startDay = 22;
@@ -26,6 +28,7 @@ class Capricorn extends PreConcreteWesternSign
      *
      * @see SignInterface::period()
      *
+     * @throws InvalidArgumentException
      * @throws RuntimeException
      */
     public function period(int $year): PeriodInterface
@@ -33,17 +36,17 @@ class Capricorn extends PreConcreteWesternSign
         try {
             return new Period([
                 new DateRange(
-                    new DateTimeImmutable(sprintf('%04d-%02d-%02d', $year - 1, $this->startMonth, $this->startDay)),
-                    new DateTimeImmutable(sprintf('%04d-%02d-%02d', $year, $this->endMonth, $this->endDay)),
+                    self::createDate($year - 1, $this->startMonth, $this->startDay),
+                    self::createDate($year, $this->endMonth, $this->endDay),
                 ),
                 new DateRange(
-                    new DateTimeImmutable(sprintf('%04d-%02d-%02d', $year, $this->startMonth, $this->startDay)),
-                    new DateTimeImmutable(sprintf('%04d-%02d-%02d', $year + 1, $this->endMonth, $this->endDay)),
+                    self::createDate($year, $this->startMonth, $this->startDay),
+                    self::createDate($year + 1, $this->endMonth, $this->endDay),
                 ),
             ]);
-        } catch (Exception $e) {
+        } catch (InvalidArgumentException $e) {
             throw new RuntimeException(
-                'Unable to calculate period for zodiac sign ' . $this::class,
+                'Unable to calculate period for zodiac sign ' . $this::class . ' in year ' . $year,
                 previous: $e,
             );
         }

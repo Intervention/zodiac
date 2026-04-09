@@ -76,6 +76,6 @@ class Calculator implements CalculatorInterface
 
         $sign->setTranslator($this->translator());
 
-        return $sign;
+        return $sign->localize();
     }
 }

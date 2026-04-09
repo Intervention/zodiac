@@ -11,7 +11,6 @@ use Stringable;
 
 /**
  * @method SignInterface calculate(string|Stringable|int|float|DateTimeInterface $date)
- * @method float compare(SignInterface $sign, SignInterface $with)
  */
 class Zodiac extends Facade
 {

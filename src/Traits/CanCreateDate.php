@@ -11,7 +11,7 @@ use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 trait CanCreateDate
 {
     /**
-     * Create DateTimeInterface from given year, month and day.
+     * Create DateTimeImmutable from given year, month and day.
      *
      * @throws InvalidArgumentException
      */

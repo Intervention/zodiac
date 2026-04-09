@@ -77,22 +77,6 @@ $localized = $sign->localize('fr')->name(); // Gémeaux
 $compatibility = $sign->compatibility($sign); // .6
 ```
 
-## Development & Testing
-
-With this package comes a Docker image to build a test suite container. To build this container you have to have Docker installed on your system.
-
-You can run all tests with the following command.
-
-```bash
-docker-compose run --rm --build tests
-```
-
-Run the static analyzer on the code base.
-
-```bash
-docker-compose run --rm --build analysis
-```
-
 ## Authors
 
 This library is developed and maintained by [Oliver Vogel](https://intervention.io)

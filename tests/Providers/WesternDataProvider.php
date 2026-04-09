@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Tests\Providers;
 
-use Carbon\Carbon;
 use DateTime;
 use Generator;
 use Intervention\Zodiac\Astrology;
@@ -114,26 +113,6 @@ class WesternDataProvider
         yield [new DateTime('1977-01-15'), Capricorn::class, Astrology::WESTERN];
         yield [new DateTime('1977-01-26'), Aquarius::class, Astrology::WESTERN];
         yield [new DateTime('1977-02-27'), Pisces::class, Astrology::WESTERN];
-    }
-
-    public static function carbonDates(): Generator
-    {
-        yield [Carbon::parse('1977-03-27'), Aries::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-04-27'), Taurus::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-05-27'), Gemini::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-06-27'), Cancer::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-07-27'), Leo::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-06-21'), Gemini::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-08-27'), Virgo::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-09-27'), Libra::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-10-27'), Scorpio::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-11-27'), Sagittarius::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-12-27'), Capricorn::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-12-31'), Capricorn::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-01-01'), Capricorn::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-01-15'), Capricorn::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-01-26'), Aquarius::class, Astrology::WESTERN];
-        yield [Carbon::parse('1977-02-27'), Pisces::class, Astrology::WESTERN];
     }
 
     public static function compatibilityFactorDataProvider(): Generator

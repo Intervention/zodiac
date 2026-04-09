@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Intervention\Zodiac;
 
 use ArrayIterator;
-use Carbon\CarbonInterface;
-use Carbon\CarbonPeriod;
+use DateTimeInterface;
 use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Stringable;
 use Traversable;
@@ -14,7 +13,7 @@ use Traversable;
 class Period implements PeriodInterface, Stringable
 {
     /**
-     * @param array<int, \Carbon\CarbonPeriod> $periods
+     * @param array<int, DateRange> $periods
      */
     public function __construct(protected array $periods = [])
     {
@@ -26,7 +25,7 @@ class Period implements PeriodInterface, Stringable
      *
      * @see PeriodInterface::contains()
      */
-    public function contains(CarbonInterface $date): bool
+    public function contains(DateTimeInterface $date): bool
     {
         foreach ($this->periods as $period) {
             if ($period->contains($date)) {
@@ -52,6 +51,6 @@ class Period implements PeriodInterface, Stringable
      */
     public function __toString(): string
     {
-        return implode(', ', array_map(fn(CarbonPeriod $period): string => (string) $period, $this->periods));
+        return implode(', ', array_map(fn(DateRange $period): string => (string) $period, $this->periods));
     }
 }

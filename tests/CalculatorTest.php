@@ -28,17 +28,13 @@ final class CalculatorTest extends TestCase
     }
 
     #[DataProviderExternal(WesternDataProvider::class, 'dateTimeDates')]
-    #[DataProviderExternal(WesternDataProvider::class, 'carbonDates')]
     #[DataProviderExternal(ChineseDataProvider::class, 'dateTimeDates')]
-    #[DataProviderExternal(ChineseDataProvider::class, 'carbonDates')]
     #[DataProviderExternal(WesternDataProvider::class, 'stringDates')]
     #[DataProviderExternal(WesternDataProvider::class, 'stringableDates')]
     #[DataProviderExternal(ChineseDataProvider::class, 'stringDates')]
     #[DataProviderExternal(ChineseDataProvider::class, 'stringableDates')]
     #[DataProviderExternal(WesternDataProvider::class, 'unixTimestampDates')]
     #[DataProviderExternal(ChineseDataProvider::class, 'unixTimestampDates')]
-    #[DataProviderExternal(WesternDataProvider::class, 'carbonDates')]
-    #[DataProviderExternal(ChineseDataProvider::class, 'carbonDates')]
     public function testCalculate(mixed $input, string $sign, Astrology $astrology): void
     {
         $this->assertInstanceOf($sign, (new Calculator($astrology))->calculate($input));

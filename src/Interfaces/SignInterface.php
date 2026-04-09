@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Interfaces;
 
-use Carbon\CarbonInterface;
 use DateTimeInterface;
 use Intervention\Zodiac\Astrology;
 use Stringable;
@@ -32,14 +31,6 @@ interface SignInterface extends TranslatableInterface
      */
     public static function fromUnix(
         string|int|float $date,
-        Astrology $astrology = Astrology::WESTERN,
-    ): self;
-
-    /**
-     * Calculate zodiac from given Carbon date.
-     */
-    public static function fromCarbon(
-        CarbonInterface $date,
         Astrology $astrology = Astrology::WESTERN,
     ): self;
 

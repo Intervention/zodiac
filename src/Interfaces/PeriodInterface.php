@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Interfaces;
 
-use Carbon\CarbonInterface;
+use DateTimeInterface;
 use IteratorAggregate;
 
 /**
- * @extends IteratorAggregate<\Carbon\CarbonPeriod>
+ * @extends IteratorAggregate<\Intervention\Zodiac\DateRange>
  */
 interface PeriodInterface extends IteratorAggregate
 {
     /**
      * Determine if the current period contains the given date.
      */
-    public function contains(CarbonInterface $date): bool;
+    public function contains(DateTimeInterface $date): bool;
 }

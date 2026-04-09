@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac;
 
-use Carbon\Carbon;
-use Carbon\CarbonInterface;
-use Carbon\Exceptions\InvalidFormatException;
+use DateTimeImmutable;
 use DateTimeInterface;
+use Exception;
 use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 use Intervention\Zodiac\Exceptions\LocalizationException;
 use Intervention\Zodiac\Exceptions\RuntimeException;
@@ -34,12 +33,14 @@ abstract class Sign implements SignInterface
     /**
      * {@inheritdoc}
      *
-     * @see SignInterface::fromCarbon()
+     * @see SignInterface::fromDate()
      *
      * @throws RuntimeException
      */
-    public static function fromCarbon(CarbonInterface $date, Astrology $astrology = Astrology::WESTERN): SignInterface
+    public static function fromDate(DateTimeInterface $date, Astrology $astrology = Astrology::WESTERN): SignInterface
     {
+        $date = DateTimeImmutable::createFromInterface($date);
+
         foreach ($astrology->signs() as $sign) {
             if (!($sign instanceof SignInterface)) {
                 continue;
@@ -47,7 +48,7 @@ abstract class Sign implements SignInterface
 
             try {
                 // check if the period of the zodiac sign matches the given date
-                if ($sign->period($date->year)->contains($date)) {
+                if ($sign->period((int) $date->format('Y'))->contains($date)) {
                     return $sign->localize();
                 }
             } catch (ZodiacException) {
@@ -55,7 +56,7 @@ abstract class Sign implements SignInterface
             }
         }
 
-        throw new RuntimeException('No matching zodiac sign for date "' . (string) $date . '"');
+        throw new RuntimeException('No matching zodiac sign for date "' . $date->format('Y-m-d H:i:s') . '"');
     }
 
     /**
@@ -71,37 +72,17 @@ abstract class Sign implements SignInterface
         // normalize date
         $date = (string) $date;
 
-        if ($date === '') { // empty string is allowed in Carbon::parse() but not here
+        if ($date === '') {
             throw new InvalidArgumentException('Unable to create zodiac from empty string');
         }
 
         try {
-            return self::fromCarbon(
-                date: Carbon::parse($date),
-                astrology: $astrology,
-            );
-        } catch (InvalidFormatException $e) {
-            throw new InvalidArgumentException('Unable to create zodiac from string (' . $date . ')', previous: $e);
+            $date = new DateTimeImmutable($date);
+        } catch (Exception $e) {
+            throw new InvalidArgumentException('Unable to create zodiac from string "' . $date . '"', previous: $e);
         }
-    }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @see SignInterface::fromDate()
-     *
-     * @throws RuntimeException
-     */
-    public static function fromDate(DateTimeInterface $date, Astrology $astrology = Astrology::WESTERN): SignInterface
-    {
-        try {
-            return self::fromCarbon(
-                date: new Carbon($date),
-                astrology: $astrology,
-            );
-        } catch (InvalidFormatException $e) {
-            throw new RuntimeException('Unable to create zodiac from DateTimeInterface', previous: $e);
-        }
+        return self::fromDate(date: $date, astrology: $astrology);
     }
 
     /**
@@ -118,8 +99,8 @@ abstract class Sign implements SignInterface
         }
 
         try {
-            return self::fromCarbon(
-                date: Carbon::createFromTimestamp($date),
+            return self::fromDate(
+                date: (new DateTimeImmutable())->setTimestamp((int) $date),
                 astrology: $astrology,
             );
         } catch (Throwable) {

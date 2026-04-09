@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Chinese;
 
-use Carbon\CarbonInterface;
 use DateTimeInterface;
 use Intervention\Zodiac\Astrology;
 use Intervention\Zodiac\Interfaces\SignInterface;
@@ -17,11 +16,11 @@ abstract class PreConcreteChineseSign extends ChineseSign
     /**
      * {@inheritdoc}
      *
-     * @see SignInterface::fromCarbon()
+     * @see SignInterface::fromDate()
      */
-    public static function fromCarbon(CarbonInterface $date, Astrology $astrology = Astrology::WESTERN): SignInterface
+    public static function fromDate(DateTimeInterface $date, Astrology $astrology = Astrology::WESTERN): SignInterface
     {
-        $sign = parent::fromCarbon($date, $astrology);
+        $sign = parent::fromDate($date, $astrology);
 
         if ($sign::class !== static::class) {
             throw new InvalidArgumentException(
@@ -65,24 +64,6 @@ abstract class PreConcreteChineseSign extends ChineseSign
             );
         }
 
-
-        return $sign;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see SignInterface::fromDate()
-     */
-    public static function fromDate(DateTimeInterface $date, Astrology $astrology = Astrology::WESTERN): SignInterface
-    {
-        $sign = parent::fromDate($date, $astrology);
-
-        if ($sign::class !== static::class) {
-            throw new InvalidArgumentException(
-                'The date provided does not correspond to the zodiac sign ' . static::class,
-            );
-        }
 
         return $sign;
     }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Western\Signs;
 
-use Carbon\Carbon;
-use Carbon\CarbonPeriod;
-use Carbon\Exceptions\InvalidFormatException;
+use DateTimeImmutable;
+use Exception;
+use Intervention\Zodiac\DateRange;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Intervention\Zodiac\Period;
@@ -32,34 +32,16 @@ class Capricorn extends PreConcreteWesternSign
     {
         try {
             return new Period([
-                CarbonPeriod::since(
-                    Carbon::create(
-                        year: $year - 1,
-                        month: $this->startMonth,
-                        day: $this->startDay,
-                    )
-                )->until(
-                    Carbon::create(
-                        year: $year,
-                        month: $this->endMonth,
-                        day: $this->endDay,
-                    )
+                new DateRange(
+                    new DateTimeImmutable(sprintf('%04d-%02d-%02d', $year - 1, $this->startMonth, $this->startDay)),
+                    new DateTimeImmutable(sprintf('%04d-%02d-%02d', $year, $this->endMonth, $this->endDay)),
                 ),
-                CarbonPeriod::since(
-                    Carbon::create(
-                        year: $year,
-                        month: $this->startMonth,
-                        day: $this->startDay,
-                    )
-                )->until(
-                    Carbon::create(
-                        year: $year + 1,
-                        month: $this->endMonth,
-                        day: $this->endDay,
-                    )
+                new DateRange(
+                    new DateTimeImmutable(sprintf('%04d-%02d-%02d', $year, $this->startMonth, $this->startDay)),
+                    new DateTimeImmutable(sprintf('%04d-%02d-%02d', $year + 1, $this->endMonth, $this->endDay)),
                 ),
             ]);
-        } catch (InvalidFormatException $e) {
+        } catch (Exception $e) {
             throw new RuntimeException(
                 'Unable to calculate period for zodiac sign ' . $this::class,
                 previous: $e,

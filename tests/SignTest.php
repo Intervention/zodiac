@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Tests;
 
-use Carbon\CarbonInterface;
 use DateTimeInterface;
 use Generator;
 use Intervention\Zodiac\Astrology;
@@ -51,9 +50,7 @@ final class SignTest extends TestCase
     }
 
     #[DataProviderExternal(WesternDataProvider::class, 'dateTimeDates')]
-    #[DataProviderExternal(WesternDataProvider::class, 'carbonDates')]
     #[DataProviderExternal(ChineseDataProvider::class, 'dateTimeDates')]
-    #[DataProviderExternal(ChineseDataProvider::class, 'carbonDates')]
     public function testFromDate(DateTimeInterface $input, string $resultClassname, Astrology $astrology): void
     {
         $this->assertInstanceOf($resultClassname, Sign::fromDate($input, $astrology));
@@ -75,13 +72,6 @@ final class SignTest extends TestCase
         $this->assertInstanceOf($resultClassname, Sign::fromUnix($input, $astrology));
     }
 
-    #[DataProviderExternal(WesternDataProvider::class, 'carbonDates')]
-    #[DataProviderExternal(ChineseDataProvider::class, 'carbonDates')]
-    public function testFromCarbon(CarbonInterface $input, string $resultClassname, Astrology $astrology): void
-    {
-        $this->assertInstanceOf($resultClassname, Sign::fromCarbon($input, $astrology));
-    }
-
     #[DataProviderExternal(WesternDataProvider::class, 'stringDates')]
     #[DataProviderExternal(WesternDataProvider::class, 'stringableDates')]
     public function testWesternSignFromString(
@@ -101,16 +91,6 @@ final class SignTest extends TestCase
         $this->assertInstanceOf($resultClassname, WesternSign::fromUnix($input, $astrology));
     }
 
-    #[DataProviderExternal(WesternDataProvider::class, 'carbonDates')]
-    public function testWesternSignFromCarbon(
-        CarbonInterface $input,
-        string $resultClassname,
-        Astrology $astrology,
-    ): void {
-        $this->assertInstanceOf($resultClassname, WesternSign::fromCarbon($input, $astrology));
-    }
-
-    #[DataProviderExternal(WesternDataProvider::class, 'carbonDates')]
     #[DataProviderExternal(WesternDataProvider::class, 'dateTimeDates')]
     public function testWesternSignFromDate(
         DateTimeInterface $input,
@@ -139,16 +119,6 @@ final class SignTest extends TestCase
         $this->assertInstanceOf($resultClassname, ChineseSign::fromUnix($input, $astrology));
     }
 
-    #[DataProviderExternal(ChineseDataProvider::class, 'carbonDates')]
-    public function testChineseSignFromCarbon(
-        CarbonInterface $input,
-        string $resultClassname,
-        Astrology $astrology,
-    ): void {
-        $this->assertInstanceOf($resultClassname, ChineseSign::fromCarbon($input, $astrology));
-    }
-
-    #[DataProviderExternal(ChineseDataProvider::class, 'carbonDates')]
     #[DataProviderExternal(ChineseDataProvider::class, 'dateTimeDates')]
     public function testChineseSignFromDate(
         DateTimeInterface $input,

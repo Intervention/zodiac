@@ -34,7 +34,6 @@ Read the full [documentation](https://zodiac.intervention.io) for this library.
 ```php
 use Intervention\Zodiac\Calculator;
 use Intervention\Zodiac\Astrology;
-use Carbon\Carbon;
 use DateTime;
 
 // create calculator with astrology
@@ -45,7 +44,6 @@ $sign = $calculator->calculate('2001-01-01');
 $sign = $calculator->calculate('first day of june 2014');
 $sign = $calculator->calculate('2018-06-15 12:34:00');
 $sign = $calculator->calculate(new DateTime('2001-01-01'));
-$sign = $calculator->calculate(Carbon::yesterday());
 $sign = $calculator->calculate(228268800);
 $sign = $calculator->calculate('228268800');
 
@@ -60,13 +58,11 @@ use Intervention\Zodiac\Sign;
 use Intervention\Zodiac\Chinese\Sign as ChineseSign;
 use Intervention\Zodiac\Western\Sign as WesternSign;
 use DateTime;
-use Carbon\Carbon;
 
 // parse signs directly
 $sign = Sign::fromString('2000-01-01');
 $sign = Sign::fromString('first day of june 2014');
 $sign = Sign::fromDate(new DateTime('2001-01-01'));
-$sign = Sign::fromCarbon(Carbon::yesterday());
 $sign = Sign::fromUnix(228268800);
 $sign = Sign::fromUnix('228268800');
 

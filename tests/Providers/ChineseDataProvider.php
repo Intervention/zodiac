@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Tests\Providers;
 
-use Carbon\Carbon;
 use DateTime;
 use Generator;
 use Intervention\Zodiac\Astrology;
@@ -74,23 +73,6 @@ class ChineseDataProvider
         yield [new DateTime('2010-02-14'), Tiger::class, Astrology::CHINESE];
         yield [new DateTime('2011-02-03'), Rabbit::class, Astrology::CHINESE];
         yield [new DateTime('2012-01-23'), Dragon::class, Astrology::CHINESE];
-    }
-
-    public static function carbonDates(): Generator
-    {
-        yield [Carbon::parse('1946-04-10'), Dog::class, Astrology::CHINESE];
-        yield [Carbon::parse('2001-01-24'), Snake::class, Astrology::CHINESE];
-        yield [Carbon::parse('2002-02-12'), Horse::class, Astrology::CHINESE];
-        yield [Carbon::parse('2003-02-01'), Goat::class, Astrology::CHINESE];
-        yield [Carbon::parse('2004-01-22'), Monkey::class, Astrology::CHINESE];
-        yield [Carbon::parse('2005-02-09'), Rooster::class, Astrology::CHINESE];
-        yield [Carbon::parse('2006-01-29'), Dog::class, Astrology::CHINESE];
-        yield [Carbon::parse('2007-02-18'), Pig::class, Astrology::CHINESE];
-        yield [Carbon::parse('2008-02-07'), Rat::class, Astrology::CHINESE];
-        yield [Carbon::parse('2009-01-26'), Ox::class, Astrology::CHINESE];
-        yield [Carbon::parse('2010-02-14'), Tiger::class, Astrology::CHINESE];
-        yield [Carbon::parse('2011-02-03'), Rabbit::class, Astrology::CHINESE];
-        yield [Carbon::parse('2012-01-23'), Dragon::class, Astrology::CHINESE];
     }
 
     public static function unixTimestampDates(): Generator

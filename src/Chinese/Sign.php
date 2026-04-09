@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac\Chinese;
 
-use Carbon\CarbonInterface;
-use Carbon\CarbonPeriod;
 use DateTimeInterface;
 use Intervention\Zodiac\Astrology;
+use Intervention\Zodiac\DateRange;
 use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\PeriodInterface;
@@ -21,18 +20,18 @@ abstract class Sign extends BaseSign
     /**
      * {@inheritdoc}
      *
-     * @see SignInterface::fromCarbon()
+     * @see SignInterface::fromDate()
      *
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */
-    public static function fromCarbon(CarbonInterface $date, Astrology $astrology = Astrology::CHINESE): SignInterface
+    public static function fromDate(DateTimeInterface $date, Astrology $astrology = Astrology::CHINESE): SignInterface
     {
         if ($astrology !== Astrology::CHINESE) {
             throw new InvalidArgumentException('Chinese zodiac signs can only be created with chinese astrology');
         }
 
-        return parent::fromCarbon($date, $astrology);
+        return parent::fromDate($date, $astrology);
     }
 
     /**
@@ -66,23 +65,6 @@ abstract class Sign extends BaseSign
     /**
      * {@inheritdoc}
      *
-     * @see SignInterface::fromDate()
-     *
-     * @throws InvalidArgumentException
-     * @throws RuntimeException
-     */
-    public static function fromDate(DateTimeInterface $date, Astrology $astrology = Astrology::CHINESE): SignInterface
-    {
-        if ($astrology !== Astrology::CHINESE) {
-            throw new InvalidArgumentException('Chinese zodiac signs can only be created with chinese astrology');
-        }
-
-        return parent::fromDate($date, $astrology);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
      * @see SignInterface::period()
      *
      * @throws InvalidArgumentException
@@ -106,10 +88,10 @@ abstract class Sign extends BaseSign
         }
 
         // calculate the last day of the chinese zodiac sign which is the new years day next year
-        $end = NewYearCalculator::newYear($start->date->year + 1);
+        $end = NewYearCalculator::newYear((int) $start->date->format('Y') + 1);
 
         return new Period([
-            CarbonPeriod::since($start->date)->until($end->date)->excludeEndDate(),
+            new DateRange($start->date, $end->date, excludeEnd: true),
         ]);
     }
 

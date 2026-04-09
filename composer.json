@@ -20,7 +20,6 @@
     ],
     "require": {
         "php": "^8.2",
-        "nesbot/carbon": "^2.0 || ^3.0",
         "illuminate/translation": "^11 || ^12 || ^13"
     },
     "require-dev": {

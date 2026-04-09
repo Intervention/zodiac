@@ -4,32 +4,39 @@ declare(strict_types=1);
 
 namespace Intervention\Zodiac;
 
-use Carbon\Carbon;
-use Carbon\CarbonInterface;
 use DateTimeInterface;
-use Intervention\Zodiac\Exceptions\DateException;
-use Intervention\Zodiac\Exceptions\NotReadableException;
+use Intervention\Zodiac\Exceptions\InvalidArgumentException;
+use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Interfaces\CalculatorInterface;
 use Stringable;
-use Throwable;
 
 class Calculator implements CalculatorInterface
 {
-    use Traits\CanTranslate;
-
-    protected static Astrology $astrology = Astrology::WESTERN;
+    use Traits\HasTranslator;
 
     /**
-     * Create new calculator instance with calender to calculate with
+     * Create new calculator instance with astrology to calculate with.
      */
-    public function __construct(Astrology $astrology = Astrology::WESTERN)
+    public function __construct(protected Astrology $astrology = Astrology::WESTERN)
     {
-        static::$astrology = $astrology;
+        //
     }
 
     /**
-     * Static factory method to create western astrology calculator
+     * {@inheritdoc}
+     *
+     * @see CalculatorInterface::create()
+     */
+    public static function create(Astrology $astrology = Astrology::WESTERN): self
+    {
+        return new self($astrology);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see CalculatorInterface::western()
      */
     public static function western(): self
     {
@@ -37,7 +44,9 @@ class Calculator implements CalculatorInterface
     }
 
     /**
-     * Static factory method to create chinese astrology calculator
+     * {@inheritdoc}
+     *
+     * @see CalculatorInterface::chinese()
      */
     public static function chinese(): self
     {
@@ -47,117 +56,25 @@ class Calculator implements CalculatorInterface
     /**
      * {@inheritdoc}
      *
-     * @see CalculatorInterface::withAstrology()
-     */
-    public static function withAstrology(Astrology $astrology): self
-    {
-        return new self($astrology);
-    }
-
-    /**
-     * {@inheritdoc}
+     * @see CalculatorInterface::calculate()
      *
-     * @see CalculatorInterface::fromString()
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
-    public static function fromString(string|Stringable $date, ?Astrology $astrology = null): SignInterface
-    {
-        // normalize date
-        $date = (string) $date;
+    public function calculate(
+        string|Stringable|int|float|DateTimeInterface $date,
+        ?Astrology $astrology = null,
+    ): SignInterface {
+        $astrology = $astrology ?: $this->astrology;
 
-        if ($date === '') { // empty string is allowed in Carbon::parse() but not here
-            throw new NotReadableException('Unable to create zodiac from empty string');
-        }
+        $sign = match (true) {
+            is_string($date) && is_numeric($date) => Sign::fromUnix($date, $astrology),
+            is_string($date) || $date instanceof Stringable => Sign::fromString($date, $astrology),
+            is_int($date) || is_float($date) => Sign::fromUnix($date, $astrology),
+            $date instanceof DateTimeInterface => Sign::fromDate($date, $astrology),
+        };
 
-        try {
-            return self::fromCarbon(
-                date: Carbon::parse($date),
-                astrology: $astrology ?: self::$astrology
-            );
-        } catch (Throwable) {
-            throw new NotReadableException('Unable to create zodiac from string (' . $date . ')');
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see CalculatorInterface::fromDate()
-     */
-    public static function fromDate(DateTimeInterface $date, ?Astrology $astrology = null): SignInterface
-    {
-        return self::fromCarbon(
-            date: new Carbon($date),
-            astrology: $astrology ?: self::$astrology
-        );
-    }
-
-    /*
-     * {@inheritdoc}
-     *
-     * @see CalculatorInterface::fromUnix()
-     */
-    public static function fromUnix(string|int|float $date, ?Astrology $astrology = null): SignInterface
-    {
-        if (!is_numeric($date)) {
-            throw new NotReadableException('Unable to create zodiac from non-numeric unix timestamp');
-        }
-
-        try {
-            return self::fromCarbon(
-                date: Carbon::createFromTimestamp($date),
-                astrology: $astrology ?: self::$astrology
-            );
-        } catch (Throwable) {
-            throw new NotReadableException('Unable to create zodiac from unix timestamp (' . $date . ')');
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see CalculatorInterface::fromCarbon()
-     */
-    public static function fromCarbon(CarbonInterface $date, ?Astrology $astrology = null): SignInterface
-    {
-        // try each zodiac sign of the given (or default) astrology
-        foreach (($astrology ?: self::$astrology)->signs() as $sign) {
-            if (!($sign instanceof SignInterface)) {
-                continue;
-            }
-
-            try {
-                // check if the period of the zodiac sign matches the given date
-                if ($sign->period($date->year)->contains($date)) {
-                    return self::localizeSign($sign);
-                }
-            } catch (DateException) {
-                // try next sign
-            }
-        }
-
-        throw new NotReadableException('Unable to calculate zodiac from CarbonInterface (' . (string) $date . ')');
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see CalculatorInterface::compare()
-     */
-    public static function compare(SignInterface $sign, SignInterface $with): float
-    {
-        return $sign->compatibility($with);
-    }
-
-    /**
-     * Localize given sign in the locale of the current translator
-     */
-    private static function localizeSign(SignInterface $sign): SignInterface
-    {
-        if (self::$translator === null) {
-            return $sign;
-        }
-
-        $sign->setTranslator(self::$translator);
+        $sign->setTranslator($this->translator());
 
         return $sign->localize();
     }

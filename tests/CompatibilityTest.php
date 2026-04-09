@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Intervention\Zodiac\Tests;
 
 use Intervention\Zodiac\Chinese\Signs\Snake;
-use Intervention\Zodiac\Exceptions\RuntimeException;
+use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 use Intervention\Zodiac\Tests\Providers\ChineseDataProvider;
 use Intervention\Zodiac\Tests\Providers\WesternDataProvider;
 use Intervention\Zodiac\Western\Compatibility;
@@ -26,7 +26,7 @@ final class CompatibilityTest extends TestCase
 
     public function testDifferentAstrologies(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(InvalidArgumentException::class);
         call_user_func(new Compatibility(), new Gemini(), new Snake());
     }
 }

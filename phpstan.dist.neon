@@ -3,3 +3,6 @@ parameters:
     paths:
         - src
     treatPhpDocTypesAsCertain: false
+    exceptions:
+        check:
+            missingCheckedExceptionInThrows: true

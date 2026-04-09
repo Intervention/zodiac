@@ -64,15 +64,16 @@ class ServiceProvider extends BaseServiceProvider
         return ['zodiac'];
     }
 
+    /**
+     * @throws RuntimeException
+     */
     private function defaultAstrology(): Astrology
     {
         /** @phpstan-ignore function.notFound */
         $astrology = config('zodiac.astrology', Astrology::WESTERN);
 
         if (!($astrology instanceof Astrology)) {
-            throw new RuntimeException(
-                'Unable to resolve default value for Intervention\Zodiac\Calculator parameter #1 $astrology',
-            );
+            throw new RuntimeException('Unable to resolve configured astrology');
         }
 
         return $astrology;

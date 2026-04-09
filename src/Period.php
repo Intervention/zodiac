@@ -48,7 +48,7 @@ class Period implements PeriodInterface, Stringable
     }
 
     /**
-     * Cast object to string
+     * Cast object to string.
      */
     public function __toString(): string
     {

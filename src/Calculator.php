@@ -67,18 +67,15 @@ class Calculator implements CalculatorInterface
     ): SignInterface {
         $astrology = $astrology ?: $this->astrology;
 
-        if (is_string($date) && is_numeric($date)) {
-            return Sign::fromUnix($date, $astrology);
-        }
+        $sign = match (true) {
+            $date instanceof DateTimeInterface => Sign::fromDate($date, $astrology),
+            is_string($date) || $date instanceof Stringable => Sign::fromString($date, $astrology),
+            is_string($date) && is_numeric($date),
+            is_int($date) || is_float($date) => Sign::fromUnix($date, $astrology),
+        };
 
-        if (is_string($date) || $date instanceof Stringable) {
-            return Sign::fromString($date, $astrology);
-        }
+        $sign->setTranslator($this->translator());
 
-        if (is_int($date) || is_float($date)) {
-            return Sign::fromUnix($date, $astrology);
-        }
-
-        return Sign::fromDate($date, $astrology);
+        return $sign;
     }
 }

@@ -22,7 +22,7 @@ use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 class NewYearCalculator
 {
     /**
-     * Static data table of chinese new years days
+     * Static data table of chinese new years days.
      *
      * @var array<int, array{int, int, string}> $table
      */
@@ -231,7 +231,7 @@ class NewYearCalculator
     ];
 
     /**
-     * Get chinese new years day of given year
+     * Get chinese new years day of given year.
      *
      * @throws InvalidArgumentException
      * @throws RuntimeException

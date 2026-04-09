@@ -10,12 +10,12 @@ use Stringable;
 interface TranslatableInterface extends Stringable
 {
     /**
-     * Get translator for given locale
+     * Get translator for given locale.
      */
     public static function translator(?string $locale = null): Translator;
 
     /**
-     * Set translator on current object
+     * Set translator on current object.
      */
     public function setTranslator(?Translator $translator): CalculatorInterface|SignInterface;
 }

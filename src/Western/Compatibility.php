@@ -197,7 +197,7 @@ class Compatibility
     ];
 
     /**
-     * Calculate zodiac sign compatibility between two signs
+     * Calculate zodiac sign compatibility between two signs.
      *
      * @throws InvalidArgumentException
      * @throws RuntimeException

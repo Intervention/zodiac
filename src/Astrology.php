@@ -12,7 +12,7 @@ enum Astrology
     case CHINESE;
 
     /**
-     * Get all possible zodiac classname of current astrology type
+     * Get all possible zodiac classname of current astrology type.
      *
      * @return array<string>
      */
@@ -51,7 +51,7 @@ enum Astrology
     }
 
     /**
-     * Yield all possible sign instances of the current astrology
+     * Yield all possible sign instances of the current astrology.
      */
     public function signs(): Generator
     {

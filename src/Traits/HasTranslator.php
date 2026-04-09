@@ -13,7 +13,7 @@ use Intervention\Zodiac\Interfaces\SignInterface;
 trait HasTranslator
 {
     /**
-     * Translator
+     * Translator.
      */
     protected static ?Translator $translator = null;
 

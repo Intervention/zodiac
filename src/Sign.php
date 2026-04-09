@@ -22,12 +22,12 @@ abstract class Sign implements SignInterface
     use HasTranslator;
 
     /**
-     * Name of zodiac sign
+     * Name of zodiac sign.
      */
     protected string $name;
 
     /**
-     * HTML representation of zodiac sign
+     * HTML representation of zodiac sign.
      */
     protected string $html;
 
@@ -185,7 +185,7 @@ abstract class Sign implements SignInterface
     }
 
     /**
-     * Display debug info
+     * Display debug info.
      *
      * @return array<string>
      */

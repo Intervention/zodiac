@@ -13,7 +13,7 @@ use IteratorAggregate;
 interface PeriodInterface extends IteratorAggregate
 {
     /**
-     * Determine if the current period contains the given date
+     * Determine if the current period contains the given date.
      */
     public function contains(CarbonInterface $date): bool;
 }

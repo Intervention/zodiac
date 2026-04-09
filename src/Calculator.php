@@ -16,7 +16,7 @@ class Calculator implements CalculatorInterface
     use Traits\HasTranslator;
 
     /**
-     * Create new calculator instance with calender to calculate with
+     * Create new calculator instance with astrology to calculate with.
      */
     public function __construct(protected Astrology $astrology = Astrology::WESTERN)
     {

@@ -22,7 +22,7 @@ class Capricorn extends PreConcreteWesternSign
     protected int $endMonth = 1;
 
     /**
-     * Zodiac sign Capricorn spans several years and requires multiple periods
+     * Zodiac sign Capricorn spans several years and requires multiple periods.
      *
      * @see SignInterface::period()
      *

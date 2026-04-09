@@ -15,17 +15,17 @@ use Intervention\Zodiac\Interfaces\SignInterface;
 class NewYear
 {
     /**
-     * Date of new years day
+     * Date of new years day.
      */
     public CarbonInterface $date;
 
     /**
-     * Chinese zodiac sign of the coming year
+     * Chinese zodiac sign of the coming year.
      */
     public string $sign;
 
     /**
-     * Create new instance
+     * Create new instance.
      *
      * @throws InvalidArgumentException
      */
@@ -41,7 +41,7 @@ class NewYear
     }
 
     /**
-     * Get date as carbon instance
+     * Get date as carbon instance.
      */
     public function date(): CarbonInterface
     {
@@ -49,7 +49,7 @@ class NewYear
     }
 
     /**
-     * Get new year's zodiac sign as SignInterface instance
+     * Get new year's zodiac sign as SignInterface instance.
      *
      * @throws RuntimeException
      */

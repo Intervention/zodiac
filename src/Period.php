@@ -13,9 +13,9 @@ use Traversable;
 class Period implements PeriodInterface, Stringable
 {
     /**
-     * @param array<int, DateRange> $periods
+     * @param array<int, DateRange> $ranges
      */
-    public function __construct(protected array $periods = [])
+    public function __construct(protected array $ranges = [])
     {
         //
     }
@@ -27,8 +27,8 @@ class Period implements PeriodInterface, Stringable
      */
     public function contains(DateTimeInterface $date): bool
     {
-        foreach ($this->periods as $period) {
-            if ($period->contains($date)) {
+        foreach ($this->ranges as $range) {
+            if ($range->contains($date)) {
                 return true;
             }
         }
@@ -43,7 +43,7 @@ class Period implements PeriodInterface, Stringable
      */
     public function getIterator(): Traversable
     {
-        return new ArrayIterator($this->periods);
+        return new ArrayIterator($this->ranges);
     }
 
     /**
@@ -51,6 +51,6 @@ class Period implements PeriodInterface, Stringable
      */
     public function __toString(): string
     {
-        return implode(', ', array_map(fn(DateRange $period): string => (string) $period, $this->periods));
+        return implode(', ', array_map(fn(DateRange $range): string => (string) $range, $this->ranges));
     }
 }

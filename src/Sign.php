@@ -95,7 +95,9 @@ abstract class Sign implements SignInterface
     public static function fromUnix(string|int|float $date, Astrology $astrology = Astrology::WESTERN): SignInterface
     {
         if (!is_numeric($date)) {
-            throw new InvalidArgumentException('Unable to create zodiac from non-numeric unix timestamp');
+            throw new InvalidArgumentException(
+                'Unable to create zodiac from non-numeric unix timestamp "' . $date . '"',
+            );
         }
 
         try {
@@ -104,7 +106,7 @@ abstract class Sign implements SignInterface
                 astrology: $astrology,
             );
         } catch (Throwable) {
-            throw new InvalidArgumentException('Unable to create zodiac from unix timestamp (' . $date . ')');
+            throw new InvalidArgumentException('Unable to create zodiac from unix timestamp "' . $date . '"');
         }
     }
 

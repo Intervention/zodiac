@@ -18,7 +18,7 @@ abstract class PreConcreteChineseSign extends ChineseSign
      *
      * @see SignInterface::fromDate()
      */
-    public static function fromDate(DateTimeInterface $date, Astrology $astrology = Astrology::WESTERN): SignInterface
+    public static function fromDate(DateTimeInterface $date, Astrology $astrology = Astrology::CHINESE): SignInterface
     {
         $sign = parent::fromDate($date, $astrology);
 
@@ -36,7 +36,7 @@ abstract class PreConcreteChineseSign extends ChineseSign
      *
      * @see SignInterface::fromString()
      */
-    public static function fromString(string|Stringable $date, Astrology $astrology = Astrology::WESTERN): SignInterface
+    public static function fromString(string|Stringable $date, Astrology $astrology = Astrology::CHINESE): SignInterface
     {
         $sign = parent::fromString($date, $astrology);
 
@@ -54,7 +54,7 @@ abstract class PreConcreteChineseSign extends ChineseSign
      *
      * @see SignInterface::fromUnix()
      */
-    public static function fromUnix(string|int|float $date, Astrology $astrology = Astrology::WESTERN): SignInterface
+    public static function fromUnix(string|int|float $date, Astrology $astrology = Astrology::CHINESE): SignInterface
     {
         $sign = parent::fromUnix($date, $astrology);
 

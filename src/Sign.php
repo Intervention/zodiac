@@ -142,7 +142,7 @@ abstract class Sign implements SignInterface
         $key = 'zodiacs::zodiacs.' . $this::class;
 
         if ($locale === null) {
-            $locale = self::$translator ? self::$translator->locale() : 'en';
+            $locale = self::$translator !== null ? self::$translator->locale() : 'en';
         }
 
         if (!$this->translator()->has($key, locale: $locale)) {

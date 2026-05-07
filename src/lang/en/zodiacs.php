@@ -2,30 +2,33 @@
 
 declare(strict_types=1);
 
-return [
-    \Intervention\Zodiac\Western\Signs\Aries::class => 'Aries',
-    \Intervention\Zodiac\Western\Signs\Taurus::class => 'Taurus',
-    \Intervention\Zodiac\Western\Signs\Gemini::class => 'Gemini',
-    \Intervention\Zodiac\Western\Signs\Cancer::class => 'Cancer',
-    \Intervention\Zodiac\Western\Signs\Leo::class => 'Leo',
-    \Intervention\Zodiac\Western\Signs\Virgo::class => 'Virgo',
-    \Intervention\Zodiac\Western\Signs\Libra::class => 'Libra',
-    \Intervention\Zodiac\Western\Signs\Scorpio::class => 'Scorpio',
-    \Intervention\Zodiac\Western\Signs\Sagittarius::class => 'Sagittarius',
-    \Intervention\Zodiac\Western\Signs\Capricorn::class => 'Capricorn',
-    \Intervention\Zodiac\Western\Signs\Aquarius::class => 'Aquarius',
-    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Pisces',
+use Intervention\Zodiac\Chinese\ChineseSign;
+use Intervention\Zodiac\Western\WesternSign;
 
-    \Intervention\Zodiac\Chinese\Signs\Rat::class => 'Rat',
-    \Intervention\Zodiac\Chinese\Signs\Ox::class => 'Ox',
-    \Intervention\Zodiac\Chinese\Signs\Tiger::class => 'Tiger',
-    \Intervention\Zodiac\Chinese\Signs\Rabbit::class => 'Rabbit',
-    \Intervention\Zodiac\Chinese\Signs\Dragon::class => 'Dragon',
-    \Intervention\Zodiac\Chinese\Signs\Snake::class => 'Snake',
-    \Intervention\Zodiac\Chinese\Signs\Horse::class => 'Horse',
-    \Intervention\Zodiac\Chinese\Signs\Goat::class => 'Goat',
-    \Intervention\Zodiac\Chinese\Signs\Monkey::class => 'Monkey',
-    \Intervention\Zodiac\Chinese\Signs\Rooster::class => 'Rooster',
-    \Intervention\Zodiac\Chinese\Signs\Dog::class => 'Dog',
-    \Intervention\Zodiac\Chinese\Signs\Pig::class => 'Pig',
+return [
+    WesternSign::Aries->value => 'Aries',
+    WesternSign::Taurus->value => 'Taurus',
+    WesternSign::Gemini->value => 'Gemini',
+    WesternSign::Cancer->value => 'Cancer',
+    WesternSign::Leo->value => 'Leo',
+    WesternSign::Virgo->value => 'Virgo',
+    WesternSign::Libra->value => 'Libra',
+    WesternSign::Scorpio->value => 'Scorpio',
+    WesternSign::Sagittarius->value => 'Sagittarius',
+    WesternSign::Capricorn->value => 'Capricorn',
+    WesternSign::Aquarius->value => 'Aquarius',
+    WesternSign::Pisces->value => 'Pisces',
+
+    ChineseSign::Rat->value => 'Rat',
+    ChineseSign::Ox->value => 'Ox',
+    ChineseSign::Tiger->value => 'Tiger',
+    ChineseSign::Rabbit->value => 'Rabbit',
+    ChineseSign::Dragon->value => 'Dragon',
+    ChineseSign::Snake->value => 'Snake',
+    ChineseSign::Horse->value => 'Horse',
+    ChineseSign::Goat->value => 'Goat',
+    ChineseSign::Monkey->value => 'Monkey',
+    ChineseSign::Rooster->value => 'Rooster',
+    ChineseSign::Dog->value => 'Dog',
+    ChineseSign::Pig->value => 'Pig',
 ];

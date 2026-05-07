@@ -2,17 +2,20 @@
 
 declare(strict_types=1);
 
+use Intervention\Zodiac\Chinese\ChineseSign;
+use Intervention\Zodiac\Western\WesternSign;
+
 return [
-    \Intervention\Zodiac\Western\Signs\Aries::class => '牡羊座',
-    \Intervention\Zodiac\Western\Signs\Taurus::class => '金牛座',
-    \Intervention\Zodiac\Western\Signs\Gemini::class => '双子座',
-    \Intervention\Zodiac\Western\Signs\Cancer::class => '巨蟹座',
-    \Intervention\Zodiac\Western\Signs\Leo::class => '獅子座',
-    \Intervention\Zodiac\Western\Signs\Virgo::class => '處女座',
-    \Intervention\Zodiac\Western\Signs\Libra::class => '天秤座',
-    \Intervention\Zodiac\Western\Signs\Scorpio::class => '天蠍座',
-    \Intervention\Zodiac\Western\Signs\Sagittarius::class => '射手座',
-    \Intervention\Zodiac\Western\Signs\Capricorn::class => '魔羯座',
-    \Intervention\Zodiac\Western\Signs\Aquarius::class => '水瓶座',
-    \Intervention\Zodiac\Western\Signs\Pisces::class => '雙魚座',
+    WesternSign::Aries->value => '牡羊座',
+    WesternSign::Taurus->value => '金牛座',
+    WesternSign::Gemini->value => '双子座',
+    WesternSign::Cancer->value => '巨蟹座',
+    WesternSign::Leo->value => '獅子座',
+    WesternSign::Virgo->value => '處女座',
+    WesternSign::Libra->value => '天秤座',
+    WesternSign::Scorpio->value => '天蠍座',
+    WesternSign::Sagittarius->value => '射手座',
+    WesternSign::Capricorn->value => '魔羯座',
+    WesternSign::Aquarius->value => '水瓶座',
+    WesternSign::Pisces->value => '雙魚座',
 ];

@@ -2,30 +2,33 @@
 
 declare(strict_types=1);
 
-return [
-    \Intervention\Zodiac\Western\Signs\Aries::class => 'Kos',
-    \Intervention\Zodiac\Western\Signs\Taurus::class => 'Bika',
-    \Intervention\Zodiac\Western\Signs\Gemini::class => 'Ikrek',
-    \Intervention\Zodiac\Western\Signs\Cancer::class => 'Rák',
-    \Intervention\Zodiac\Western\Signs\Leo::class => 'Oroszlán',
-    \Intervention\Zodiac\Western\Signs\Virgo::class => 'Szűz',
-    \Intervention\Zodiac\Western\Signs\Libra::class => 'Mérleg',
-    \Intervention\Zodiac\Western\Signs\Scorpio::class => 'Skorpió',
-    \Intervention\Zodiac\Western\Signs\Sagittarius::class => 'Nyilas',
-    \Intervention\Zodiac\Western\Signs\Capricorn::class => 'Bak',
-    \Intervention\Zodiac\Western\Signs\Aquarius::class => 'Vízöntő',
-    \Intervention\Zodiac\Western\Signs\Pisces::class => 'Halak',
+use Intervention\Zodiac\Chinese\ChineseSign;
+use Intervention\Zodiac\Western\WesternSign;
 
-    \Intervention\Zodiac\Chinese\Signs\Rat::class => 'Patkány',
-    \Intervention\Zodiac\Chinese\Signs\Ox::class => 'Ökör',
-    \Intervention\Zodiac\Chinese\Signs\Tiger::class => 'Tigris',
-    \Intervention\Zodiac\Chinese\Signs\Rabbit::class => 'Nyúl',
-    \Intervention\Zodiac\Chinese\Signs\Dragon::class => 'Sárkány',
-    \Intervention\Zodiac\Chinese\Signs\Snake::class => 'Kígyó',
-    \Intervention\Zodiac\Chinese\Signs\Horse::class => 'Ló',
-    \Intervention\Zodiac\Chinese\Signs\Goat::class => 'Kecske',
-    \Intervention\Zodiac\Chinese\Signs\Monkey::class => 'Majom',
-    \Intervention\Zodiac\Chinese\Signs\Rooster::class => 'Kakas',
-    \Intervention\Zodiac\Chinese\Signs\Dog::class => 'Kutya',
-    \Intervention\Zodiac\Chinese\Signs\Pig::class => 'Disznó',
+return [
+    WesternSign::Aries->value => 'Kos',
+    WesternSign::Taurus->value => 'Bika',
+    WesternSign::Gemini->value => 'Ikrek',
+    WesternSign::Cancer->value => 'Rák',
+    WesternSign::Leo->value => 'Oroszlán',
+    WesternSign::Virgo->value => 'Szűz',
+    WesternSign::Libra->value => 'Mérleg',
+    WesternSign::Scorpio->value => 'Skorpió',
+    WesternSign::Sagittarius->value => 'Nyilas',
+    WesternSign::Capricorn->value => 'Bak',
+    WesternSign::Aquarius->value => 'Vízöntő',
+    WesternSign::Pisces->value => 'Halak',
+
+    ChineseSign::Rat->value => 'Patkány',
+    ChineseSign::Ox->value => 'Ökör',
+    ChineseSign::Tiger->value => 'Tigris',
+    ChineseSign::Rabbit->value => 'Nyúl',
+    ChineseSign::Dragon->value => 'Sárkány',
+    ChineseSign::Snake->value => 'Kígyó',
+    ChineseSign::Horse->value => 'Ló',
+    ChineseSign::Goat->value => 'Kecske',
+    ChineseSign::Monkey->value => 'Majom',
+    ChineseSign::Rooster->value => 'Kakas',
+    ChineseSign::Dog->value => 'Kutya',
+    ChineseSign::Pig->value => 'Disznó',
 ];

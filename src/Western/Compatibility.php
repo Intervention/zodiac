@@ -7,18 +7,6 @@ namespace Intervention\Zodiac\Western;
 use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\SignInterface;
-use Intervention\Zodiac\Western\Signs\Aquarius;
-use Intervention\Zodiac\Western\Signs\Aries;
-use Intervention\Zodiac\Western\Signs\Cancer;
-use Intervention\Zodiac\Western\Signs\Capricorn;
-use Intervention\Zodiac\Western\Signs\Gemini;
-use Intervention\Zodiac\Western\Signs\Leo;
-use Intervention\Zodiac\Western\Signs\Libra;
-use Intervention\Zodiac\Western\Signs\Pisces;
-use Intervention\Zodiac\Western\Signs\Sagittarius;
-use Intervention\Zodiac\Western\Signs\Scorpio;
-use Intervention\Zodiac\Western\Signs\Taurus;
-use Intervention\Zodiac\Western\Signs\Virgo;
 
 class Compatibility
 {
@@ -26,173 +14,173 @@ class Compatibility
      * @var array<string, array<string, float>> $factors
      */
     protected array $factors = [
-        Aquarius::class => [
-            Aquarius::class => .9,
-            Aries::class => .9,
-            Cancer::class => .2,
-            Capricorn::class => .3,
-            Gemini::class => 1,
-            Leo::class => .8,
-            Libra::class => .7,
-            Pisces::class => .6,
-            Sagittarius::class => .8,
-            Scorpio::class => .1,
-            Taurus::class => .5,
-            Virgo::class => .7,
+        'Aquarius' => [
+            'Aquarius'    => .9,
+            'Aries'       => .9,
+            'Cancer'      => .2,
+            'Capricorn'   => .3,
+            'Gemini'      => 1,
+            'Leo'         => .8,
+            'Libra'       => .7,
+            'Pisces'      => .6,
+            'Sagittarius' => .8,
+            'Scorpio'     => .1,
+            'Taurus'      => .5,
+            'Virgo'       => .7,
         ],
-        Aries::class => [
-            Aquarius::class => .9,
-            Aries::class => 1,
-            Cancer::class => .7,
-            Capricorn::class => .5,
-            Gemini::class => .9,
-            Leo::class => .9,
-            Libra::class => .9,
-            Pisces::class => .7,
-            Sagittarius::class => 1,
-            Scorpio::class => .6,
-            Taurus::class => .6,
-            Virgo::class => .7,
+        'Aries' => [
+            'Aquarius'    => .9,
+            'Aries'       => 1,
+            'Cancer'      => .7,
+            'Capricorn'   => .5,
+            'Gemini'      => .9,
+            'Leo'         => .9,
+            'Libra'       => .9,
+            'Pisces'      => .7,
+            'Sagittarius' => 1,
+            'Scorpio'     => .6,
+            'Taurus'      => .6,
+            'Virgo'       => .7,
         ],
-        Cancer::class => [
-            Aquarius::class => .2,
-            Aries::class => .7,
-            Cancer::class => 1,
-            Capricorn::class => .8,
-            Gemini::class => .6,
-            Leo::class => .8,
-            Libra::class => .7,
-            Pisces::class => 1,
-            Sagittarius::class => .5,
-            Scorpio::class => .8,
-            Taurus::class => .9,
-            Virgo::class => .8,
+        'Cancer' => [
+            'Aquarius'    => .2,
+            'Aries'       => .7,
+            'Cancer'      => 1,
+            'Capricorn'   => .8,
+            'Gemini'      => .6,
+            'Leo'         => .8,
+            'Libra'       => .7,
+            'Pisces'      => 1,
+            'Sagittarius' => .5,
+            'Scorpio'     => .8,
+            'Taurus'      => .9,
+            'Virgo'       => .8,
         ],
-        Capricorn::class => [
-            Aquarius::class => .2,
-            Aries::class => .6,
-            Cancer::class => .9,
-            Capricorn::class => .9,
-            Gemini::class => .2,
-            Leo::class => .5,
-            Libra::class => .5,
-            Pisces::class => .8,
-            Sagittarius::class => .5,
-            Scorpio::class => .9,
-            Taurus::class => .9,
-            Virgo::class => 1,
+        'Capricorn' => [
+            'Aquarius'    => .2,
+            'Aries'       => .6,
+            'Cancer'      => .9,
+            'Capricorn'   => .9,
+            'Gemini'      => .2,
+            'Leo'         => .5,
+            'Libra'       => .5,
+            'Pisces'      => .8,
+            'Sagittarius' => .5,
+            'Scorpio'     => .9,
+            'Taurus'      => .9,
+            'Virgo'       => 1,
         ],
-        Gemini::class => [
-            Aquarius::class => 1,
-            Aries::class => .8,
-            Cancer::class => .5,
-            Capricorn::class => .5,
-            Gemini::class => .6,
-            Leo::class => .8,
-            Libra::class => .8,
-            Pisces::class => .9,
-            Sagittarius::class => .7,
-            Scorpio::class => .1,
-            Taurus::class => .5,
-            Virgo::class => .7,
+        'Gemini' => [
+            'Aquarius'    => 1,
+            'Aries'       => .8,
+            'Cancer'      => .5,
+            'Capricorn'   => .5,
+            'Gemini'      => .6,
+            'Leo'         => .8,
+            'Libra'       => .8,
+            'Pisces'      => .9,
+            'Sagittarius' => .7,
+            'Scorpio'     => .1,
+            'Taurus'      => .5,
+            'Virgo'       => .7,
         ],
-        Leo::class => [
-            Aquarius::class => .9,
-            Aries::class => .9,
-            Cancer::class => .5,
-            Capricorn::class => .2,
-            Gemini::class => .8,
-            Leo::class => .7,
-            Libra::class => .8,
-            Pisces::class => .7,
-            Sagittarius::class => .5,
-            Scorpio::class => .7,
-            Taurus::class => .7,
-            Virgo::class => .8,
+        'Leo' => [
+            'Aquarius'    => .9,
+            'Aries'       => .9,
+            'Cancer'      => .5,
+            'Capricorn'   => .2,
+            'Gemini'      => .8,
+            'Leo'         => .7,
+            'Libra'       => .8,
+            'Pisces'      => .7,
+            'Sagittarius' => .5,
+            'Scorpio'     => .7,
+            'Taurus'      => .7,
+            'Virgo'       => .8,
         ],
-        Libra::class => [
-            Aquarius::class => .7,
-            Aries::class => .9,
-            Cancer::class => .5,
-            Capricorn::class => .7,
-            Gemini::class => .9,
-            Leo::class => .8,
-            Libra::class => .9,
-            Pisces::class => .5,
-            Sagittarius::class => .8,
-            Scorpio::class => .5,
-            Taurus::class => .5,
-            Virgo::class => .7,
+        'Libra' => [
+            'Aquarius'    => .7,
+            'Aries'       => .9,
+            'Cancer'      => .5,
+            'Capricorn'   => .7,
+            'Gemini'      => .9,
+            'Leo'         => .8,
+            'Libra'       => .9,
+            'Pisces'      => .5,
+            'Sagittarius' => .8,
+            'Scorpio'     => .5,
+            'Taurus'      => .5,
+            'Virgo'       => .7,
         ],
-        Pisces::class => [
-            Aquarius::class => .9,
-            Aries::class => .5,
-            Cancer::class => 1,
-            Capricorn::class => .9,
-            Gemini::class => .9,
-            Leo::class => .5,
-            Libra::class => .5,
-            Pisces::class => .5,
-            Sagittarius::class => .5,
-            Scorpio::class => .8,
-            Taurus::class => .6,
-            Virgo::class => .8,
+        'Pisces' => [
+            'Aquarius'    => .9,
+            'Aries'       => .5,
+            'Cancer'      => 1,
+            'Capricorn'   => .9,
+            'Gemini'      => .9,
+            'Leo'         => .5,
+            'Libra'       => .5,
+            'Pisces'      => .5,
+            'Sagittarius' => .5,
+            'Scorpio'     => .8,
+            'Taurus'      => .6,
+            'Virgo'       => .8,
         ],
-        Sagittarius::class => [
-            Aquarius::class => .8,
-            Aries::class => .8,
-            Cancer::class => .5,
-            Capricorn::class => .3,
-            Gemini::class => .8,
-            Leo::class => .7,
-            Libra::class => .8,
-            Pisces::class => .6,
-            Sagittarius::class => .8,
-            Scorpio::class => .1,
-            Taurus::class => .5,
-            Virgo::class => .7,
+        'Sagittarius' => [
+            'Aquarius'    => .8,
+            'Aries'       => .8,
+            'Cancer'      => .5,
+            'Capricorn'   => .3,
+            'Gemini'      => .8,
+            'Leo'         => .7,
+            'Libra'       => .8,
+            'Pisces'      => .6,
+            'Sagittarius' => .8,
+            'Scorpio'     => .1,
+            'Taurus'      => .5,
+            'Virgo'       => .7,
         ],
-        Scorpio::class => [
-            Aquarius::class => .6,
-            Aries::class => .6,
-            Cancer::class => .9,
-            Capricorn::class => .9,
-            Gemini::class => .3,
-            Leo::class => .7,
-            Libra::class => .5,
-            Pisces::class => .8,
-            Sagittarius::class => .3,
-            Scorpio::class => 1,
-            Taurus::class => .9,
-            Virgo::class => .1,
+        'Scorpio' => [
+            'Aquarius'    => .6,
+            'Aries'       => .6,
+            'Cancer'      => .9,
+            'Capricorn'   => .9,
+            'Gemini'      => .3,
+            'Leo'         => .7,
+            'Libra'       => .5,
+            'Pisces'      => .8,
+            'Sagittarius' => .3,
+            'Scorpio'     => 1,
+            'Taurus'      => .9,
+            'Virgo'       => .1,
         ],
-        Taurus::class => [
-            Aquarius::class => .6,
-            Aries::class => .6,
-            Cancer::class => .9,
-            Capricorn::class => 1,
-            Gemini::class => .5,
-            Leo::class => .6,
-            Libra::class => .6,
-            Pisces::class => .6,
-            Sagittarius::class => .4,
-            Scorpio::class => .9,
-            Taurus::class => .9,
-            Virgo::class => .9,
+        'Taurus' => [
+            'Aquarius'    => .6,
+            'Aries'       => .6,
+            'Cancer'      => .9,
+            'Capricorn'   => 1,
+            'Gemini'      => .5,
+            'Leo'         => .6,
+            'Libra'       => .6,
+            'Pisces'      => .6,
+            'Sagittarius' => .4,
+            'Scorpio'     => .9,
+            'Taurus'      => .9,
+            'Virgo'       => .9,
         ],
-        Virgo::class => [
-            Aquarius::class => .7,
-            Aries::class => .7,
-            Cancer::class => .8,
-            Capricorn::class => .9,
-            Gemini::class => .8,
-            Leo::class => .5,
-            Libra::class => .6,
-            Pisces::class => .9,
-            Sagittarius::class => .7,
-            Scorpio::class => .9,
-            Taurus::class => .9,
-            Virgo::class => .9,
+        'Virgo' => [
+            'Aquarius'    => .7,
+            'Aries'       => .7,
+            'Cancer'      => .8,
+            'Capricorn'   => .9,
+            'Gemini'      => .8,
+            'Leo'         => .5,
+            'Libra'       => .6,
+            'Pisces'      => .9,
+            'Sagittarius' => .7,
+            'Scorpio'     => .9,
+            'Taurus'      => .9,
+            'Virgo'       => .9,
         ],
     ];
 
@@ -204,18 +192,26 @@ class Compatibility
      */
     public function __invoke(SignInterface $a, SignInterface $b): float
     {
-        if (substr($a::class, 0, 27) !== substr($b::class, 0, 27)) {
+        if ($a::class !== $b::class) {
             throw new InvalidArgumentException('The signs being compared must have the same astrology');
         }
 
-        if (!array_key_exists($a::class, $this->factors)) {
-            throw new RuntimeException('Unable to match compatibility of ' . $a::class . ' with ' . $b::class);
+        $keyA = $this->signKey($a);
+        $keyB = $this->signKey($b);
+
+        if (!array_key_exists($keyA, $this->factors)) {
+            throw new RuntimeException('Unable to match compatibility of ' . $keyA . ' with ' . $keyB);
         }
 
-        if (!array_key_exists($b::class, $this->factors[$a::class])) {
-            throw new RuntimeException('Unable to match compatibility of ' . $a::class . ' with ' . $b::class);
+        if (!array_key_exists($keyB, $this->factors[$keyA])) {
+            throw new RuntimeException('Unable to match compatibility of ' . $keyA . ' with ' . $keyB);
         }
 
-        return $this->factors[$a::class][$b::class];
+        return $this->factors[$keyA][$keyB];
+    }
+
+    protected function signKey(SignInterface $sign): string
+    {
+        return $sign instanceof \UnitEnum ? $sign->name : $sign::class;
     }
 }

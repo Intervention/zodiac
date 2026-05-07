@@ -16,7 +16,7 @@ use Intervention\Zodiac\Traits\HasTranslator;
 use Stringable;
 use Throwable;
 
-abstract class Sign implements SignInterface
+abstract class Sign implements SignInterface, \Stringable
 {
     use HasTranslator;
 

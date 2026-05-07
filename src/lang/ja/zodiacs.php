@@ -2,30 +2,33 @@
 
 declare(strict_types=1);
 
-return [
-    \Intervention\Zodiac\Western\Signs\Aries::class => '牡羊座',
-    \Intervention\Zodiac\Western\Signs\Taurus::class => '牡牛座',
-    \Intervention\Zodiac\Western\Signs\Gemini::class => '双子座',
-    \Intervention\Zodiac\Western\Signs\Cancer::class => '蟹座',
-    \Intervention\Zodiac\Western\Signs\Leo::class => '獅子座',
-    \Intervention\Zodiac\Western\Signs\Virgo::class => '乙女座',
-    \Intervention\Zodiac\Western\Signs\Libra::class => '天秤座',
-    \Intervention\Zodiac\Western\Signs\Scorpio::class => '蠍座',
-    \Intervention\Zodiac\Western\Signs\Sagittarius::class => '射手座',
-    \Intervention\Zodiac\Western\Signs\Capricorn::class => '山羊座',
-    \Intervention\Zodiac\Western\Signs\Aquarius::class => '水瓶座',
-    \Intervention\Zodiac\Western\Signs\Pisces::class => '魚座',
+use Intervention\Zodiac\Chinese\ChineseSign;
+use Intervention\Zodiac\Western\WesternSign;
 
-    \Intervention\Zodiac\Chinese\Signs\Rat::class => '子',
-    \Intervention\Zodiac\Chinese\Signs\Ox::class => '丑',
-    \Intervention\Zodiac\Chinese\Signs\Tiger::class => '寅',
-    \Intervention\Zodiac\Chinese\Signs\Rabbit::class => '卯',
-    \Intervention\Zodiac\Chinese\Signs\Dragon::class => '辰',
-    \Intervention\Zodiac\Chinese\Signs\Snake::class => '巳',
-    \Intervention\Zodiac\Chinese\Signs\Horse::class => '午',
-    \Intervention\Zodiac\Chinese\Signs\Goat::class => '未',
-    \Intervention\Zodiac\Chinese\Signs\Monkey::class => '申',
-    \Intervention\Zodiac\Chinese\Signs\Rooster::class => '酉',
-    \Intervention\Zodiac\Chinese\Signs\Dog::class => '戌',
-    \Intervention\Zodiac\Chinese\Signs\Pig::class => '亥',
+return [
+    WesternSign::Aries->value => '牡羊座',
+    WesternSign::Taurus->value => '牡牛座',
+    WesternSign::Gemini->value => '双子座',
+    WesternSign::Cancer->value => '蟹座',
+    WesternSign::Leo->value => '獅子座',
+    WesternSign::Virgo->value => '乙女座',
+    WesternSign::Libra->value => '天秤座',
+    WesternSign::Scorpio->value => '蠍座',
+    WesternSign::Sagittarius->value => '射手座',
+    WesternSign::Capricorn->value => '山羊座',
+    WesternSign::Aquarius->value => '水瓶座',
+    WesternSign::Pisces->value => '魚座',
+
+    ChineseSign::Rat->value => '子',
+    ChineseSign::Ox->value => '丑',
+    ChineseSign::Tiger->value => '寅',
+    ChineseSign::Rabbit->value => '卯',
+    ChineseSign::Dragon->value => '辰',
+    ChineseSign::Snake->value => '巳',
+    ChineseSign::Horse->value => '午',
+    ChineseSign::Goat->value => '未',
+    ChineseSign::Monkey->value => '申',
+    ChineseSign::Rooster->value => '酉',
+    ChineseSign::Dog->value => '戌',
+    ChineseSign::Pig->value => '亥',
 ];

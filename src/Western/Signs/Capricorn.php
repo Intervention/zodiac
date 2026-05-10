@@ -9,13 +9,10 @@ use Intervention\Zodiac\Exceptions\InvalidArgumentException;
 use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Interfaces\PeriodInterface;
 use Intervention\Zodiac\Period;
-use Intervention\Zodiac\Traits\CanCreateDate;
 use Intervention\Zodiac\Western\PreConcreteWesternSign;
 
 class Capricorn extends PreConcreteWesternSign
 {
-    use CanCreateDate;
-
     protected string $name = 'Capricorn';
     protected string $html = '&#9809;';
     protected int $startDay = 22;

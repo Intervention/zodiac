@@ -13,7 +13,7 @@ interface CalculatorInterface
     /**
      * Static factory method to create calculator.
      */
-    public static function create(Astrology $astrology): self;
+    public static function create(Astrology $astrology = Astrology::WESTERN): self;
 
     /**
      * Calculate zodiac sign from different sources based on current or given astrology.

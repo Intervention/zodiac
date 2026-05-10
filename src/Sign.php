@@ -136,7 +136,7 @@ abstract class Sign implements SignInterface
     /**
      * {@inheritdoc}
      *
-     * @see SignInterface::localized()
+     * @see SignInterface::localize()
      *
      * @throws LocalizationException
      */

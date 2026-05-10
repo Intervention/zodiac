@@ -52,10 +52,16 @@ class NewYear
      */
     public function sign(): SignInterface
     {
-        $sign = new $this->sign();
+        $classname = $this->sign;
+
+        if (!class_exists($classname)) {
+            throw new RuntimeException('Type of zodiac sign does not exist');
+        }
+
+        $sign = new $classname();
 
         if (!$sign instanceof ChineseSign) {
-            throw new RuntimeException('Type of zodiac sign does not match');
+            throw new RuntimeException('Zodiac must be a chinese sign');
         }
 
         return $sign;

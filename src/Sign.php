@@ -105,8 +105,11 @@ abstract class Sign implements SignInterface
                 date: (new DateTimeImmutable())->setTimestamp((int) $date),
                 astrology: $astrology,
             );
-        } catch (Throwable) {
-            throw new InvalidArgumentException('Unable to create zodiac from unix timestamp "' . $date . '"');
+        } catch (Throwable $e) {
+            throw new InvalidArgumentException(
+                'Unable to create zodiac from unix timestamp "' . $date . '"',
+                previous: $e,
+            );
         }
     }
 

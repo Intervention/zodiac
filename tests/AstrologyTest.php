@@ -36,7 +36,7 @@ use Intervention\Zodiac\Western\Signs\Virgo;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-class AstrologyTest extends TestCase
+final class AstrologyTest extends TestCase
 {
     /**
      * @param array<string> $classes

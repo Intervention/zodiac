@@ -22,7 +22,7 @@ use Intervention\Zodiac\Western\Signs\Taurus;
 use Intervention\Zodiac\Western\Signs\Virgo;
 use Stringable;
 
-class WesternDataProvider
+final class WesternDataProvider
 {
     public static function stringDates(): Generator
     {

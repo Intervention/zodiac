@@ -13,7 +13,7 @@ use Intervention\Zodiac\Period;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-class PeriodTest extends TestCase
+final class PeriodTest extends TestCase
 {
     #[DataProvider('periodData')]
     public function testContains(DateTimeInterface $date, PeriodInterface $period, bool $result): void

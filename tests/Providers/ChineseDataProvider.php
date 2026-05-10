@@ -22,7 +22,7 @@ use Intervention\Zodiac\Chinese\Signs\Snake;
 use Intervention\Zodiac\Chinese\Signs\Tiger;
 use Stringable;
 
-class ChineseDataProvider
+final class ChineseDataProvider
 {
     public static function stringDates(): Generator
     {

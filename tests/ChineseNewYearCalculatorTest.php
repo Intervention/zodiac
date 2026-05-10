@@ -9,7 +9,7 @@ use Intervention\Zodiac\Chinese\NewYearCalculator;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use PHPUnit\Framework\TestCase;
 
-class ChineseNewYearCalculatorTest extends TestCase
+final class ChineseNewYearCalculatorTest extends TestCase
 {
     public function testNewYear(): void
     {

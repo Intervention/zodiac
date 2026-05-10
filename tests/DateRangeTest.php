@@ -9,7 +9,7 @@ use DateTimeImmutable;
 use Intervention\Zodiac\DateRange;
 use PHPUnit\Framework\TestCase;
 
-class DateRangeTest extends TestCase
+final class DateRangeTest extends TestCase
 {
     public function testContainsStartDate(): void
     {

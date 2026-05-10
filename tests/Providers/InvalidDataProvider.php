@@ -6,7 +6,7 @@ namespace Intervention\Zodiac\Tests\Providers;
 
 use Generator;
 
-class InvalidDataProvider
+final class InvalidDataProvider
 {
     public static function invalidStringDates(): Generator
     {

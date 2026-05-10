@@ -9,7 +9,7 @@ use Intervention\Zodiac\Chinese\NewYear;
 use Intervention\Zodiac\Chinese\Signs\Rabbit;
 use PHPUnit\Framework\TestCase;
 
-class NewYearTest extends TestCase
+final class NewYearTest extends TestCase
 {
     public function testInputOutput(): void
     {

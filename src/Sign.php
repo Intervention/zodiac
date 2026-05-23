@@ -154,9 +154,11 @@ abstract class Sign implements SignInterface
 
         $translatedName = $this->translator()->get($key, locale: $locale);
 
-        if (is_string($translatedName)) {
-            $this->name = $translatedName;
+        if (!is_string($translatedName)) {
+            throw new LocalizationException('No translation for "' . $key . '" in locale "' . $locale . '"');
         }
+
+        $this->name = $translatedName;
 
         return $this;
     }

@@ -74,7 +74,7 @@ class Calculator implements CalculatorInterface
             $date instanceof DateTimeInterface => Sign::fromDate($date, $astrology),
         };
 
-        $sign->setTranslator($this->translator());
+        $sign->setTranslator(self::translator());
 
         return $sign->localize();
     }

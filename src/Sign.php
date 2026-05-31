@@ -148,11 +148,11 @@ abstract class Sign implements SignInterface
             $locale = self::$translator !== null ? self::$translator->locale() : 'en';
         }
 
-        if (!$this->translator()->has($key, locale: $locale)) {
+        if (!self::translator()->has($key, locale: $locale)) {
             throw new LocalizationException('No translation for "' . $key . '" in locale "' . $locale . '"');
         }
 
-        $translatedName = $this->translator()->get($key, locale: $locale);
+        $translatedName = self::translator()->get($key, locale: $locale);
 
         if (!is_string($translatedName)) {
             throw new LocalizationException('No translation for "' . $key . '" in locale "' . $locale . '"');

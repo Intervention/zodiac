@@ -1,16 +1,11 @@
-FROM php:8.2-cli
+FROM php:8.2-cli-alpine
 
-RUN apt update \
-        && apt install -y \
-            libicu-dev \
-            git \
-            zip \
-        && pecl install xdebug \
-        && docker-php-ext-enable \
-            xdebug \
-        && docker-php-ext-install \
-            intl \
-        && apt-get clean
+RUN apk add --no-cache \
+        icu-dev \
+        git \
+        zip \
+    && docker-php-ext-install \
+        intl
 
 # install composer
 #

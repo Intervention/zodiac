@@ -30,33 +30,33 @@ final class PeriodTest extends TestCase
         yield [
             new DateTimeImmutable('2001-01-01'),
             new Period([
-                new DateRange(new DateTimeImmutable('2001-01-01'), new DateTimeImmutable('2001-02-05'))
+                new DateRange(new DateTimeImmutable('2001-01-01'), new DateTimeImmutable('2001-02-05')),
             ]),
-            true
+            true,
         ];
 
         yield [
             new DateTimeImmutable('2001-02-01'),
             new Period([
-                new DateRange(new DateTimeImmutable('2001-01-01'), new DateTimeImmutable('2001-02-05'))
+                new DateRange(new DateTimeImmutable('2001-01-01'), new DateTimeImmutable('2001-02-05')),
             ]),
-            true
+            true,
         ];
 
         yield [
             new DateTimeImmutable('2001-02-05'),
             new Period([
-                new DateRange(new DateTimeImmutable('2001-01-01'), new DateTimeImmutable('2001-02-05'))
+                new DateRange(new DateTimeImmutable('2001-01-01'), new DateTimeImmutable('2001-02-05')),
             ]),
-            true
+            true,
         ];
 
         yield [
             new DateTimeImmutable('2001-06-05'),
             new Period([
-                new DateRange(new DateTimeImmutable('2001-01-01'), new DateTimeImmutable('2001-02-05'))
+                new DateRange(new DateTimeImmutable('2001-01-01'), new DateTimeImmutable('2001-02-05')),
             ]),
-            false
+            false,
         ];
 
         yield [
@@ -65,15 +65,15 @@ final class PeriodTest extends TestCase
                 new DateRange(new DateTimeImmutable('2001-01-01'), new DateTimeImmutable('2001-02-05')),
                 new DateRange(new DateTimeImmutable('2001-06-01'), new DateTimeImmutable('2001-06-06')),
             ]),
-            true
+            true,
         ];
 
         yield [
             new DateTimeImmutable('2001-06-05'),
             new Period([
-                new DateRange(new DateTimeImmutable('2001-06-05'), new DateTimeImmutable('2001-06-05'))
+                new DateRange(new DateTimeImmutable('2001-06-05'), new DateTimeImmutable('2001-06-05')),
             ]),
-            true
+            true,
         ];
     }
 }

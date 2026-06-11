@@ -64,7 +64,7 @@ final class AstrologyTest extends TestCase
                 Scorpio::class,
                 Taurus::class,
                 Virgo::class,
-            ]
+            ],
         ];
 
         yield [
@@ -82,7 +82,7 @@ final class AstrologyTest extends TestCase
                 Rooster::class,
                 Dog::class,
                 Pig::class,
-            ]
+            ],
         ];
     }
 

@@ -42,7 +42,7 @@ trait HasTranslator
 
         $translator = new Translator(
             new FileLoader(new Filesystem(), __DIR__ . '/../lang'),
-            $locale ?: 'en'
+            $locale ?: 'en',
         );
 
         $translator->addNamespace('zodiacs', __DIR__ . '/../lang');

@@ -27,7 +27,7 @@ class ServiceProvider extends BaseServiceProvider
         // define config files for publishing
         $this->publishes([
             /** @phpstan-ignore function.notFound */
-            __DIR__ . '/config/zodiac.php' => config_path('zodiac.php')
+            __DIR__ . '/config/zodiac.php' => config_path('zodiac.php'),
         ]);
 
         // load translation files

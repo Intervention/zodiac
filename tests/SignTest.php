@@ -222,7 +222,7 @@ final class SignTest extends TestCase
                 int $endDay,
                 int $endMonth,
                 string $name,
-                string $html
+                string $html,
             ) {
                 $this->startDay = $startDay;
                 $this->startMonth = $startMonth;

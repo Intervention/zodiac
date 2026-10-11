@@ -13,10 +13,11 @@ use Intervention\Zodiac\Exceptions\RuntimeException;
 use Intervention\Zodiac\Exceptions\ZodiacException;
 use Intervention\Zodiac\Interfaces\SignInterface;
 use Intervention\Zodiac\Traits\HasTranslator;
+use JsonSerializable;
 use Stringable;
 use Throwable;
 
-abstract class Sign implements SignInterface
+abstract class Sign implements SignInterface, JsonSerializable
 {
     use HasTranslator;
 
@@ -161,6 +162,16 @@ abstract class Sign implements SignInterface
         $this->name = $translatedName;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see JsonSerializable::jsonSerialize()
+     */
+    public function jsonSerialize(): mixed
+    {
+        return $this->__toString();
     }
 
     /**

@@ -200,6 +200,11 @@ final class SignTest extends TestCase
         $this->assertEquals('test', (string) $sign);
     }
 
+    public function testJsonSerialize(): void
+    {
+        $this->assertEquals('["test"]', json_encode([$this->zodiacSign(name: 'test')]));
+    }
+
     private function zodiacSign(
         int $startMonth = 1,
         int $startDay = 1,
